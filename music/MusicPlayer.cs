@@ -2,8 +2,6 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Net;
-using System.Media;
-using NAudio.Wave;
 using WMPLib;
 
 namespace music
@@ -58,11 +56,8 @@ namespace music
         {
             try
             {
-                WindowsMediaPlayer music = new WindowsMediaPlayer();
-                music.URL = "http://mysyu.ddns.net/UploadMusic/IU.mp3";
-                trackBar1.Maximum = (int)music.currentMedia.duration;
-                trackBar1.Enabled = true;
-                music.controls.play();
+                axWindowsMediaPlayer1.URL = "http://mysyu.ddns.net/UploadMusic/IU.mp3";
+                axWindowsMediaPlayer1.Ctlcontrols.play();
             }
             catch ( Exception ex )
             {
@@ -70,5 +65,18 @@ namespace music
             }
         }
 
+        private void trackBar1_ValueChanged( object sender , EventArgs e )
+        {
+            TimeSpan time = TimeSpan.FromSeconds( trackBar1.Value );
+            label1.Text = time.ToString( @"hh\:mm\:ss" );
+            axWindowsMediaPlayer1.Ctlcontrols.currentPosition = trackBar1.Value;
+        }
+
+        private void axWindowsMediaPlayer1_PlayStateChange( object sender , AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e )
+        {
+            if ( axWindowsMediaPlayer1.currentMedia == null )
+                return;
+            trackBar1.Maximum = (int) axWindowsMediaPlayer1.currentMedia.duration;
+        }
     }
 }
