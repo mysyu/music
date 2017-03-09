@@ -12,7 +12,7 @@ namespace music
 
         private void button1_Click( object sender , EventArgs e )
         {
-            new MusicPlayer().Upload();
+            new MusicControl().Upload();
         }
     }
 }
