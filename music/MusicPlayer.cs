@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Windows.Forms;
+using AxWMPLib;
 using System.IO;
 using System.Net;
-using WMPLib;
+using System.Windows.Forms;
 
 namespace music
 {
-    public partial class MusicPlayer : UserControl
+    public partial class MusicPlayer : AxWindowsMediaPlayer
     {
+
         public MusicPlayer()
         {
-            InitializeComponent();
         }
-
         public void Upload()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -52,31 +51,6 @@ namespace music
                 }
             }
         }
-        private void button1_Click( object sender , EventArgs e )
-        {
-            try
-            {
-                axWindowsMediaPlayer1.URL = "http://mysyu.ddns.net/UploadMusic/IU.mp3";
-                axWindowsMediaPlayer1.Ctlcontrols.play();
-            }
-            catch ( Exception ex )
-            {
-                MessageBox.Show( ex.Message );
-            }
-        }
 
-        private void trackBar1_ValueChanged( object sender , EventArgs e )
-        {
-            TimeSpan time = TimeSpan.FromSeconds( trackBar1.Value );
-            label1.Text = time.ToString( @"hh\:mm\:ss" );
-            axWindowsMediaPlayer1.Ctlcontrols.currentPosition = trackBar1.Value;
-        }
-
-        private void axWindowsMediaPlayer1_PlayStateChange( object sender , AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e )
-        {
-            if ( axWindowsMediaPlayer1.currentMedia == null )
-                return;
-            trackBar1.Maximum = (int) axWindowsMediaPlayer1.currentMedia.duration;
-        }
     }
 }
