@@ -10,6 +10,7 @@ namespace music
         public Form1()
         {
             InitializeComponent();
+            timer1.Start();
         }
 
         private void button1_Click( object sender , EventArgs e )
@@ -30,6 +31,27 @@ namespace music
         {
             musicPlayer1.URL = "http://mysyu.ddns.net/UploadMusic/" + comboBox1.SelectedItem;
             musicPlayer1.Ctlcontrols.stop();
+        }
+
+        private void timer1_Tick( object sender , EventArgs e )
+        {
+            label1.Text = musicPlayer1.Ctlcontrols.currentPositionString;
+        }
+
+        private void button4_Click( object sender , EventArgs e )
+        {
+            foreach ( String line in textBox1.Text.Split( '\n' ) )
+                listBox1.Items.Add( line );
+            listBox1.SelectedIndex = 0;
+        }
+
+        private void button3_Click( object sender , EventArgs e )
+        {
+            int select = listBox1.SelectedIndex;
+            String now = "[" + musicPlayer1.Ctlcontrols.currentPositionString + "] " + listBox1.SelectedItem;
+            listBox1.Items.RemoveAt( select );
+            listBox1.Items.Insert( select , now );
+            listBox1.SelectedIndex = ( select + 1 ) % listBox1.Items.Count;
         }
     }
 }
