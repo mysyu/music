@@ -2,6 +2,7 @@
 {
     partial class Form1
     {
+        if(123)
         /// <summary>
         /// 設計工具所需的變數。
         /// </summary>
