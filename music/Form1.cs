@@ -52,9 +52,6 @@ namespace music
             listBox1.Items.RemoveAt( select );
             listBox1.Items.Insert( select , now );
             listBox1.SelectedIndex = ( select + 1 ) % listBox1.Items.Count;
-            213312
-        }.
-        .
-        323232
+        }
     }
 }
