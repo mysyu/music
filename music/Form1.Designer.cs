@@ -2,7 +2,7 @@
 {
     partial class Form1
     {
-        if(123)
+        private int aaaa;
         /// <summary>
         /// 設計工具所需的變數。
         /// </summary>
