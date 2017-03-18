@@ -21,10 +21,7 @@ namespace music
         private void button2_Click( object sender , EventArgs e )
         {
             comboBox1.Items.Clear();
-            foreach ( string file in Directory.GetFiles( "E://web/UploadMusic/" ) )
-            {
-                comboBox1.Items.Add( Path.GetFileName( file ) );
-            }
+            comboBox1.Items.Add( "IU.mp3" );
         }
 
         private void comboBox1_SelectedIndexChanged( object sender , EventArgs e )
