@@ -13,8 +13,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright( "Copyright ©  2017" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
-[assembly: log4net.Config.DOMConfigurator( ConfigFileExtension = "config" , Watch = true )]
-
 
 // 將 ComVisible 設定為 false 會使得這個組件中的類型
 // 對 COM 元件而言為不可見。如果您需要從 COM 存取這個組件中
