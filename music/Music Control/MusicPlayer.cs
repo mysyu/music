@@ -8,7 +8,6 @@ namespace music
 {
     public partial class MusicPlayer : AxWindowsMediaPlayer
     {
-        fdsffffff
         public MusicPlayer()
         {
         }
