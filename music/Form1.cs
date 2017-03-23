@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
-using music.DB_Control;
-using System.Data;
-using log4net;
+using System.Windows.Media;
+using System.IO;
 
 namespace music
 {
     public partial class Form1 : Form
     {
-        public static ILog Log = LogManager.GetLogger( "" );
-
         public Form1()
         {
             InitializeComponent();
             timer1.Start();
-            Log.Debug( "start" );
         }
 
         private void button1_Click( object sender , EventArgs e )
@@ -53,11 +49,6 @@ namespace music
             listBox1.Items.RemoveAt( select );
             listBox1.Items.Insert( select , now );
             listBox1.SelectedIndex = ( select + 1 ) % listBox1.Items.Count;
-        }
-
-        private void Form1_FormClosing( object sender , FormClosingEventArgs e )
-        {
-            DB.Close();
         }
     }
 }
