@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using music.DB_Control;
 using System.Data;
 using log4net;
+using music.Music_Control;
 
 namespace music
 {
@@ -19,7 +20,7 @@ namespace music
 
         private void button1_Click( object sender , EventArgs e )
         {
-            new MusicPlayer().Upload();
+            new Music().Upload();
         }
 
         private void button2_Click( object sender , EventArgs e )
