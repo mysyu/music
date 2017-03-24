@@ -8,6 +8,7 @@ namespace music.Music_Control
 {
     class Music
     {
+       
         public void Upload()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();

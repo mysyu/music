@@ -60,5 +60,16 @@ namespace music
         {
             DB.Close();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            String tmp="";
+            for(int i=0;i<listBox1.Items.Count;i++)
+            {
+                tmp =tmp+listBox1.Items[i].ToString()+"\n";
+            }
+            new Lyrics(tmp);
+            MessageBox.Show("Success");
+        }
     }
 }

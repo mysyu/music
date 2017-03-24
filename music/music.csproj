@@ -67,6 +67,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Music Control\Lyrics.cs" />
     <Compile Include="Music Control\Music.cs" />
     <Compile Include="Music Control\MusicPlayer.cs">
       <SubType>Component</SubType>
