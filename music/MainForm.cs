@@ -7,11 +7,11 @@ using music.Music_Control;
 
 namespace music
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         public static ILog Log = LogManager.GetLogger( "" );
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             timer1.Start();
@@ -31,13 +31,13 @@ namespace music
 
         private void comboBox1_SelectedIndexChanged( object sender , EventArgs e )
         {
-            musicPlayer1.URL = "http://mysyu.ddns.net/UploadMusic/" + comboBox1.SelectedItem;
-            musicPlayer1.Ctlcontrols.stop();
+            musicPlayer.URL = "http://mysyu.ddns.net/UploadMusic/" + comboBox1.SelectedItem;
+            musicPlayer.Ctlcontrols.stop();
         }
 
         private void timer1_Tick( object sender , EventArgs e )
         {
-            label1.Text = musicPlayer1.Ctlcontrols.currentPositionString;
+            label1.Text = musicPlayer.Ctlcontrols.currentPositionString;
         }
 
         private void button4_Click( object sender , EventArgs e )
@@ -50,7 +50,7 @@ namespace music
         private void button3_Click( object sender , EventArgs e )
         {
             int select = listBox1.SelectedIndex;
-            String now = "[" + musicPlayer1.Ctlcontrols.currentPositionString + "] " + listBox1.SelectedItem;
+            String now = "[" + musicPlayer.Ctlcontrols.currentPositionString + "] " + listBox1.SelectedItem;
             listBox1.Items.RemoveAt( select );
             listBox1.Items.Insert( select , now );
             listBox1.SelectedIndex = ( select + 1 ) % listBox1.Items.Count;
