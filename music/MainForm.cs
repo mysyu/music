@@ -1,41 +1,43 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Windows.Media;
-using System.IO;
+using music.DB_Control;
+using System.Data;
+using log4net;
+using music.Music_Control;
 
 namespace music
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public static ILog Log = LogManager.GetLogger( "" );
+
+        public MainForm()
         {
             InitializeComponent();
             timer1.Start();
+            Log.Debug( "start" );
         }
 
         private void button1_Click( object sender , EventArgs e )
         {
-            new MusicPlayer().Upload();
+            new Music().Upload();
         }
 
         private void button2_Click( object sender , EventArgs e )
         {
             comboBox1.Items.Clear();
-            foreach ( string file in Directory.GetFiles( "E://web/UploadMusic/" ) )
-            {
-                comboBox1.Items.Add( Path.GetFileName( file ) );
-            }
+            comboBox1.Items.Add( "IU.mp3" );
         }
 
         private void comboBox1_SelectedIndexChanged( object sender , EventArgs e )
         {
-            musicPlayer1.URL = "http://mysyu.ddns.net/UploadMusic/" + comboBox1.SelectedItem;
-            musicPlayer1.Ctlcontrols.stop();
+            musicPlayer.URL = "http://mysyu.ddns.net/UploadMusic/" + comboBox1.SelectedItem;
+            musicPlayer.Ctlcontrols.stop();
         }
 
         private void timer1_Tick( object sender , EventArgs e )
         {
-            label1.Text = musicPlayer1.Ctlcontrols.currentPositionString;
+            label1.Text = musicPlayer.Ctlcontrols.currentPositionString;
         }
 
         private void button4_Click( object sender , EventArgs e )
@@ -48,11 +50,26 @@ namespace music
         private void button3_Click( object sender , EventArgs e )
         {
             int select = listBox1.SelectedIndex;
-            String now = "[" + musicPlayer1.Ctlcontrols.currentPositionString + "] " + listBox1.SelectedItem;
+            String now = "[" + musicPlayer.Ctlcontrols.currentPositionString + "] " + listBox1.SelectedItem;
             listBox1.Items.RemoveAt( select );
             listBox1.Items.Insert( select , now );
             listBox1.SelectedIndex = ( select + 1 ) % listBox1.Items.Count;
         }
 
+        private void Form1_FormClosing( object sender , FormClosingEventArgs e )
+        {
+            DB.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            String tmp="";
+            for(int i=0;i<listBox1.Items.Count;i++)
+            {
+                tmp =tmp+listBox1.Items[i].ToString()+"\n";
+            }
+            new Lyrics(tmp);
+            MessageBox.Show("Success");
+        }
     }
 }
