@@ -4,10 +4,11 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 
-namespace music.Music_Control
+namespace music
 {
-    class Music
+    public class Music
     {
+        public String name;
        
         public void Upload()
         {

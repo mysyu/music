@@ -3,7 +3,7 @@ using System;
 using System.Data;
 using log4net;
 
-namespace music.DB_Control
+namespace music
 {
     public static class DB
     {
