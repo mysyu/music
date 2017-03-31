@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using music.DB_Control;
 using System.Data;
+using System.Collections.Generic;
 using log4net;
-using music.Music_Control;
 
 namespace music
 {
@@ -11,10 +10,12 @@ namespace music
     {
         public static ILog Log = LogManager.GetLogger( "" );
 
+
         public MainForm()
         {
             InitializeComponent();
             timer1.Start();
+            refreshPlaylist();
             Log.Debug( "start" );
         }
 
@@ -71,5 +72,24 @@ namespace music
             new Lyrics(tmp);
             MessageBox.Show("Success");
         }
+
+        public void refreshPlaylist()
+        {
+            treeView1.Nodes.Clear();
+            treeView1.Nodes.Add( "本機" );
+            foreach ( String l in PlayList.local.Keys )
+            {
+                treeView1.Nodes[ 0 ].Nodes.Add( l );
+            }
+            if ( Account.login )
+            {
+                treeView1.Nodes.Add( Account.name );
+                foreach ( String l in PlayList.account.Keys )
+                {
+                    treeView1.Nodes[ 0 ].Nodes.Add( l );
+                }
+            }
+        }
+
     }
 }

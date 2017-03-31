@@ -43,8 +43,10 @@
             this.button5 = new System.Windows.Forms.Button();
             this.menuPanel = new System.Windows.Forms.Panel();
             this.playListPanel = new System.Windows.Forms.Panel();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.musicPlayer = new music.MusicPlayer();
+            this.playListPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.musicPlayer)).BeginInit();
             this.SuspendLayout();
@@ -148,11 +150,22 @@
             // 
             // playListPanel
             // 
+            this.playListPanel.Controls.Add(this.treeView1);
             this.playListPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.playListPanel.Location = new System.Drawing.Point(0, 45);
             this.playListPanel.Name = "playListPanel";
             this.playListPanel.Size = new System.Drawing.Size(168, 500);
             this.playListPanel.TabIndex = 11;
+            // 
+            // treeView1
+            // 
+            this.treeView1.AllowDrop = true;
+            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(168, 500);
+            this.treeView1.TabIndex = 1;
             // 
             // mainPanel
             // 
@@ -184,6 +197,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(967, 590);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mainPanel);
@@ -194,6 +208,7 @@
             this.Name = "MainForm";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.playListPanel.ResumeLayout(false);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.musicPlayer)).EndInit();
@@ -218,6 +233,7 @@
         private System.Windows.Forms.Panel menuPanel;
         private System.Windows.Forms.Panel playListPanel;
         private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
 

@@ -7,7 +7,7 @@ using log4net;
 using System.Globalization;
 using System.Windows;
 
-namespace music.Music_Control
+namespace music
 {
     class Lyrics
     {
