@@ -6,12 +6,12 @@ using log4net;
 
 namespace music
 {
-    public partial class MainForm : Form
+    public partial class FormMain : Form
     {
         public static ILog Log = LogManager.GetLogger( "" );
 
 
-        public MainForm()
+        public FormMain()
         {
             InitializeComponent();
             timer1.Start();
@@ -91,5 +91,17 @@ namespace music
             }
         }
 
+        private void account_Click( object sender , EventArgs e )
+        {
+            if ( !Account.login )
+            {
+                FormLogin formLogin = new FormLogin();
+                formLogin.TopLevel = false;
+                formLogin.Dock = DockStyle.Fill;
+                formLogin.AutoScroll = true;
+                mainPanel.Controls.Add( formLogin );
+                formLogin.Show();
+            }
+        }
     }
 }
