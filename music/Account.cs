@@ -12,19 +12,21 @@ namespace music
         public static bool islogin = false;
         public static string email = "";
 
-        public static bool Login(string e, string p)
+        public static string Login(string e, string p)
         {
             DataTable result = DB.Select(String.Format("Select * from account where email={0}, password={1}", e, p));
-            if (result.Rows.Count == 1)
+            if ( result.Rows.Count == 1 )
             {
                 islogin = true;
                 email = e;
-                return true;
+                return "Success";
             }
             else
-                return false;
+            {
+                return "Fail";
+            }
         }
-        public static void logout()
+        public static void Logout()
         {
             islogin = false;
             email = "";

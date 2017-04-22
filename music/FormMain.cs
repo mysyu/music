@@ -81,9 +81,9 @@ namespace music
             {
                 treeView1.Nodes[ 0 ].Nodes.Add( l );
             }
-            if ( Account.login )
+            if ( Account.islogin )
             {
-                treeView1.Nodes.Add( Account.name );
+                treeView1.Nodes.Add( Account.email );
                 foreach ( String l in PlayList.account.Keys )
                 {
                     treeView1.Nodes[ 0 ].Nodes.Add( l );
@@ -93,7 +93,7 @@ namespace music
 
         private void account_Click( object sender , EventArgs e )
         {
-            if ( !Account.login )
+            if ( !Account.islogin )
             {
                 FormLogin formLogin = new FormLogin();
                 formLogin.TopLevel = false;
@@ -101,6 +101,10 @@ namespace music
                 formLogin.AutoScroll = true;
                 mainPanel.Controls.Add( formLogin );
                 formLogin.Show();
+            }
+            else
+            {
+                Account.Logout();
             }
         }
     }

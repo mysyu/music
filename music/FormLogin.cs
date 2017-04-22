@@ -17,14 +17,9 @@ namespace music
             InitializeComponent();
         }
 
-        private void email_Label_Click( object sender , EventArgs e )
+        private void login_Click( object sender , EventArgs e )
         {
-
-        }
-
-        private void maskedTextBox2_MaskInputRejected( object sender , MaskInputRejectedEventArgs e )
-        {
-
+            Account.Login( email.Text , password.Text );
         }
     }
 }
