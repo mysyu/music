@@ -49,10 +49,11 @@
             this.account_Option = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.account_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.account_music = new System.Windows.Forms.ToolStripMenuItem();
+            this.modify = new System.Windows.Forms.ToolStripMenuItem();
             this.logout = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.musicPlayer = new music.MusicPlayer();
-            this.modify = new System.Windows.Forms.ToolStripMenuItem();
+            this.network_Detect = new System.Windows.Forms.Timer(this.components);
             this.menuPanel.SuspendLayout();
             this.playListPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -155,12 +156,14 @@
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(967, 45);
+            this.menuPanel.Size = new System.Drawing.Size(1000, 45);
             this.menuPanel.TabIndex = 10;
             // 
             // account
             // 
-            this.account.Location = new System.Drawing.Point(880, 12);
+            this.account.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.account.Location = new System.Drawing.Point(900, 11);
             this.account.Name = "account";
             this.account.Size = new System.Drawing.Size(75, 23);
             this.account.TabIndex = 0;
@@ -174,7 +177,7 @@
             this.playListPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.playListPanel.Location = new System.Drawing.Point(0, 45);
             this.playListPanel.Name = "playListPanel";
-            this.playListPanel.Size = new System.Drawing.Size(168, 500);
+            this.playListPanel.Size = new System.Drawing.Size(200, 500);
             this.playListPanel.TabIndex = 11;
             // 
             // treeView1
@@ -184,7 +187,7 @@
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(168, 500);
+            this.treeView1.Size = new System.Drawing.Size(200, 500);
             this.treeView1.TabIndex = 1;
             // 
             // mainPanel
@@ -198,9 +201,9 @@
             this.mainPanel.Controls.Add(this.button1);
             this.mainPanel.Controls.Add(this.textBox1);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(168, 45);
+            this.mainPanel.Location = new System.Drawing.Point(200, 45);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(799, 500);
+            this.mainPanel.Size = new System.Drawing.Size(800, 500);
             this.mainPanel.TabIndex = 12;
             // 
             // account_Option
@@ -211,26 +214,33 @@
             this.modify,
             this.logout});
             this.account_Option.Name = "account_Option";
-            this.account_Option.Size = new System.Drawing.Size(153, 114);
+            this.account_Option.Size = new System.Drawing.Size(123, 92);
             // 
             // account_Info
             // 
             this.account_Info.Name = "account_Info";
-            this.account_Info.Size = new System.Drawing.Size(152, 22);
+            this.account_Info.Size = new System.Drawing.Size(122, 22);
             this.account_Info.Text = "個人資料";
             this.account_Info.Click += new System.EventHandler(this.account_Info_Click);
             // 
             // account_music
             // 
             this.account_music.Name = "account_music";
-            this.account_music.Size = new System.Drawing.Size(152, 22);
+            this.account_music.Size = new System.Drawing.Size(122, 22);
             this.account_music.Text = "創作管理";
             this.account_music.Click += new System.EventHandler(this.account_music_Click);
+            // 
+            // modify
+            // 
+            this.modify.Name = "modify";
+            this.modify.Size = new System.Drawing.Size(122, 22);
+            this.modify.Text = "變更密碼";
+            this.modify.Click += new System.EventHandler(this.modify_Click);
             // 
             // logout
             // 
             this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(152, 22);
+            this.logout.Size = new System.Drawing.Size(122, 22);
             this.logout.Text = "登出";
             this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
@@ -248,22 +258,19 @@
             this.musicPlayer.Location = new System.Drawing.Point(0, 545);
             this.musicPlayer.Name = "musicPlayer";
             this.musicPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("musicPlayer.OcxState")));
-            this.musicPlayer.Size = new System.Drawing.Size(967, 45);
+            this.musicPlayer.Size = new System.Drawing.Size(1000, 45);
             this.musicPlayer.TabIndex = 1;
             // 
-            // modify
+            // network_Detect
             // 
-            this.modify.Name = "modify";
-            this.modify.Size = new System.Drawing.Size(152, 22);
-            this.modify.Text = "變更密碼";
-            this.modify.Click += new System.EventHandler(this.modify_Click);
+            this.network_Detect.Tick += new System.EventHandler(this.network_Detect_Tick);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(967, 590);
+            this.ClientSize = new System.Drawing.Size(1000, 590);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.playListPanel);
@@ -273,6 +280,7 @@
             this.Name = "FormMain";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.menuPanel.ResumeLayout(false);
             this.playListPanel.ResumeLayout(false);
             this.mainPanel.ResumeLayout(false);
@@ -308,6 +316,7 @@
         public System.Windows.Forms.ToolStripMenuItem modify;
         public System.Windows.Forms.ToolStripMenuItem logout;
         public System.Windows.Forms.NotifyIcon notifyIcon;
+        public System.Windows.Forms.Timer network_Detect;
     }
 }
 

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Data;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using log4net;
 
 namespace music
@@ -15,19 +16,15 @@ namespace music
         public FormMain()
         {
             InitializeComponent();
-            timer1.Start();
-            refreshPlaylist();
-            Log.Debug( "start" );
-            main = this;
         }
 
-        private void button1_Click( object sender , EventArgs e )
+        public void button1_Click( object sender , EventArgs e )
         {
+            MessageBox.Show( "網路連線中斷!請開啟網路連線後再重新啟動程式!" );
             new Music().Upload();
-
         }
 
-        private void button2_Click( object sender , EventArgs e )
+        public void button2_Click( object sender , EventArgs e )
         {
             comboBox1.Items.Clear();
             comboBox1.Items.Add( "IU.mp3" );
@@ -35,25 +32,25 @@ namespace music
             this.Hide();
         }
 
-        private void comboBox1_SelectedIndexChanged( object sender , EventArgs e )
+        public void comboBox1_SelectedIndexChanged( object sender , EventArgs e )
         {
             musicPlayer.URL = "http://mysyu.ddns.net/UploadMusic/" + comboBox1.SelectedItem;
             musicPlayer.Ctlcontrols.stop();
         }
 
-        private void timer1_Tick( object sender , EventArgs e )
+        public void timer1_Tick( object sender , EventArgs e )
         {
             label1.Text = musicPlayer.Ctlcontrols.currentPositionString;
         }
 
-        private void button4_Click( object sender , EventArgs e )
+        public void button4_Click( object sender , EventArgs e )
         {
             foreach ( String line in textBox1.Text.Split( '\n' ) )
                 listBox1.Items.Add( line );
             listBox1.SelectedIndex = 0;
         }
 
-        private void button3_Click( object sender , EventArgs e )
+        public void button3_Click( object sender , EventArgs e )
         {
             int select = listBox1.SelectedIndex;
             String now = "[" + musicPlayer.Ctlcontrols.currentPositionString + "] " + listBox1.SelectedItem;
@@ -62,12 +59,12 @@ namespace music
             listBox1.SelectedIndex = ( select + 1 ) % listBox1.Items.Count;
         }
 
-        private void Form1_FormClosing( object sender , FormClosingEventArgs e )
+        public void Form1_FormClosing( object sender , FormClosingEventArgs e )
         {
-            DB.Close();
+            if( DB.Connect )
+                DB.Close();
         }
-
-        private void button5_Click(object sender, EventArgs e)
+        public void button5_Click(object sender, EventArgs e)
         {
             String tmp="";
             for(int i=0;i<listBox1.Items.Count;i++)
@@ -117,6 +114,7 @@ namespace music
         private void notifyIcon_MouseDoubleClick( object sender , MouseEventArgs e )
         {
             this.ShowInTaskbar = true;
+            this.TopMost = true;
             this.Show();
         }
 
@@ -143,6 +141,34 @@ namespace music
         {
             Account.Logout();
             account.Text = "登入";
+        }
+
+        private void FormMain_Shown( object sender , EventArgs e )
+        {
+            timer1.Start();
+            network_Detect.Start();
+            refreshPlaylist();
+            Log.Debug( "start" );
+            main = this;
+        }
+
+        private void network_Detect_Tick( object sender , EventArgs e )
+        {
+            if ( !NetworkInterface.GetIsNetworkAvailable() )
+            {
+                network_Detect.Stop();
+                this.TopMost = true;
+                MessageBox.Show( "網路連線中斷!請開啟網路連線後再重新啟動程式!" );
+                DB.Connect = false;
+                this.Close();
+            }
+            if ( !DB.Connect )
+            {
+                network_Detect.Stop();
+                this.TopMost = true;
+                MessageBox.Show( "資料庫無法連線" );
+                this.Close();
+            }
         }
     }
 }
