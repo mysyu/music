@@ -28,6 +28,7 @@ namespace music
                 else
                     FormMain.main.account.Text = Account.name;
             }
+            FormMain.main.refreshPlaylist();
         }
 
         private void forget_LinkClicked( object sender , LinkLabelLinkClickedEventArgs e )

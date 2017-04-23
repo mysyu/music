@@ -3,12 +3,37 @@ using AxWMPLib;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
+using System.Data;
 
 namespace music
 {
     public class Music
     {
+        public String ID;
         public String name;
+        public String singer;
+        public String tag;
+        public String info;
+
+        public Music( String id )
+        {
+            if ( id == "" )
+            {
+               
+            }
+            else
+            {
+                DataTable result = DB.Select( String.Format( "select name , singer , tag , info from uploadmusic where ID = '{0}'" , id ) );
+                if ( result.Rows.Count == 1 )
+                {
+                    ID = id;
+                    name = result.Rows[ 0 ].ToString();
+                    singer = result.Rows[ 1 ].ToString();
+                    tag = result.Rows[ 2 ].ToString();
+                    tag = result.Rows[ 3 ].ToString();
+                }
+            }
+        }
        
         public void Upload()
         {
