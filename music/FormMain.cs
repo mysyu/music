@@ -45,9 +45,9 @@ namespace music
 
         public void button4_Click( object sender , EventArgs e )
         {
-            foreach ( String line in textBox1.Text.Split( '\n' ) )
-                listBox1.Items.Add( line );
-            listBox1.SelectedIndex = 0;
+            FormMusicUpload l = new FormMusicUpload();
+            l.Text = "歌詞資訊";
+            l.Show();
         }
 
         public void button3_Click( object sender , EventArgs e )

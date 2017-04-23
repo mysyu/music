@@ -91,15 +91,15 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "編輯歌詞";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(117, 97);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 12);
+            this.label4.Size = new System.Drawing.Size(0, 12);
             this.label4.TabIndex = 7;
-            this.label4.Text = " label4";
             // 
             // button2
             // 
@@ -109,6 +109,7 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "選擇音樂";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
