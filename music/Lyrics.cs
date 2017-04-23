@@ -19,7 +19,7 @@ namespace music
                 {
                     if (!(String.IsNullOrWhiteSpace(l)))
                     {
-                        DateTime t = DateTime.ParseExact(l.Substring(1, 5), "mm:ss", CultureInfo.InvariantCulture);
+                        TimeSpan t = new TimeSpan(0,int.Parse(l.Substring(1,2)),int.Parse(l.Substring(4,2)));
                         String w = l.Substring(7); 
                         if (this.time.Count > 0)
                         {
@@ -37,7 +37,7 @@ namespace music
                         {
                             throw new Exception("First line cannot be space");
                         }
-                        DateTime t = this.time[this.time.Count - 1];
+                        TimeSpan t = this.time[this.time.Count - 1];
                         String w = "";
                         this.words.Add(w);
                         this.time.Add(t);
@@ -65,7 +65,7 @@ namespace music
                 throw e;
             }
         }
-        public int getLine(DateTime t)
+        public int getLine(TimeSpan t)
         {   try
             {
                 int line=0;
@@ -100,7 +100,7 @@ namespace music
             }
         }
         private String complete;
-        private List<DateTime> time=new List<DateTime>();
+        private List<TimeSpan> time=new List<TimeSpan>();
         private List<String> words=new List<String>();
     }
 }
