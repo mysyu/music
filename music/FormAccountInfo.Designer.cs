@@ -59,6 +59,7 @@
             // 
             // sex
             // 
+            this.sex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sex.FormattingEnabled = true;
             this.sex.Items.AddRange(new object[] {
             "",
