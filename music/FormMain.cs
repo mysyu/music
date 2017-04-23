@@ -1,33 +1,38 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 using System.Data;
 using System.Collections.Generic;
 using log4net;
 
 namespace music
 {
-    public partial class MainForm : Form
+    public partial class FormMain : Form
     {
         public static ILog Log = LogManager.GetLogger( "" );
+        public static FormMain main = null;
 
-
-        public MainForm()
+        public FormMain()
         {
             InitializeComponent();
             timer1.Start();
             refreshPlaylist();
             Log.Debug( "start" );
+            main = this;
         }
 
         private void button1_Click( object sender , EventArgs e )
         {
             new Music().Upload();
+
         }
 
         private void button2_Click( object sender , EventArgs e )
         {
             comboBox1.Items.Clear();
             comboBox1.Items.Add( "IU.mp3" );
+            this.ShowInTaskbar = false;
+            this.Hide();
         }
 
         private void comboBox1_SelectedIndexChanged( object sender , EventArgs e )
@@ -81,9 +86,9 @@ namespace music
             {
                 treeView1.Nodes[ 0 ].Nodes.Add( l );
             }
-            if ( Account.login )
+            if ( Account.islogin )
             {
-                treeView1.Nodes.Add( Account.name );
+                treeView1.Nodes.Add( Account.email );
                 foreach ( String l in PlayList.account.Keys )
                 {
                     treeView1.Nodes[ 0 ].Nodes.Add( l );
@@ -91,5 +96,53 @@ namespace music
             }
         }
 
+        private void account_Click( object sender , EventArgs e )
+        {
+            if ( !Account.islogin )
+            {
+                FormLogin formLogin = new FormLogin();
+                formLogin.TopLevel = false;
+                formLogin.Dock = DockStyle.Fill;
+                formLogin.FormBorderStyle = FormBorderStyle.None;
+                mainPanel.Controls.Add( formLogin );
+                formLogin.BringToFront();
+                formLogin.Show();
+            }
+            else
+            {
+                account_Option.Show( account , new Point( account.Width - account_Option.Width , account.Height ) );
+            }
+        }
+
+        private void notifyIcon_MouseDoubleClick( object sender , MouseEventArgs e )
+        {
+            this.ShowInTaskbar = true;
+            this.Show();
+        }
+
+        private void account_Info_Click( object sender , EventArgs e )
+        {
+
+        }
+
+        private void account_music_Click( object sender , EventArgs e )
+        {
+
+        }
+        private void modify_Click( object sender , EventArgs e )
+        {
+            FormChangePassword formChangePassword = new FormChangePassword();
+            formChangePassword.TopLevel = false;
+            formChangePassword.Dock = DockStyle.Fill;
+            formChangePassword.FormBorderStyle = FormBorderStyle.None;
+            FormMain.main.mainPanel.Controls.Add( formChangePassword );
+            formChangePassword.BringToFront();
+            formChangePassword.Show();
+        }
+        private void logout_Click( object sender , EventArgs e )
+        {
+            Account.Logout();
+            account.Text = "登入";
+        }
     }
 }
