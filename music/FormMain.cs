@@ -9,7 +9,7 @@ namespace music
     public partial class FormMain : Form
     {
         public static ILog Log = LogManager.GetLogger( "" );
-
+        public static FormMain main = null;
 
         public FormMain()
         {
@@ -17,6 +17,7 @@ namespace music
             timer1.Start();
             refreshPlaylist();
             Log.Debug( "start" );
+            main = this;
         }
 
         private void button1_Click( object sender , EventArgs e )
@@ -98,8 +99,9 @@ namespace music
                 FormLogin formLogin = new FormLogin();
                 formLogin.TopLevel = false;
                 formLogin.Dock = DockStyle.Fill;
-                formLogin.AutoScroll = true;
+                formLogin.FormBorderStyle = FormBorderStyle.None;
                 mainPanel.Controls.Add( formLogin );
+                formLogin.BringToFront();
                 formLogin.Show();
             }
             else

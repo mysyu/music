@@ -233,22 +233,22 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private MusicPlayer musicPlayer;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Panel menuPanel;
-        private System.Windows.Forms.Panel playListPanel;
-        private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.Button account;
+        public System.Windows.Forms.Button button1;
+        public MusicPlayer musicPlayer;
+        public System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button button3;
+        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Button button4;
+        public System.Windows.Forms.ListBox listBox1;
+        public System.Windows.Forms.Button button5;
+        public System.Windows.Forms.Panel menuPanel;
+        public System.Windows.Forms.Panel playListPanel;
+        public System.Windows.Forms.Panel mainPanel;
+        public System.Windows.Forms.TreeView treeView1;
+        public System.Windows.Forms.Button account;
     }
 }
 

@@ -19,7 +19,36 @@ namespace music
 
         private void login_Click( object sender , EventArgs e )
         {
-            Account.Login( email.Text , password.Text );
+            message.Text = Account.Login( email.Text , password.Text );
+            if ( message.Text.Equals( "Success" ) )
+                this.Close();
+        }
+
+        private void forget_LinkClicked( object sender , LinkLabelLinkClickedEventArgs e )
+        {
+
+        }
+
+        private void register_LinkClicked( object sender , LinkLabelLinkClickedEventArgs e )
+        {
+            FormRegister formRegister = new FormRegister();
+            formRegister.TopLevel = false;
+            formRegister.Dock = DockStyle.Fill;
+            formRegister.FormBorderStyle = FormBorderStyle.None;
+            FormMain.main.mainPanel.Controls.Add( formRegister );
+            formRegister.BringToFront();
+            formRegister.Show();
+        }
+
+        private void cancel_Click( object sender , EventArgs e )
+        {
+            this.Close();
+        }
+
+        private void FormLogin_KeyDown( object sender , KeyEventArgs e )
+        {
+            if ( e.KeyCode == Keys.Enter )
+                login_Click( null , null );
         }
     }
 }

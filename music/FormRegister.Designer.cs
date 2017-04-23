@@ -1,6 +1,6 @@
 ﻿namespace music
 {
-    partial class FormLogin
+    partial class FormRegister
     {
         /// <summary>
         /// Required designer variable.
@@ -30,11 +30,9 @@
         {
             this.email_Label = new System.Windows.Forms.Label();
             this.password_Label = new System.Windows.Forms.Label();
-            this.login = new System.Windows.Forms.Button();
+            this.register = new System.Windows.Forms.Button();
             this.email = new System.Windows.Forms.TextBox();
             this.password = new System.Windows.Forms.TextBox();
-            this.forget = new System.Windows.Forms.LinkLabel();
-            this.register = new System.Windows.Forms.LinkLabel();
             this.cancel = new System.Windows.Forms.Button();
             this.message = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -57,15 +55,15 @@
             this.password_Label.TabIndex = 2;
             this.password_Label.Text = "Password";
             // 
-            // login
+            // register
             // 
-            this.login.Location = new System.Drawing.Point(48, 156);
-            this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(75, 23);
-            this.login.TabIndex = 4;
-            this.login.Text = "login";
-            this.login.UseVisualStyleBackColor = true;
-            this.login.Click += new System.EventHandler(this.login_Click);
+            this.register.Location = new System.Drawing.Point(48, 156);
+            this.register.Name = "register";
+            this.register.Size = new System.Drawing.Size(75, 23);
+            this.register.TabIndex = 4;
+            this.register.Text = "register";
+            this.register.UseVisualStyleBackColor = true;
+            this.register.Click += new System.EventHandler(this.register_Click);
             // 
             // email
             // 
@@ -76,40 +74,19 @@
             // 
             // password
             // 
+            this.password.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.password.Location = new System.Drawing.Point(105, 87);
             this.password.Name = "password";
             this.password.PasswordChar = '•';
             this.password.Size = new System.Drawing.Size(100, 22);
             this.password.TabIndex = 6;
             // 
-            // forget
-            // 
-            this.forget.AutoSize = true;
-            this.forget.Location = new System.Drawing.Point(48, 123);
-            this.forget.Name = "forget";
-            this.forget.Size = new System.Drawing.Size(81, 12);
-            this.forget.TabIndex = 7;
-            this.forget.TabStop = true;
-            this.forget.Text = "Forget Password";
-            this.forget.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.forget_LinkClicked);
-            // 
-            // register
-            // 
-            this.register.AutoSize = true;
-            this.register.Location = new System.Drawing.Point(135, 123);
-            this.register.Name = "register";
-            this.register.Size = new System.Drawing.Size(43, 12);
-            this.register.TabIndex = 8;
-            this.register.TabStop = true;
-            this.register.Text = "Register";
-            this.register.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.register_LinkClicked);
-            // 
             // cancel
             // 
             this.cancel.Location = new System.Drawing.Point(130, 156);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(75, 23);
-            this.cancel.TabIndex = 9;
+            this.cancel.TabIndex = 7;
             this.cancel.Text = "cancel";
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
@@ -120,26 +97,24 @@
             this.message.Location = new System.Drawing.Point(48, 200);
             this.message.Name = "message";
             this.message.Size = new System.Drawing.Size(0, 12);
-            this.message.TabIndex = 10;
+            this.message.TabIndex = 8;
             // 
-            // FormLogin
+            // FormRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.message);
             this.Controls.Add(this.cancel);
-            this.Controls.Add(this.register);
-            this.Controls.Add(this.forget);
             this.Controls.Add(this.password);
             this.Controls.Add(this.email);
-            this.Controls.Add(this.login);
+            this.Controls.Add(this.register);
             this.Controls.Add(this.password_Label);
             this.Controls.Add(this.email_Label);
             this.KeyPreview = true;
-            this.Name = "FormLogin";
-            this.Text = "FormLogin";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormLogin_KeyDown);
+            this.Name = "FormRegister";
+            this.Text = "FormRegister";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormRegister_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,11 +124,9 @@
 
         private System.Windows.Forms.Label email_Label;
         private System.Windows.Forms.Label password_Label;
-        private System.Windows.Forms.Button login;
+        private System.Windows.Forms.Button register;
         private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.TextBox password;
-        private System.Windows.Forms.LinkLabel forget;
-        private System.Windows.Forms.LinkLabel register;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.Label message;
     }
