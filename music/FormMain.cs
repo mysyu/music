@@ -120,7 +120,13 @@ namespace music
 
         private void account_Info_Click( object sender , EventArgs e )
         {
-
+            FormAccountInfo formAccountInfo = new FormAccountInfo();
+            formAccountInfo.TopLevel = false;
+            formAccountInfo.Dock = DockStyle.Fill;
+            formAccountInfo.FormBorderStyle = FormBorderStyle.None;
+            FormMain.main.mainPanel.Controls.Add(formAccountInfo);
+            formAccountInfo.BringToFront();
+            formAccountInfo.Show();
         }
 
         private void account_music_Click( object sender , EventArgs e )

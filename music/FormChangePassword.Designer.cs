@@ -39,7 +39,7 @@
             // 
             // cancel
             // 
-            this.cancel.Location = new System.Drawing.Point(150, 200);
+            this.cancel.Location = new System.Drawing.Point(250, 200);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(75, 23);
             this.cancel.TabIndex = 13;
@@ -53,19 +53,19 @@
             this.password.Location = new System.Drawing.Point(125, 95);
             this.password.Name = "password";
             this.password.PasswordChar = '•';
-            this.password.Size = new System.Drawing.Size(100, 22);
+            this.password.Size = new System.Drawing.Size(200, 22);
             this.password.TabIndex = 12;
             // 
             // email
             // 
             this.email.Location = new System.Drawing.Point(125, 45);
             this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(100, 22);
+            this.email.Size = new System.Drawing.Size(200, 22);
             this.email.TabIndex = 11;
             // 
             // modify
             // 
-            this.modify.Location = new System.Drawing.Point(50, 200);
+            this.modify.Location = new System.Drawing.Point(125, 200);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(75, 23);
             this.modify.TabIndex = 10;
