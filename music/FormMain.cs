@@ -59,7 +59,7 @@ namespace music
             listBox1.SelectedIndex = ( select + 1 ) % listBox1.Items.Count;
         }
 
-        public void Form1_FormClosing( object sender , FormClosingEventArgs e )
+        public void formMain_FormClosing( object sender , FormClosingEventArgs e )
         {
             if( DB.Connect )
                 DB.Close();

@@ -2,7 +2,6 @@
 {
     partial class FormMain
     {
-        private int aaaa;
         /// <summary>
         /// 設計工具所需的變數。
         /// </summary>
@@ -279,7 +278,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormMain";
             this.Text = "Form1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formMain_FormClosing);
             this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.menuPanel.ResumeLayout(false);
             this.playListPanel.ResumeLayout(false);

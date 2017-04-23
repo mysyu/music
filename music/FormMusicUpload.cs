@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace music
 {
-    public partial class Upload : Form
+    public partial class FormMusicUpload : Form
     {
-        public Upload()
+        public FormMusicUpload()
         {
             InitializeComponent();
         }
