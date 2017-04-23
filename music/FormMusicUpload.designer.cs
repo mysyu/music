@@ -1,6 +1,6 @@
 ﻿namespace music
 {
-    partial class Upload
+    partial class FormMusicUpload
     {
         /// <summary>
         /// Required designer variable.
@@ -145,7 +145,7 @@
             this.button4.Text = "重填";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // Upload
+            // FormMusicUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -162,8 +162,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Name = "Upload";
-            this.Text = "Upload";
+            this.Name = "FormMusicUpload";
+            this.Text = "FormMusicUpload";
             this.ResumeLayout(false);
             this.PerformLayout();
 
