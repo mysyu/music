@@ -59,7 +59,7 @@
             // 
             // login
             // 
-            this.login.Location = new System.Drawing.Point(50, 200);
+            this.login.Location = new System.Drawing.Point(125, 200);
             this.login.Name = "login";
             this.login.Size = new System.Drawing.Size(75, 23);
             this.login.TabIndex = 4;
@@ -71,7 +71,7 @@
             // 
             this.email.Location = new System.Drawing.Point(125, 45);
             this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(100, 22);
+            this.email.Size = new System.Drawing.Size(200, 22);
             this.email.TabIndex = 5;
             // 
             // password
@@ -79,13 +79,13 @@
             this.password.Location = new System.Drawing.Point(125, 95);
             this.password.Name = "password";
             this.password.PasswordChar = '•';
-            this.password.Size = new System.Drawing.Size(100, 22);
+            this.password.Size = new System.Drawing.Size(200, 22);
             this.password.TabIndex = 6;
             // 
             // forget
             // 
             this.forget.AutoSize = true;
-            this.forget.Location = new System.Drawing.Point(50, 150);
+            this.forget.Location = new System.Drawing.Point(123, 150);
             this.forget.Name = "forget";
             this.forget.Size = new System.Drawing.Size(81, 12);
             this.forget.TabIndex = 7;
@@ -96,7 +96,7 @@
             // register
             // 
             this.register.AutoSize = true;
-            this.register.Location = new System.Drawing.Point(148, 150);
+            this.register.Location = new System.Drawing.Point(282, 150);
             this.register.Name = "register";
             this.register.Size = new System.Drawing.Size(43, 12);
             this.register.TabIndex = 8;
@@ -106,7 +106,7 @@
             // 
             // cancel
             // 
-            this.cancel.Location = new System.Drawing.Point(150, 200);
+            this.cancel.Location = new System.Drawing.Point(250, 200);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(75, 23);
             this.cancel.TabIndex = 9;

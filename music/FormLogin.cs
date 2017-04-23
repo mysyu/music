@@ -23,7 +23,10 @@ namespace music
             if ( message.Text.Equals( "Success" ) )
             {
                 this.Close();
-                FormMain.main.account.Text = Account.email;
+                if (Account.name == "")
+                    FormMain.main.account.Text = Account.email;
+                else
+                    FormMain.main.account.Text = Account.name;
             }
         }
 
