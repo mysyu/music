@@ -62,6 +62,18 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="DB.cs" />
+    <Compile Include="FormAccountInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAccountInfo.Designer.cs">
+      <DependentUpon>FormAccountInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChangePassword.Designer.cs">
+      <DependentUpon>FormChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +106,12 @@
     <Compile Include="upload.designer.cs">
       <DependentUpon>upload.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormAccountInfo.resx">
+      <DependentUpon>FormAccountInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChangePassword.resx">
+      <DependentUpon>FormChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormRegister.resx">
       <DependentUpon>FormRegister.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +131,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="upload.resx">
+      <DependentUpon>upload.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -129,6 +150,7 @@
   <ItemGroup>
     <Content Include="DLL\log4net.dll" />
     <Content Include="DLL\MySql.Data.dll" />
+    <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxWMPLib">

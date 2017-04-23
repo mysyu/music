@@ -21,12 +21,21 @@ namespace music
         {
             message.Text = Account.Login( email.Text , password.Text );
             if ( message.Text.Equals( "Success" ) )
+            {
                 this.Close();
+                FormMain.main.account.Text = Account.email;
+            }
         }
 
         private void forget_LinkClicked( object sender , LinkLabelLinkClickedEventArgs e )
         {
-
+            FormChangePassword formChangePassword = new FormChangePassword();
+            formChangePassword.TopLevel = false;
+            formChangePassword.Dock = DockStyle.Fill;
+            formChangePassword.FormBorderStyle = FormBorderStyle.None;
+            FormMain.main.mainPanel.Controls.Add( formChangePassword );
+            formChangePassword.BringToFront();
+            formChangePassword.Show();
         }
 
         private void register_LinkClicked( object sender , LinkLabelLinkClickedEventArgs e )

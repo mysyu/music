@@ -53,6 +53,19 @@ namespace music
             else
                 return "email已被註冊";
         }
+        public static string ChangePassword( string e , string p )
+        {
+            if ( !validateEmail( e ) )
+                return "無法辨識的email";
+            if ( !validatePassword( p ) )
+                return "密碼格式錯誤(須為A-Z,a-z,0-9)";
+            int result = DB.SQL( String.Format( "UPDATE account SET password = '{1}' WHERE email = '{0}'" , e , p ) );
+            if ( result == 1 )
+                return "Success";
+            else
+                return "email錯誤";
+        }
+
 
         public static bool validateEmail( string e )
         {

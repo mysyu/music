@@ -40,7 +40,7 @@
             // email_Label
             // 
             this.email_Label.AutoSize = true;
-            this.email_Label.Location = new System.Drawing.Point(46, 46);
+            this.email_Label.Location = new System.Drawing.Point(50, 50);
             this.email_Label.Name = "email_Label";
             this.email_Label.Size = new System.Drawing.Size(32, 12);
             this.email_Label.TabIndex = 0;
@@ -49,15 +49,15 @@
             // password_Label
             // 
             this.password_Label.AutoSize = true;
-            this.password_Label.Location = new System.Drawing.Point(46, 90);
+            this.password_Label.Location = new System.Drawing.Point(50, 100);
             this.password_Label.Name = "password_Label";
-            this.password_Label.Size = new System.Drawing.Size(48, 12);
+            this.password_Label.Size = new System.Drawing.Size(72, 12);
             this.password_Label.TabIndex = 2;
-            this.password_Label.Text = "Password";
+            this.password_Label.Text = "New Password";
             // 
             // register
             // 
-            this.register.Location = new System.Drawing.Point(48, 156);
+            this.register.Location = new System.Drawing.Point(50, 200);
             this.register.Name = "register";
             this.register.Size = new System.Drawing.Size(75, 23);
             this.register.TabIndex = 4;
@@ -67,7 +67,7 @@
             // 
             // email
             // 
-            this.email.Location = new System.Drawing.Point(105, 43);
+            this.email.Location = new System.Drawing.Point(125, 45);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(100, 22);
             this.email.TabIndex = 5;
@@ -75,7 +75,7 @@
             // password
             // 
             this.password.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.password.Location = new System.Drawing.Point(105, 87);
+            this.password.Location = new System.Drawing.Point(125, 95);
             this.password.Name = "password";
             this.password.PasswordChar = '•';
             this.password.Size = new System.Drawing.Size(100, 22);
@@ -83,7 +83,7 @@
             // 
             // cancel
             // 
-            this.cancel.Location = new System.Drawing.Point(130, 156);
+            this.cancel.Location = new System.Drawing.Point(150, 200);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(75, 23);
             this.cancel.TabIndex = 7;
@@ -94,7 +94,7 @@
             // message
             // 
             this.message.AutoSize = true;
-            this.message.Location = new System.Drawing.Point(48, 200);
+            this.message.Location = new System.Drawing.Point(50, 250);
             this.message.Name = "message";
             this.message.Size = new System.Drawing.Size(0, 12);
             this.message.TabIndex = 8;
@@ -103,7 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(484, 461);
             this.Controls.Add(this.message);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.password);
