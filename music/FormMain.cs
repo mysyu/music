@@ -27,8 +27,6 @@ namespace music
         {
             comboBox1.Items.Clear();
             comboBox1.Items.Add( "IU.mp3" );
-            this.ShowInTaskbar = false;
-            this.Hide();
         }
 
         public void comboBox1_SelectedIndexChanged( object sender , EventArgs e )
