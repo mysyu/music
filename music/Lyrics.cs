@@ -99,8 +99,8 @@ namespace music
                 throw e;
             }
         }
-        private String complete;
-        private List<TimeSpan> time=new List<TimeSpan>();
-        private List<String> words=new List<String>();
+        public String complete;
+        public List<TimeSpan> time = new List<TimeSpan>();
+        public List<String> words = new List<String>();
     }
 }

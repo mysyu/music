@@ -52,6 +52,8 @@
             this.music = new System.Windows.Forms.TextBox();
             this.lyrics = new System.Windows.Forms.TextBox();
             this.lyrics_label = new System.Windows.Forms.Label();
+            this.tag = new System.Windows.Forms.GroupBox();
+            this.tag.SuspendLayout();
             this.SuspendLayout();
             // 
             // name_label
@@ -88,7 +90,7 @@
             // 
             // lyrics_button
             // 
-            this.lyrics_button.Location = new System.Drawing.Point(250, 595);
+            this.lyrics_button.Location = new System.Drawing.Point(250, 620);
             this.lyrics_button.Name = "lyrics_button";
             this.lyrics_button.Size = new System.Drawing.Size(75, 23);
             this.lyrics_button.TabIndex = 6;
@@ -106,7 +108,7 @@
             // 
             // music_button
             // 
-            this.music_button.Location = new System.Drawing.Point(250, 548);
+            this.music_button.Location = new System.Drawing.Point(250, 573);
             this.music_button.Name = "music_button";
             this.music_button.Size = new System.Drawing.Size(75, 23);
             this.music_button.TabIndex = 8;
@@ -116,16 +118,17 @@
             // 
             // upload_button
             // 
-            this.upload_button.Location = new System.Drawing.Point(125, 975);
+            this.upload_button.Location = new System.Drawing.Point(125, 1000);
             this.upload_button.Name = "upload_button";
             this.upload_button.Size = new System.Drawing.Size(75, 23);
             this.upload_button.TabIndex = 10;
             this.upload_button.Text = "上傳";
             this.upload_button.UseVisualStyleBackColor = true;
+            this.upload_button.Click += new System.EventHandler(this.upload_button_Click);
             // 
             // cancel_button
             // 
-            this.cancel_button.Location = new System.Drawing.Point(250, 975);
+            this.cancel_button.Location = new System.Drawing.Point(250, 1000);
             this.cancel_button.Name = "cancel_button";
             this.cancel_button.Size = new System.Drawing.Size(75, 23);
             this.cancel_button.TabIndex = 11;
@@ -136,7 +139,7 @@
             // tag_label1
             // 
             this.tag_label1.AutoSize = true;
-            this.tag_label1.Location = new System.Drawing.Point(50, 150);
+            this.tag_label1.Location = new System.Drawing.Point(5, 25);
             this.tag_label1.Name = "tag_label1";
             this.tag_label1.Size = new System.Drawing.Size(29, 12);
             this.tag_label1.TabIndex = 12;
@@ -145,7 +148,7 @@
             // tag3
             // 
             this.tag3.AutoSize = true;
-            this.tag3.Location = new System.Drawing.Point(50, 250);
+            this.tag3.Location = new System.Drawing.Point(5, 100);
             this.tag3.Name = "tag3";
             this.tag3.Size = new System.Drawing.Size(60, 16);
             this.tag3.TabIndex = 13;
@@ -155,7 +158,7 @@
             // tag4
             // 
             this.tag4.AutoSize = true;
-            this.tag4.Location = new System.Drawing.Point(125, 250);
+            this.tag4.Location = new System.Drawing.Point(145, 100);
             this.tag4.Name = "tag4";
             this.tag4.Size = new System.Drawing.Size(48, 16);
             this.tag4.TabIndex = 14;
@@ -165,7 +168,7 @@
             // tag1
             // 
             this.tag1.AutoSize = true;
-            this.tag1.Location = new System.Drawing.Point(50, 175);
+            this.tag1.Location = new System.Drawing.Point(5, 50);
             this.tag1.Name = "tag1";
             this.tag1.Size = new System.Drawing.Size(48, 16);
             this.tag1.TabIndex = 15;
@@ -176,7 +179,7 @@
             // tag2
             // 
             this.tag2.AutoSize = true;
-            this.tag2.Location = new System.Drawing.Point(125, 175);
+            this.tag2.Location = new System.Drawing.Point(75, 50);
             this.tag2.Name = "tag2";
             this.tag2.Size = new System.Drawing.Size(48, 16);
             this.tag2.TabIndex = 16;
@@ -187,7 +190,7 @@
             // tag5
             // 
             this.tag5.AutoSize = true;
-            this.tag5.Location = new System.Drawing.Point(200, 250);
+            this.tag5.Location = new System.Drawing.Point(215, 100);
             this.tag5.Name = "tag5";
             this.tag5.Size = new System.Drawing.Size(48, 16);
             this.tag5.TabIndex = 17;
@@ -197,7 +200,7 @@
             // tag6
             // 
             this.tag6.AutoSize = true;
-            this.tag6.Location = new System.Drawing.Point(275, 250);
+            this.tag6.Location = new System.Drawing.Point(5, 125);
             this.tag6.Name = "tag6";
             this.tag6.Size = new System.Drawing.Size(60, 16);
             this.tag6.TabIndex = 18;
@@ -207,7 +210,7 @@
             // tag7
             // 
             this.tag7.AutoSize = true;
-            this.tag7.Location = new System.Drawing.Point(125, 275);
+            this.tag7.Location = new System.Drawing.Point(75, 125);
             this.tag7.Name = "tag7";
             this.tag7.Size = new System.Drawing.Size(72, 16);
             this.tag7.TabIndex = 19;
@@ -217,7 +220,7 @@
             // tag8
             // 
             this.tag8.AutoSize = true;
-            this.tag8.Location = new System.Drawing.Point(50, 275);
+            this.tag8.Location = new System.Drawing.Point(75, 100);
             this.tag8.Name = "tag8";
             this.tag8.Size = new System.Drawing.Size(60, 16);
             this.tag8.TabIndex = 20;
@@ -227,7 +230,7 @@
             // tag_label2
             // 
             this.tag_label2.AutoSize = true;
-            this.tag_label2.Location = new System.Drawing.Point(50, 225);
+            this.tag_label2.Location = new System.Drawing.Point(5, 75);
             this.tag_label2.Name = "tag_label2";
             this.tag_label2.Size = new System.Drawing.Size(53, 12);
             this.tag_label2.TabIndex = 21;
@@ -235,7 +238,7 @@
             // 
             // info
             // 
-            this.info.Location = new System.Drawing.Point(50, 350);
+            this.info.Location = new System.Drawing.Point(50, 375);
             this.info.Multiline = true;
             this.info.Name = "info";
             this.info.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -246,7 +249,7 @@
             // info_label
             // 
             this.info_label.AutoSize = true;
-            this.info_label.Location = new System.Drawing.Point(50, 325);
+            this.info_label.Location = new System.Drawing.Point(50, 350);
             this.info_label.Name = "info_label";
             this.info_label.Size = new System.Drawing.Size(53, 12);
             this.info_label.TabIndex = 23;
@@ -254,7 +257,7 @@
             // 
             // music
             // 
-            this.music.Location = new System.Drawing.Point(50, 550);
+            this.music.Location = new System.Drawing.Point(50, 575);
             this.music.Name = "music";
             this.music.ReadOnly = true;
             this.music.Size = new System.Drawing.Size(200, 22);
@@ -262,7 +265,7 @@
             // 
             // lyrics
             // 
-            this.lyrics.Location = new System.Drawing.Point(50, 625);
+            this.lyrics.Location = new System.Drawing.Point(50, 650);
             this.lyrics.Multiline = true;
             this.lyrics.Name = "lyrics";
             this.lyrics.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -273,11 +276,29 @@
             // lyrics_label
             // 
             this.lyrics_label.AutoSize = true;
-            this.lyrics_label.Location = new System.Drawing.Point(50, 600);
+            this.lyrics_label.Location = new System.Drawing.Point(50, 625);
             this.lyrics_label.Name = "lyrics_label";
             this.lyrics_label.Size = new System.Drawing.Size(29, 12);
             this.lyrics_label.TabIndex = 26;
             this.lyrics_label.Text = "歌詞";
+            // 
+            // tag
+            // 
+            this.tag.Controls.Add(this.tag_label1);
+            this.tag.Controls.Add(this.tag1);
+            this.tag.Controls.Add(this.tag2);
+            this.tag.Controls.Add(this.tag_label2);
+            this.tag.Controls.Add(this.tag3);
+            this.tag.Controls.Add(this.tag8);
+            this.tag.Controls.Add(this.tag7);
+            this.tag.Controls.Add(this.tag4);
+            this.tag.Controls.Add(this.tag6);
+            this.tag.Controls.Add(this.tag5);
+            this.tag.Location = new System.Drawing.Point(50, 150);
+            this.tag.Name = "tag";
+            this.tag.Size = new System.Drawing.Size(275, 150);
+            this.tag.TabIndex = 27;
+            this.tag.TabStop = false;
             // 
             // FormMusicUpload
             // 
@@ -285,22 +306,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(0, 50);
-            this.ClientSize = new System.Drawing.Size(518, 461);
+            this.ClientSize = new System.Drawing.Size(501, 461);
+            this.Controls.Add(this.tag);
             this.Controls.Add(this.lyrics_label);
             this.Controls.Add(this.lyrics);
             this.Controls.Add(this.music);
             this.Controls.Add(this.info_label);
             this.Controls.Add(this.info);
-            this.Controls.Add(this.tag_label2);
-            this.Controls.Add(this.tag8);
-            this.Controls.Add(this.tag7);
-            this.Controls.Add(this.tag6);
-            this.Controls.Add(this.tag5);
-            this.Controls.Add(this.tag2);
-            this.Controls.Add(this.tag1);
-            this.Controls.Add(this.tag4);
-            this.Controls.Add(this.tag3);
-            this.Controls.Add(this.tag_label1);
             this.Controls.Add(this.cancel_button);
             this.Controls.Add(this.upload_button);
             this.Controls.Add(this.music_button);
@@ -312,6 +324,8 @@
             this.Controls.Add(this.name_label);
             this.Name = "FormMusicUpload";
             this.Text = "FormMusicUpload";
+            this.tag.ResumeLayout(false);
+            this.tag.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,5 +357,6 @@
         private System.Windows.Forms.TextBox music;
         private System.Windows.Forms.TextBox lyrics;
         private System.Windows.Forms.Label lyrics_label;
+        private System.Windows.Forms.GroupBox tag;
     }
 }

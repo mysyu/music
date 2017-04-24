@@ -20,7 +20,7 @@ namespace music
 
         public void button1_Click( object sender , EventArgs e )
         {
-            new Music( "" ).Upload();
+            new Music( "" ).Upload("");
         }
 
         public void button2_Click( object sender , EventArgs e )

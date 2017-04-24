@@ -65,5 +65,16 @@ namespace music
                 music.Text = openFileDialog.FileName;
             }
         }
+
+        private void upload_button_Click(object sender, EventArgs e)
+        {
+            string t = "";
+            foreach( CheckBox i in tag.Controls.OfType<CheckBox>() )
+            {
+                if (i.Checked)
+                    t += ( i.Text + ";" );
+            }
+            MessageBox.Show(t);
+        }
     }
 }
