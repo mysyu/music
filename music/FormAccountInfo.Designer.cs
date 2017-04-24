@@ -88,16 +88,16 @@
             // 
             // info
             // 
-            this.info.Location = new System.Drawing.Point(125, 145);
+            this.info.Location = new System.Drawing.Point(50, 175);
             this.info.Multiline = true;
             this.info.Name = "info";
             this.info.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.info.Size = new System.Drawing.Size(200, 150);
+            this.info.Size = new System.Drawing.Size(275, 150);
             this.info.TabIndex = 5;
             // 
             // save
             // 
-            this.save.Location = new System.Drawing.Point(125, 350);
+            this.save.Location = new System.Drawing.Point(125, 375);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(75, 23);
             this.save.TabIndex = 6;
@@ -107,7 +107,7 @@
             // 
             // cancel
             // 
-            this.cancel.Location = new System.Drawing.Point(250, 350);
+            this.cancel.Location = new System.Drawing.Point(250, 375);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(75, 23);
             this.cancel.TabIndex = 7;

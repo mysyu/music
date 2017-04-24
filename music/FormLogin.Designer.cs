@@ -44,26 +44,26 @@
             this.email_Label.AutoSize = true;
             this.email_Label.Location = new System.Drawing.Point(50, 50);
             this.email_Label.Name = "email_Label";
-            this.email_Label.Size = new System.Drawing.Size(32, 12);
+            this.email_Label.Size = new System.Drawing.Size(29, 12);
             this.email_Label.TabIndex = 0;
-            this.email_Label.Text = "Email";
+            this.email_Label.Text = "信箱";
             // 
             // password_Label
             // 
             this.password_Label.AutoSize = true;
             this.password_Label.Location = new System.Drawing.Point(50, 100);
             this.password_Label.Name = "password_Label";
-            this.password_Label.Size = new System.Drawing.Size(48, 12);
+            this.password_Label.Size = new System.Drawing.Size(29, 12);
             this.password_Label.TabIndex = 2;
-            this.password_Label.Text = "Password";
+            this.password_Label.Text = "密碼";
             // 
             // login
             // 
-            this.login.Location = new System.Drawing.Point(125, 200);
+            this.login.Location = new System.Drawing.Point(125, 150);
             this.login.Name = "login";
             this.login.Size = new System.Drawing.Size(75, 23);
             this.login.TabIndex = 4;
-            this.login.Text = "login";
+            this.login.Text = "登入";
             this.login.UseVisualStyleBackColor = true;
             this.login.Click += new System.EventHandler(this.login_Click);
             // 
@@ -85,32 +85,32 @@
             // forget
             // 
             this.forget.AutoSize = true;
-            this.forget.Location = new System.Drawing.Point(123, 150);
+            this.forget.Location = new System.Drawing.Point(397, 75);
             this.forget.Name = "forget";
-            this.forget.Size = new System.Drawing.Size(81, 12);
+            this.forget.Size = new System.Drawing.Size(53, 12);
             this.forget.TabIndex = 7;
             this.forget.TabStop = true;
-            this.forget.Text = "Forget Password";
+            this.forget.Text = "忘記密碼";
             this.forget.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.forget_LinkClicked);
             // 
             // register
             // 
             this.register.AutoSize = true;
-            this.register.Location = new System.Drawing.Point(282, 150);
+            this.register.Location = new System.Drawing.Point(421, 50);
             this.register.Name = "register";
-            this.register.Size = new System.Drawing.Size(43, 12);
+            this.register.Size = new System.Drawing.Size(29, 12);
             this.register.TabIndex = 8;
             this.register.TabStop = true;
-            this.register.Text = "Register";
+            this.register.Text = "註冊";
             this.register.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.register_LinkClicked);
             // 
             // cancel
             // 
-            this.cancel.Location = new System.Drawing.Point(250, 200);
+            this.cancel.Location = new System.Drawing.Point(250, 150);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(75, 23);
             this.cancel.TabIndex = 9;
-            this.cancel.Text = "cancel";
+            this.cancel.Text = "取消";
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
