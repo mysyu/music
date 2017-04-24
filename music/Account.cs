@@ -12,6 +12,9 @@ namespace music
     {
         public static bool islogin = false;
         public static string email = "";
+        public static string name = "";
+        public static string sex = "";
+        public static string info = "";
 
         public static string Login(string e, string p)
         {
@@ -29,6 +32,9 @@ namespace music
             {
                 islogin = true;
                 email = e;
+                name=result.Rows[0][2].ToString();
+                sex = result.Rows[0][3].ToString();
+                info = result.Rows[0][4].ToString(); 
                 return "Success";
             }
             else
@@ -40,14 +46,17 @@ namespace music
         {
             islogin = false;
             email = "";
+            name = "";
+            sex = "";
+            info = "";
         }
-        public static string Register(string e, string p)
+        public static string Register(string e, string p )
         {
             if ( !validateEmail( e ) )
                 return "無法辨識的email";
             if ( !validatePassword( p ) )
                 return "密碼格式錯誤(須為A-Z,a-z,0-9)";
-            int result = DB.SQL(String.Format("INSERT INTO account(email , password) VALUES ('{0}','{1}')", e, p));
+            int result = DB.SQL(String.Format("INSERT INTO account(email , password , name ,sex ,info) VALUES ('{0}','{1}','{2}','{3}','{4}')", e, p, name, sex, info));
             if (result == 1)
                 return "Success";
             else
@@ -62,6 +71,19 @@ namespace music
             int result = DB.SQL( String.Format( "UPDATE account SET password = '{1}' WHERE email = '{0}'" , e , p ) );
             if ( result == 1 )
                 return "Success";
+            else
+                return "email錯誤";
+        }
+        public static string ChangeInfo(string n, string s, string i)
+        {
+            int result = DB.SQL(String.Format("UPDATE account SET name = '{1}',sex='{2}',info='{3}'  WHERE email = '{0}'", email, n,s,i));
+            if (result == 1)
+            {
+                name = n;
+                sex = s;
+                info = i;
+                return "Success";
+            }
             else
                 return "email錯誤";
         }

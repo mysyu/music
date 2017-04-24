@@ -3,52 +3,124 @@ using AxWMPLib;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
+using System.Data;
 
 namespace music
 {
     public class Music
     {
+        public String ID;
         public String name;
-       
-        public void Upload()
+        public String singer;
+        public String tag;
+        public String info;
+        public Lyrics lyrics;
+        public String time;
+
+        public Music()
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = "c:\\";
-            openFileDialog.Filter = "audio files ( *.wav , *.mp3 )|*.wav;*.mp3";
-            openFileDialog.FilterIndex = 1;
-            Stream musicStream = null;
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            ID = "";
+            name = "";
+            singer = "";
+            tag = "";
+            info = "";
+            time = "";
+            lyrics = new Lyrics("");
+        }
+
+        public Music(String id)
+        {
+            DataTable result = DB.Select(String.Format("select name , singer , tag , lyrics , info from uploadmusic where ID = '{0}'", id));
+            if ( result.Rows.Count == 1 )
             {
-                try
-                {
-                    if ((musicStream = openFileDialog.OpenFile()) != null)
-                    {
-                        using (musicStream)
-                        {
-                            {
-                                FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://1.34.30.96:21/" + Path.GetFileName(openFileDialog.FileName));
-                                request.Method = WebRequestMethods.Ftp.UploadFile;
-                                request.Credentials = new NetworkCredential("UploadMusic", "UploadMusic");
-
-                                using (Stream requestStream = request.GetRequestStream())
-                                {
-                                    musicStream.CopyTo(requestStream);
-                                }
-
-                                using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
-                                {
-                                    MessageBox.Show("Upload File Complete, status " + response.StatusDescription);
-                                }
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                ID = id;
+                name = result.Rows[ 0 ][ 0 ].ToString();
+                singer = result.Rows[ 0 ][ 1 ].ToString();
+                tag = result.Rows[ 0 ][ 2 ].ToString();
+                lyrics = new Lyrics( result.Rows[ 0 ][ 3 ].ToString() );
+                info = result.Rows[ 0 ][ 3 ].ToString();
+                time = "";
+            }
+            else
+            {
+                ID = "";
+                name = "";
+                singer = "";
+                tag = "";
+                info = "";
+                time = "";
+                lyrics = new Lyrics( "" );
+                throw new Exception( "music not found in DB" );
             }
         }
 
+        public Music( String n , String s , String t , String i , String l )
+        {
+            ID = "";
+            name = n;
+            singer = s;
+            tag = t;
+            info = i;
+            time = "";
+            lyrics = new Lyrics(l);
+        }
+
+        public String Upload( String filename )
+        {
+            if ( name == "" )
+                return "你必須輸入歌曲名稱";
+            if ( singer == "" )
+                return "你必須輸入創作者/團體";
+            if ( !tag.StartsWith( "原創" ) && !tag.StartsWith( "翻唱" ) )
+                return "你必須選擇一項分類";
+            if( !filename.EndsWith( ".mp3" ) && !filename.EndsWith( ".wav" ) )
+                return "你必須選擇正確的音樂檔案";
+            generateID();
+            if ( DB.SQL( String.Format( "insert into uploadmusic( ID , name , singer , upload , tag , lyrics , info ) values( '{0}' , '{1}' , '{2}' , '{3}' , '{4}' , '{5}' , '{6}' )" , ID , name , singer , Account.email , tag , lyrics.completeLyrics , info ) ) != 1 )
+                return "Fail";
+            try
+            {
+                using ( Stream musicStream = new FileStream(filename, FileMode.Open))
+                {
+                    {
+                        FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://1.34.30.96:21/" + Path.GetFileName(filename));
+                        request.Method = WebRequestMethods.Ftp.UploadFile;
+                        request.Credentials = new NetworkCredential("UploadMusic", "UploadMusic");
+
+                        using (Stream requestStream = request.GetRequestStream())
+                        {
+                            musicStream.CopyTo(requestStream);
+                        }
+
+                        using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+                        {
+                            if ( response.StatusDescription == "226 Transfer complete." )
+                                return "Success";
+                            DB.SQL( String.Format( "delete from uploadmusic where ID = '{0}'" , ID ) );
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return "Fail";
+        }
+
+        public void generateID()
+        {
+            Random random = new Random();
+            String s = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+            while ( true )
+            {
+                ID = "";
+                for ( int i = 0 ; i < 10 ; i++ )
+                    ID += s[ random.Next( 0 , s.Length - 1 ) ];
+                if ( DB.Select( String.Format( "select * from uploadmusic where ID = '{0}'" , ID ) ).Rows.Count == 0 )
+                    break;
+            }
+        }
     }
+
 }

@@ -20,21 +20,19 @@ namespace music
 
         public void button1_Click( object sender , EventArgs e )
         {
-            MessageBox.Show( "網路連線中斷!請開啟網路連線後再重新啟動程式!" );
-            new Music().Upload();
+            new Music( "" ).Upload("");
         }
 
         public void button2_Click( object sender , EventArgs e )
         {
             comboBox1.Items.Clear();
             comboBox1.Items.Add( "IU.mp3" );
-            this.ShowInTaskbar = false;
-            this.Hide();
         }
 
         public void comboBox1_SelectedIndexChanged( object sender , EventArgs e )
         {
             musicPlayer.URL = "http://mysyu.ddns.net/UploadMusic/" + comboBox1.SelectedItem;
+            PlayList.current.Add( new Music( "0000000000" ) );
             musicPlayer.Ctlcontrols.stop();
         }
 
@@ -45,9 +43,13 @@ namespace music
 
         public void button4_Click( object sender , EventArgs e )
         {
-            foreach ( String line in textBox1.Text.Split( '\n' ) )
-                listBox1.Items.Add( line );
-            listBox1.SelectedIndex = 0;
+            FormMusicUpload formMusicUpload = new FormMusicUpload();
+            formMusicUpload.TopLevel = false;
+            formMusicUpload.Dock = DockStyle.Fill;
+            formMusicUpload.FormBorderStyle = FormBorderStyle.None;
+            mainPanel.Controls.Add(formMusicUpload);
+            formMusicUpload.BringToFront();
+            formMusicUpload.Show();
         }
 
         public void button3_Click( object sender , EventArgs e )
@@ -63,6 +65,7 @@ namespace music
         {
             if( DB.Connect )
                 DB.Close();
+            PlayList.save();
         }
         public void button5_Click(object sender, EventArgs e)
         {
@@ -85,7 +88,7 @@ namespace music
             }
             if ( Account.islogin )
             {
-                treeView1.Nodes.Add( Account.email );
+                treeView1.Nodes.Add( account.Text );
                 foreach ( String l in PlayList.account.Keys )
                 {
                     treeView1.Nodes[ 0 ].Nodes.Add( l );
@@ -120,12 +123,17 @@ namespace music
 
         private void account_Info_Click( object sender , EventArgs e )
         {
-
+            FormAccountInfo formAccountInfo = new FormAccountInfo();
+            formAccountInfo.TopLevel = false;
+            formAccountInfo.Dock = DockStyle.Fill;
+            formAccountInfo.FormBorderStyle = FormBorderStyle.None;
+            FormMain.main.mainPanel.Controls.Add(formAccountInfo);
+            formAccountInfo.BringToFront();
+            formAccountInfo.Show();
         }
 
         private void account_music_Click( object sender , EventArgs e )
         {
-
         }
         private void modify_Click( object sender , EventArgs e )
         {
@@ -141,12 +149,14 @@ namespace music
         {
             Account.Logout();
             account.Text = "登入";
+            refreshPlaylist();
         }
 
         private void FormMain_Shown( object sender , EventArgs e )
         {
             timer1.Start();
             network_Detect.Start();
+            PlayList.load();
             refreshPlaylist();
             Log.Debug( "start" );
             main = this;

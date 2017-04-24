@@ -39,11 +39,11 @@
             // 
             // cancel
             // 
-            this.cancel.Location = new System.Drawing.Point(150, 200);
+            this.cancel.Location = new System.Drawing.Point(250, 150);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(75, 23);
             this.cancel.TabIndex = 13;
-            this.cancel.Text = "cancel";
+            this.cancel.Text = "取消";
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
@@ -53,23 +53,23 @@
             this.password.Location = new System.Drawing.Point(125, 95);
             this.password.Name = "password";
             this.password.PasswordChar = '•';
-            this.password.Size = new System.Drawing.Size(100, 22);
+            this.password.Size = new System.Drawing.Size(200, 22);
             this.password.TabIndex = 12;
             // 
             // email
             // 
             this.email.Location = new System.Drawing.Point(125, 45);
             this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(100, 22);
+            this.email.Size = new System.Drawing.Size(200, 22);
             this.email.TabIndex = 11;
             // 
             // modify
             // 
-            this.modify.Location = new System.Drawing.Point(50, 200);
+            this.modify.Location = new System.Drawing.Point(125, 150);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(75, 23);
             this.modify.TabIndex = 10;
-            this.modify.Text = "modify";
+            this.modify.Text = "送出";
             this.modify.UseVisualStyleBackColor = true;
             this.modify.Click += new System.EventHandler(this.modify_Click);
             // 
@@ -78,23 +78,23 @@
             this.password_Label.AutoSize = true;
             this.password_Label.Location = new System.Drawing.Point(50, 100);
             this.password_Label.Name = "password_Label";
-            this.password_Label.Size = new System.Drawing.Size(72, 12);
+            this.password_Label.Size = new System.Drawing.Size(41, 12);
             this.password_Label.TabIndex = 9;
-            this.password_Label.Text = "New Password";
+            this.password_Label.Text = "新密碼";
             // 
             // email_Label
             // 
             this.email_Label.AutoSize = true;
             this.email_Label.Location = new System.Drawing.Point(50, 50);
             this.email_Label.Name = "email_Label";
-            this.email_Label.Size = new System.Drawing.Size(32, 12);
+            this.email_Label.Size = new System.Drawing.Size(29, 12);
             this.email_Label.TabIndex = 8;
-            this.email_Label.Text = "Email";
+            this.email_Label.Text = "信箱";
             // 
             // message
             // 
             this.message.AutoSize = true;
-            this.message.Location = new System.Drawing.Point(50, 250);
+            this.message.Location = new System.Drawing.Point(50, 200);
             this.message.Name = "message";
             this.message.Size = new System.Drawing.Size(0, 12);
             this.message.TabIndex = 14;
