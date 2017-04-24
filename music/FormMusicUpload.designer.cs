@@ -85,7 +85,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(14, 135);
+            this.button1.Location = new System.Drawing.Point(370, 385);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
@@ -103,7 +103,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(14, 92);
+            this.button2.Location = new System.Drawing.Point(370, 350);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 8;
@@ -113,7 +113,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(324, 461);
+            this.button3.Location = new System.Drawing.Point(12, 461);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 10;
@@ -122,7 +122,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(437, 461);
+            this.button4.Location = new System.Drawing.Point(160, 461);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 11;
@@ -133,7 +133,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 185);
+            this.label2.Location = new System.Drawing.Point(12, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 12;
@@ -251,7 +251,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 496);
+            this.AutoScroll = true;
+            this.AutoScrollMargin = new System.Drawing.Size(0, 1000);
+            this.ClientSize = new System.Drawing.Size(484, 461);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label6);

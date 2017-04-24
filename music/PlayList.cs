@@ -23,7 +23,7 @@ namespace music
             foreach ( Music m in PlayList.current )
             {
                 leaf = doc.CreateElement( "music" );
-                leaf.SetAttribute( "name" , m.name );
+                leaf.SetAttribute( "ID" , m.ID );
                 root.AppendChild( leaf );
             }
             doc.AppendChild( root );
@@ -33,7 +33,7 @@ namespace music
                 foreach ( Music m in PlayList.local[l] )
                 {
                     leaf = doc.CreateElement( "music" );
-                    leaf.SetAttribute( "name" , m.name );
+                    leaf.SetAttribute( "ID" , m.ID );
                     root.AppendChild( leaf );
                 }
                 doc.AppendChild( root );
