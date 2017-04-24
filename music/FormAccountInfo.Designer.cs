@@ -94,6 +94,7 @@
             this.info.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.info.Size = new System.Drawing.Size(275, 150);
             this.info.TabIndex = 5;
+            this.info.WordWrap = false;
             // 
             // save
             // 
