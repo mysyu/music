@@ -20,7 +20,6 @@ namespace music
 
         public void button1_Click( object sender , EventArgs e )
         {
-            MessageBox.Show( "網路連線中斷!請開啟網路連線後再重新啟動程式!" );
             new Music( "" ).Upload();
         }
 
@@ -35,6 +34,7 @@ namespace music
         public void comboBox1_SelectedIndexChanged( object sender , EventArgs e )
         {
             musicPlayer.URL = "http://mysyu.ddns.net/UploadMusic/" + comboBox1.SelectedItem;
+            PlayList.current.Add( new Music( "0000000000" ) );
             musicPlayer.Ctlcontrols.stop();
         }
 

@@ -27,10 +27,10 @@ namespace music
                 if ( result.Rows.Count == 1 )
                 {
                     ID = id;
-                    name = result.Rows[ 0 ].ToString();
-                    singer = result.Rows[ 1 ].ToString();
-                    tag = result.Rows[ 2 ].ToString();
-                    tag = result.Rows[ 3 ].ToString();
+                    name = result.Rows[ 0 ][ 0 ].ToString();
+                    singer = result.Rows[ 0 ][ 1 ].ToString();
+                    tag = result.Rows[ 0 ][ 2 ].ToString();
+                    tag = result.Rows[ 0 ][ 3 ].ToString();
                 }
             }
         }

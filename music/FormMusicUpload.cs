@@ -57,7 +57,7 @@ namespace music
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Music tmp=new Music();
+            Music tmp=new Music("");
             tmp.Upload();
             label4.Text = tmp.name;
         }

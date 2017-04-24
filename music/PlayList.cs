@@ -62,7 +62,7 @@ namespace music
                     {
                         foreach ( XmlNode leaf in root.ChildNodes )
                         {
-                            current.Add( new Music( leaf.Attributes["name"].InnerText ) );
+                            current.Add( new Music( leaf.Attributes["ID"].InnerText ) );
                         }
                     }
                     else
@@ -70,7 +70,7 @@ namespace music
 
                         local.Add( root.Name , new List<Music>() );
                         foreach ( XmlNode leaf in root.ChildNodes )
-                            local[ root.Name ].Add( new Music( leaf.Attributes[ "name" ].InnerText ) );
+                            local[ root.Name ].Add( new Music( leaf.Attributes[ "IS" ].InnerText ) );
                     }
                 }
             }
