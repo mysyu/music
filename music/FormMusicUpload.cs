@@ -35,7 +35,7 @@ namespace music
             this.Close();
         }
 
-        private void music_button_Click(object sender, EventArgs e)
+        private void lyrics_button_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = "c:\\";
@@ -45,7 +45,7 @@ namespace music
             {
                 try
                 {
-                    lyric.Text = File.ReadAllText(openFileDialog.FileName);
+                    lyrics.Text = File.ReadAllText(openFileDialog.FileName);
                 }
                 catch( Exception ex )
                 {
@@ -54,7 +54,7 @@ namespace music
             }
         }
 
-        private void lyric_button_Click(object sender, EventArgs e)
+        private void music_button_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = "c:\\";

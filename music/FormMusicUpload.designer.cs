@@ -32,7 +32,7 @@
             this.name = new System.Windows.Forms.TextBox();
             this.singer_label = new System.Windows.Forms.Label();
             this.singer = new System.Windows.Forms.TextBox();
-            this.lyric_button = new System.Windows.Forms.Button();
+            this.lyrics_button = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.music_button = new System.Windows.Forms.Button();
             this.upload_button = new System.Windows.Forms.Button();
@@ -50,8 +50,8 @@
             this.info = new System.Windows.Forms.TextBox();
             this.info_label = new System.Windows.Forms.Label();
             this.music = new System.Windows.Forms.TextBox();
-            this.lyric = new System.Windows.Forms.TextBox();
-            this.lyric_label = new System.Windows.Forms.Label();
+            this.lyrics = new System.Windows.Forms.TextBox();
+            this.lyrics_label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // name_label
@@ -86,15 +86,15 @@
             this.singer.Size = new System.Drawing.Size(200, 22);
             this.singer.TabIndex = 5;
             // 
-            // lyric_button
+            // lyrics_button
             // 
-            this.lyric_button.Location = new System.Drawing.Point(250, 595);
-            this.lyric_button.Name = "lyric_button";
-            this.lyric_button.Size = new System.Drawing.Size(75, 23);
-            this.lyric_button.TabIndex = 6;
-            this.lyric_button.Text = "從文字檔";
-            this.lyric_button.UseVisualStyleBackColor = true;
-            this.lyric_button.Click += new System.EventHandler(this.music_button_Click);
+            this.lyrics_button.Location = new System.Drawing.Point(250, 595);
+            this.lyrics_button.Name = "lyrics_button";
+            this.lyrics_button.Size = new System.Drawing.Size(75, 23);
+            this.lyrics_button.TabIndex = 6;
+            this.lyrics_button.Text = "從文字檔";
+            this.lyrics_button.UseVisualStyleBackColor = true;
+            this.lyrics_button.Click += new System.EventHandler(this.lyrics_button_Click);
             // 
             // label4
             // 
@@ -112,7 +112,7 @@
             this.music_button.TabIndex = 8;
             this.music_button.Text = "選擇音樂";
             this.music_button.UseVisualStyleBackColor = true;
-            this.music_button.Click += new System.EventHandler(this.lyric_button_Click);
+            this.music_button.Click += new System.EventHandler(this.music_button_Click);
             // 
             // upload_button
             // 
@@ -260,24 +260,24 @@
             this.music.Size = new System.Drawing.Size(200, 22);
             this.music.TabIndex = 24;
             // 
-            // lyric
+            // lyrics
             // 
-            this.lyric.Location = new System.Drawing.Point(50, 625);
-            this.lyric.Multiline = true;
-            this.lyric.Name = "lyric";
-            this.lyric.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.lyric.Size = new System.Drawing.Size(275, 300);
-            this.lyric.TabIndex = 25;
-            this.lyric.WordWrap = false;
+            this.lyrics.Location = new System.Drawing.Point(50, 625);
+            this.lyrics.Multiline = true;
+            this.lyrics.Name = "lyrics";
+            this.lyrics.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.lyrics.Size = new System.Drawing.Size(275, 300);
+            this.lyrics.TabIndex = 25;
+            this.lyrics.WordWrap = false;
             // 
-            // lyric_label
+            // lyrics_label
             // 
-            this.lyric_label.AutoSize = true;
-            this.lyric_label.Location = new System.Drawing.Point(50, 600);
-            this.lyric_label.Name = "lyric_label";
-            this.lyric_label.Size = new System.Drawing.Size(29, 12);
-            this.lyric_label.TabIndex = 26;
-            this.lyric_label.Text = "歌詞";
+            this.lyrics_label.AutoSize = true;
+            this.lyrics_label.Location = new System.Drawing.Point(50, 600);
+            this.lyrics_label.Name = "lyrics_label";
+            this.lyrics_label.Size = new System.Drawing.Size(29, 12);
+            this.lyrics_label.TabIndex = 26;
+            this.lyrics_label.Text = "歌詞";
             // 
             // FormMusicUpload
             // 
@@ -285,9 +285,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(0, 50);
-            this.ClientSize = new System.Drawing.Size(501, 461);
-            this.Controls.Add(this.lyric_label);
-            this.Controls.Add(this.lyric);
+            this.ClientSize = new System.Drawing.Size(518, 461);
+            this.Controls.Add(this.lyrics_label);
+            this.Controls.Add(this.lyrics);
             this.Controls.Add(this.music);
             this.Controls.Add(this.info_label);
             this.Controls.Add(this.info);
@@ -305,7 +305,7 @@
             this.Controls.Add(this.upload_button);
             this.Controls.Add(this.music_button);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.lyric_button);
+            this.Controls.Add(this.lyrics_button);
             this.Controls.Add(this.singer);
             this.Controls.Add(this.singer_label);
             this.Controls.Add(this.name);
@@ -323,7 +323,7 @@
         private System.Windows.Forms.TextBox name;
         private System.Windows.Forms.Label singer_label;
         private System.Windows.Forms.TextBox singer;
-        private System.Windows.Forms.Button lyric_button;
+        private System.Windows.Forms.Button lyrics_button;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button music_button;
         private System.Windows.Forms.Button upload_button;
@@ -341,7 +341,7 @@
         private System.Windows.Forms.TextBox info;
         private System.Windows.Forms.Label info_label;
         private System.Windows.Forms.TextBox music;
-        private System.Windows.Forms.TextBox lyric;
-        private System.Windows.Forms.Label lyric_label;
+        private System.Windows.Forms.TextBox lyrics;
+        private System.Windows.Forms.Label lyrics_label;
     }
 }
