@@ -100,7 +100,7 @@
             // 
             // music_button
             // 
-            this.music_button.Location = new System.Drawing.Point(250, 573);
+            this.music_button.Location = new System.Drawing.Point(250, 575);
             this.music_button.Name = "music_button";
             this.music_button.Size = new System.Drawing.Size(75, 23);
             this.music_button.TabIndex = 8;
@@ -133,9 +133,9 @@
             this.tag_label1.AutoSize = true;
             this.tag_label1.Location = new System.Drawing.Point(5, 25);
             this.tag_label1.Name = "tag_label1";
-            this.tag_label1.Size = new System.Drawing.Size(29, 12);
+            this.tag_label1.Size = new System.Drawing.Size(73, 12);
             this.tag_label1.TabIndex = 12;
-            this.tag_label1.Text = "分類";
+            this.tag_label1.Text = "分類(二擇一)";
             // 
             // tag3
             // 
