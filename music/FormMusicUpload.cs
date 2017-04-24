@@ -7,59 +7,63 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace music
 {
     public partial class FormMusicUpload : Form
     {
-        String lyric = "";
         public FormMusicUpload()
         {
             InitializeComponent();
         }
 
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        private void tag1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox3.Checked == true)
-                checkBox4.Checked = false;
+            if (tag1.Checked == true)
+                tag2.Checked = false;
         }
 
-        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        private void tag2_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox4.Checked == true)
-                checkBox3.Checked = false;
+            if (tag2.Checked == true)
+                tag1.Checked = false;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void cancel_button_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
-            lyric = "";
-            label4.Text = "";
-            checkBox1.Checked = false;
-            checkBox2.Checked = false;
-            checkBox3.Checked = false;
-            checkBox4.Checked = false;
-            checkBox5.Checked = false;
-            checkBox6.Checked = false;
-            checkBox7.Checked = false;
-            checkBox8.Checked = false;
+            this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void music_button_Click(object sender, EventArgs e)
         {
-            FormLyric l = new FormLyric();
-            l.Text = "編輯歌詞";
-            l.Show();
-            lyric = l.getTimeLyric();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = "c:\\";
+            openFileDialog.Filter = "text file ( *.txt )|*.txt";
+            openFileDialog.FilterIndex = 1;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    lyric.Text = File.ReadAllText(openFileDialog.FileName);
+                }
+                catch( Exception ex )
+                {
+                    MessageBox.Show(ex.StackTrace);
+                }
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void lyric_button_Click(object sender, EventArgs e)
         {
-            Music tmp=new Music("");
-            tmp.Upload();
-            label4.Text = tmp.name;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = "c:\\";
+            openFileDialog.Filter = "audio files ( *.wav , *.mp3 )|*.wav;*.mp3";
+            openFileDialog.FilterIndex = 1;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                music.Text = openFileDialog.FileName;
+            }
         }
     }
 }

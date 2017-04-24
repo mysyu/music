@@ -15,65 +15,55 @@ namespace music
         public String tag;
         public String info;
 
-        public Music( String id )
+        public Music(String id)
         {
-            if ( id == "" )
+            if (id == "")
             {
-               
+
             }
             else
             {
-                DataTable result = DB.Select( String.Format( "select name , singer , tag , info from uploadmusic where ID = '{0}'" , id ) );
-                if ( result.Rows.Count == 1 )
+                DataTable result = DB.Select(String.Format("select name , singer , tag , info from uploadmusic where ID = '{0}'", id));
+                if (result.Rows.Count == 1)
                 {
                     ID = id;
-                    name = result.Rows[ 0 ][ 0 ].ToString();
-                    singer = result.Rows[ 0 ][ 1 ].ToString();
-                    tag = result.Rows[ 0 ][ 2 ].ToString();
-                    tag = result.Rows[ 0 ][ 3 ].ToString();
+                    name = result.Rows[0][0].ToString();
+                    singer = result.Rows[0][1].ToString();
+                    tag = result.Rows[0][2].ToString();
+                    tag = result.Rows[0][3].ToString();
                 }
             }
         }
-       
+
         public void Upload()
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = "c:\\";
-            openFileDialog.Filter = "audio files ( *.wav , *.mp3 )|*.wav;*.mp3";
-            openFileDialog.FilterIndex = 1;
             Stream musicStream = null;
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                try
+                using (musicStream)
                 {
-                    if ((musicStream = openFileDialog.OpenFile()) != null)
                     {
-                        using (musicStream)
+                        FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://1.34.30.96:21/" + Path.GetFileName(null));
+                        request.Method = WebRequestMethods.Ftp.UploadFile;
+                        request.Credentials = new NetworkCredential("UploadMusic", "UploadMusic");
+
+                        using (Stream requestStream = request.GetRequestStream())
                         {
-                            {
-                                FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://1.34.30.96:21/" + Path.GetFileName(openFileDialog.FileName));
-                                request.Method = WebRequestMethods.Ftp.UploadFile;
-                                request.Credentials = new NetworkCredential("UploadMusic", "UploadMusic");
+                            musicStream.CopyTo(requestStream);
+                        }
 
-                                using (Stream requestStream = request.GetRequestStream())
-                                {
-                                    musicStream.CopyTo(requestStream);
-                                }
-
-                                using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
-                                {
-                                    MessageBox.Show("Upload File Complete, status " + response.StatusDescription);
-                                }
-                            }
+                        using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+                        {
+                            MessageBox.Show("Upload File Complete, status " + response.StatusDescription);
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
-
     }
+
 }

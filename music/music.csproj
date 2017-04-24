@@ -92,12 +92,6 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSetTime.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormSetTime.Designer.cs">
-      <DependentUpon>FormSetTime.cs</DependentUpon>
-    </Compile>
     <Compile Include="Lyrics.cs" />
     <Compile Include="Music.cs" />
     <Compile Include="MusicPlayer.cs">
@@ -126,9 +120,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormSetTime.resx">
-      <DependentUpon>FormSetTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

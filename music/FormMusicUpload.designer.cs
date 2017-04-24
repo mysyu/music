@@ -28,70 +28,73 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.name_label = new System.Windows.Forms.Label();
+            this.name = new System.Windows.Forms.TextBox();
+            this.singer_label = new System.Windows.Forms.Label();
+            this.singer = new System.Windows.Forms.TextBox();
+            this.lyric_button = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.music_button = new System.Windows.Forms.Button();
+            this.upload_button = new System.Windows.Forms.Button();
+            this.cancel_button = new System.Windows.Forms.Button();
+            this.tag_label1 = new System.Windows.Forms.Label();
+            this.tag3 = new System.Windows.Forms.CheckBox();
+            this.tag4 = new System.Windows.Forms.CheckBox();
+            this.tag1 = new System.Windows.Forms.CheckBox();
+            this.tag2 = new System.Windows.Forms.CheckBox();
+            this.tag5 = new System.Windows.Forms.CheckBox();
+            this.tag6 = new System.Windows.Forms.CheckBox();
+            this.tag7 = new System.Windows.Forms.CheckBox();
+            this.tag8 = new System.Windows.Forms.CheckBox();
+            this.tag_label2 = new System.Windows.Forms.Label();
+            this.info = new System.Windows.Forms.TextBox();
+            this.info_label = new System.Windows.Forms.Label();
+            this.music = new System.Windows.Forms.TextBox();
+            this.lyric = new System.Windows.Forms.TextBox();
+            this.lyric_label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // name_label
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "歌曲名稱";
+            this.name_label.AutoSize = true;
+            this.name_label.Location = new System.Drawing.Point(50, 50);
+            this.name_label.Name = "name_label";
+            this.name_label.Size = new System.Drawing.Size(53, 12);
+            this.name_label.TabIndex = 0;
+            this.name_label.Text = "歌曲名稱";
             // 
-            // textBox1
+            // name
             // 
-            this.textBox1.Location = new System.Drawing.Point(92, 10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 1;
+            this.name.Location = new System.Drawing.Point(125, 45);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(200, 22);
+            this.name.TabIndex = 1;
             // 
-            // label3
+            // singer_label
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 12);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "創作者/團體";
+            this.singer_label.AutoSize = true;
+            this.singer_label.Location = new System.Drawing.Point(50, 100);
+            this.singer_label.Name = "singer_label";
+            this.singer_label.Size = new System.Drawing.Size(68, 12);
+            this.singer_label.TabIndex = 4;
+            this.singer_label.Text = "創作者/團體";
             // 
-            // textBox2
+            // singer
             // 
-            this.textBox2.Location = new System.Drawing.Point(92, 45);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 5;
+            this.singer.Location = new System.Drawing.Point(125, 95);
+            this.singer.Name = "singer";
+            this.singer.Size = new System.Drawing.Size(200, 22);
+            this.singer.TabIndex = 5;
             // 
-            // button1
+            // lyric_button
             // 
-            this.button1.Location = new System.Drawing.Point(370, 385);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "編輯歌詞";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.lyric_button.Location = new System.Drawing.Point(250, 595);
+            this.lyric_button.Name = "lyric_button";
+            this.lyric_button.Size = new System.Drawing.Size(75, 23);
+            this.lyric_button.TabIndex = 6;
+            this.lyric_button.Text = "從文字檔";
+            this.lyric_button.UseVisualStyleBackColor = true;
+            this.lyric_button.Click += new System.EventHandler(this.music_button_Click);
             // 
             // label4
             // 
@@ -101,180 +104,212 @@
             this.label4.Size = new System.Drawing.Size(0, 12);
             this.label4.TabIndex = 7;
             // 
-            // button2
+            // music_button
             // 
-            this.button2.Location = new System.Drawing.Point(370, 350);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "選擇音樂";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.music_button.Location = new System.Drawing.Point(250, 548);
+            this.music_button.Name = "music_button";
+            this.music_button.Size = new System.Drawing.Size(75, 23);
+            this.music_button.TabIndex = 8;
+            this.music_button.Text = "選擇音樂";
+            this.music_button.UseVisualStyleBackColor = true;
+            this.music_button.Click += new System.EventHandler(this.lyric_button_Click);
             // 
-            // button3
+            // upload_button
             // 
-            this.button3.Location = new System.Drawing.Point(12, 461);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "確定";
-            this.button3.UseVisualStyleBackColor = true;
+            this.upload_button.Location = new System.Drawing.Point(125, 975);
+            this.upload_button.Name = "upload_button";
+            this.upload_button.Size = new System.Drawing.Size(75, 23);
+            this.upload_button.TabIndex = 10;
+            this.upload_button.Text = "上傳";
+            this.upload_button.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // cancel_button
             // 
-            this.button4.Location = new System.Drawing.Point(160, 461);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "重填";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.cancel_button.Location = new System.Drawing.Point(250, 975);
+            this.cancel_button.Name = "cancel_button";
+            this.cancel_button.Size = new System.Drawing.Size(75, 23);
+            this.cancel_button.TabIndex = 11;
+            this.cancel_button.Text = "取消";
+            this.cancel_button.UseVisualStyleBackColor = true;
+            this.cancel_button.Click += new System.EventHandler(this.cancel_button_Click);
             // 
-            // label2
+            // tag_label1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 97);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "分類";
+            this.tag_label1.AutoSize = true;
+            this.tag_label1.Location = new System.Drawing.Point(50, 150);
+            this.tag_label1.Name = "tag_label1";
+            this.tag_label1.Size = new System.Drawing.Size(29, 12);
+            this.tag_label1.TabIndex = 12;
+            this.tag_label1.Text = "分類";
             // 
-            // checkBox1
+            // tag3
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(12, 265);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(60, 16);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "純音樂";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.tag3.AutoSize = true;
+            this.tag3.Location = new System.Drawing.Point(50, 250);
+            this.tag3.Name = "tag3";
+            this.tag3.Size = new System.Drawing.Size(60, 16);
+            this.tag3.TabIndex = 13;
+            this.tag3.Text = "純音樂";
+            this.tag3.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // tag4
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(92, 265);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(48, 16);
-            this.checkBox2.TabIndex = 14;
-            this.checkBox2.Text = "搖滾";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.tag4.AutoSize = true;
+            this.tag4.Location = new System.Drawing.Point(125, 250);
+            this.tag4.Name = "tag4";
+            this.tag4.Size = new System.Drawing.Size(48, 16);
+            this.tag4.TabIndex = 14;
+            this.tag4.Text = "搖滾";
+            this.tag4.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // tag1
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(12, 210);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(48, 16);
-            this.checkBox3.TabIndex = 15;
-            this.checkBox3.Text = "原創";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.tag1.AutoSize = true;
+            this.tag1.Location = new System.Drawing.Point(50, 175);
+            this.tag1.Name = "tag1";
+            this.tag1.Size = new System.Drawing.Size(48, 16);
+            this.tag1.TabIndex = 15;
+            this.tag1.Text = "原創";
+            this.tag1.UseVisualStyleBackColor = true;
+            this.tag1.CheckedChanged += new System.EventHandler(this.tag1_CheckedChanged);
             // 
-            // checkBox4
+            // tag2
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(92, 210);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(48, 16);
-            this.checkBox4.TabIndex = 16;
-            this.checkBox4.Text = "翻唱";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            this.tag2.AutoSize = true;
+            this.tag2.Location = new System.Drawing.Point(125, 175);
+            this.tag2.Name = "tag2";
+            this.tag2.Size = new System.Drawing.Size(48, 16);
+            this.tag2.TabIndex = 16;
+            this.tag2.Text = "翻唱";
+            this.tag2.UseVisualStyleBackColor = true;
+            this.tag2.CheckedChanged += new System.EventHandler(this.tag2_CheckedChanged);
             // 
-            // checkBox5
+            // tag5
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(160, 265);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(48, 16);
-            this.checkBox5.TabIndex = 17;
-            this.checkBox5.Text = "爵士";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.tag5.AutoSize = true;
+            this.tag5.Location = new System.Drawing.Point(200, 250);
+            this.tag5.Name = "tag5";
+            this.tag5.Size = new System.Drawing.Size(48, 16);
+            this.tag5.TabIndex = 17;
+            this.tag5.Text = "爵士";
+            this.tag5.UseVisualStyleBackColor = true;
             // 
-            // checkBox6
+            // tag6
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(228, 265);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(60, 16);
-            this.checkBox6.TabIndex = 18;
-            this.checkBox6.Text = "輕音樂";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.tag6.AutoSize = true;
+            this.tag6.Location = new System.Drawing.Point(275, 250);
+            this.tag6.Name = "tag6";
+            this.tag6.Size = new System.Drawing.Size(60, 16);
+            this.tag6.TabIndex = 18;
+            this.tag6.Text = "輕音樂";
+            this.tag6.UseVisualStyleBackColor = true;
             // 
-            // checkBox7
+            // tag7
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(303, 265);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(72, 16);
-            this.checkBox7.TabIndex = 19;
-            this.checkBox7.Text = "流行音樂";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.tag7.AutoSize = true;
+            this.tag7.Location = new System.Drawing.Point(125, 275);
+            this.tag7.Name = "tag7";
+            this.tag7.Size = new System.Drawing.Size(72, 16);
+            this.tag7.TabIndex = 19;
+            this.tag7.Text = "流行音樂";
+            this.tag7.UseVisualStyleBackColor = true;
             // 
-            // checkBox8
+            // tag8
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(12, 295);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(60, 16);
-            this.checkBox8.TabIndex = 20;
-            this.checkBox8.Text = "重金屬";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.tag8.AutoSize = true;
+            this.tag8.Location = new System.Drawing.Point(50, 275);
+            this.tag8.Name = "tag8";
+            this.tag8.Size = new System.Drawing.Size(60, 16);
+            this.tag8.TabIndex = 20;
+            this.tag8.Text = "重金屬";
+            this.tag8.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // tag_label2
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 240);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 12);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "音樂類型";
+            this.tag_label2.AutoSize = true;
+            this.tag_label2.Location = new System.Drawing.Point(50, 225);
+            this.tag_label2.Name = "tag_label2";
+            this.tag_label2.Size = new System.Drawing.Size(53, 12);
+            this.tag_label2.TabIndex = 21;
+            this.tag_label2.Text = "音樂類型";
             // 
-            // textBox3
+            // info
             // 
-            this.textBox3.Location = new System.Drawing.Point(10, 350);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(278, 95);
-            this.textBox3.TabIndex = 22;
+            this.info.Location = new System.Drawing.Point(50, 350);
+            this.info.Multiline = true;
+            this.info.Name = "info";
+            this.info.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.info.Size = new System.Drawing.Size(275, 150);
+            this.info.TabIndex = 22;
+            this.info.WordWrap = false;
             // 
-            // label7
+            // info_label
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 335);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 12);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "歌曲簡介:";
+            this.info_label.AutoSize = true;
+            this.info_label.Location = new System.Drawing.Point(50, 325);
+            this.info_label.Name = "info_label";
+            this.info_label.Size = new System.Drawing.Size(53, 12);
+            this.info_label.TabIndex = 23;
+            this.info_label.Text = "歌曲簡介";
+            // 
+            // music
+            // 
+            this.music.Location = new System.Drawing.Point(50, 550);
+            this.music.Name = "music";
+            this.music.ReadOnly = true;
+            this.music.Size = new System.Drawing.Size(200, 22);
+            this.music.TabIndex = 24;
+            // 
+            // lyric
+            // 
+            this.lyric.Location = new System.Drawing.Point(50, 625);
+            this.lyric.Multiline = true;
+            this.lyric.Name = "lyric";
+            this.lyric.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.lyric.Size = new System.Drawing.Size(275, 300);
+            this.lyric.TabIndex = 25;
+            this.lyric.WordWrap = false;
+            // 
+            // lyric_label
+            // 
+            this.lyric_label.AutoSize = true;
+            this.lyric_label.Location = new System.Drawing.Point(50, 600);
+            this.lyric_label.Name = "lyric_label";
+            this.lyric_label.Size = new System.Drawing.Size(29, 12);
+            this.lyric_label.TabIndex = 26;
+            this.lyric_label.Text = "歌詞";
             // 
             // FormMusicUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.AutoScrollMargin = new System.Drawing.Size(0, 1000);
-            this.ClientSize = new System.Drawing.Size(484, 461);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.checkBox8);
-            this.Controls.Add(this.checkBox7);
-            this.Controls.Add(this.checkBox6);
-            this.Controls.Add(this.checkBox5);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.AutoScrollMargin = new System.Drawing.Size(0, 50);
+            this.ClientSize = new System.Drawing.Size(501, 461);
+            this.Controls.Add(this.lyric_label);
+            this.Controls.Add(this.lyric);
+            this.Controls.Add(this.music);
+            this.Controls.Add(this.info_label);
+            this.Controls.Add(this.info);
+            this.Controls.Add(this.tag_label2);
+            this.Controls.Add(this.tag8);
+            this.Controls.Add(this.tag7);
+            this.Controls.Add(this.tag6);
+            this.Controls.Add(this.tag5);
+            this.Controls.Add(this.tag2);
+            this.Controls.Add(this.tag1);
+            this.Controls.Add(this.tag4);
+            this.Controls.Add(this.tag3);
+            this.Controls.Add(this.tag_label1);
+            this.Controls.Add(this.cancel_button);
+            this.Controls.Add(this.upload_button);
+            this.Controls.Add(this.music_button);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lyric_button);
+            this.Controls.Add(this.singer);
+            this.Controls.Add(this.singer_label);
+            this.Controls.Add(this.name);
+            this.Controls.Add(this.name_label);
             this.Name = "FormMusicUpload";
             this.Text = "FormMusicUpload";
             this.ResumeLayout(false);
@@ -284,26 +319,29 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label name_label;
+        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.Label singer_label;
+        private System.Windows.Forms.TextBox singer;
+        private System.Windows.Forms.Button lyric_button;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button music_button;
+        private System.Windows.Forms.Button upload_button;
+        private System.Windows.Forms.Button cancel_button;
+        private System.Windows.Forms.Label tag_label1;
+        private System.Windows.Forms.CheckBox tag3;
+        private System.Windows.Forms.CheckBox tag4;
+        private System.Windows.Forms.CheckBox tag1;
+        private System.Windows.Forms.CheckBox tag2;
+        private System.Windows.Forms.CheckBox tag5;
+        private System.Windows.Forms.CheckBox tag6;
+        private System.Windows.Forms.CheckBox tag7;
+        private System.Windows.Forms.CheckBox tag8;
+        private System.Windows.Forms.Label tag_label2;
+        private System.Windows.Forms.TextBox info;
+        private System.Windows.Forms.Label info_label;
+        private System.Windows.Forms.TextBox music;
+        private System.Windows.Forms.TextBox lyric;
+        private System.Windows.Forms.Label lyric_label;
     }
 }

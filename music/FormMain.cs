@@ -45,9 +45,13 @@ namespace music
 
         public void button4_Click( object sender , EventArgs e )
         {
-            FormMusicUpload l = new FormMusicUpload();
-            l.Text = "歌詞資訊";
-            l.Show();
+            FormMusicUpload formMusicUpload = new FormMusicUpload();
+            formMusicUpload.TopLevel = false;
+            formMusicUpload.Dock = DockStyle.Fill;
+            formMusicUpload.FormBorderStyle = FormBorderStyle.None;
+            mainPanel.Controls.Add(formMusicUpload);
+            formMusicUpload.BringToFront();
+            formMusicUpload.Show();
         }
 
         public void button3_Click( object sender , EventArgs e )
