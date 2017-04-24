@@ -49,7 +49,7 @@ namespace music
             lyrics = new Lyrics(l);
         }
 
-        public void Upload( String filename )
+        public String Upload( String filename )
         {
             try
             {
@@ -67,7 +67,7 @@ namespace music
 
                         using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
                         {
-                            MessageBox.Show("Upload File Complete, status " + response.StatusDescription);
+                            return "Upload File Complete, status " + response.StatusDescription;
                         }
                     }
                 }
@@ -76,6 +76,7 @@ namespace music
             {
                 MessageBox.Show(ex.Message);
             }
+            return "Fail";
         }
     }
 

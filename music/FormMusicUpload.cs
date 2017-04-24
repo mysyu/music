@@ -74,7 +74,16 @@ namespace music
                 if (i.Checked)
                     t += ( i.Text + ";" );
             }
-            MessageBox.Show(t);
+            Music m = new Music( name.Text , singer.Text , t , info.Text , lyrics.Text );
+            message.Text = m.Upload(music.Text);
+            if ( message.Text.Equals( "Success" ) )
+            {
+                this.Close();
+                if ( Account.name == "" )
+                    FormMain.main.account.Text = Account.email;
+                else
+                    FormMain.main.account.Text = Account.name;
+            }
         }
     }
 }

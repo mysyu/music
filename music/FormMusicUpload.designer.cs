@@ -33,7 +33,6 @@
             this.singer_label = new System.Windows.Forms.Label();
             this.singer = new System.Windows.Forms.TextBox();
             this.lyrics_button = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.music_button = new System.Windows.Forms.Button();
             this.upload_button = new System.Windows.Forms.Button();
             this.cancel_button = new System.Windows.Forms.Button();
@@ -53,6 +52,7 @@
             this.lyrics = new System.Windows.Forms.TextBox();
             this.lyrics_label = new System.Windows.Forms.Label();
             this.tag = new System.Windows.Forms.GroupBox();
+            this.message = new System.Windows.Forms.Label();
             this.tag.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,14 +97,6 @@
             this.lyrics_button.Text = "從文字檔";
             this.lyrics_button.UseVisualStyleBackColor = true;
             this.lyrics_button.Click += new System.EventHandler(this.lyrics_button_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(117, 97);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 12);
-            this.label4.TabIndex = 7;
             // 
             // music_button
             // 
@@ -300,13 +292,22 @@
             this.tag.TabIndex = 27;
             this.tag.TabStop = false;
             // 
+            // message
+            // 
+            this.message.AutoSize = true;
+            this.message.Location = new System.Drawing.Point(50, 1050);
+            this.message.Name = "message";
+            this.message.Size = new System.Drawing.Size(0, 12);
+            this.message.TabIndex = 28;
+            // 
             // FormMusicUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(0, 50);
-            this.ClientSize = new System.Drawing.Size(501, 461);
+            this.ClientSize = new System.Drawing.Size(518, 461);
+            this.Controls.Add(this.message);
             this.Controls.Add(this.tag);
             this.Controls.Add(this.lyrics_label);
             this.Controls.Add(this.lyrics);
@@ -316,7 +317,6 @@
             this.Controls.Add(this.cancel_button);
             this.Controls.Add(this.upload_button);
             this.Controls.Add(this.music_button);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.lyrics_button);
             this.Controls.Add(this.singer);
             this.Controls.Add(this.singer_label);
@@ -338,7 +338,6 @@
         private System.Windows.Forms.Label singer_label;
         private System.Windows.Forms.TextBox singer;
         private System.Windows.Forms.Button lyrics_button;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button music_button;
         private System.Windows.Forms.Button upload_button;
         private System.Windows.Forms.Button cancel_button;
@@ -358,5 +357,6 @@
         private System.Windows.Forms.TextBox lyrics;
         private System.Windows.Forms.Label lyrics_label;
         private System.Windows.Forms.GroupBox tag;
+        private System.Windows.Forms.Label message;
     }
 }
