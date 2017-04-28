@@ -12,7 +12,7 @@ namespace music
         public String ID;
         public String name;
         public String singer;
-        public String email;
+        public static string email;
         public String tag;
         public String info;
         public Lyrics lyrics;
@@ -38,7 +38,7 @@ namespace music
                 ID = id;
                 name = result.Rows[ 0 ][ 0 ].ToString();
                 singer = result.Rows[ 0 ][ 1 ].ToString();
-                singer = result.Rows[0][2].ToString();
+                email = result.Rows[0][2].ToString();
                 tag = result.Rows[ 0 ][ 3 ].ToString();
                 lyrics = new Lyrics( result.Rows[ 0 ][ 4 ].ToString() );
                 info = result.Rows[ 0 ][ 5 ].ToString();
