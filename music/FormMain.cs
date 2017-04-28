@@ -180,5 +180,27 @@ namespace music
                 this.Close();
             }
         }
+
+        private void music_owner_Click(object sender, EventArgs e)
+        {
+            FormMusicOwner formMusicOwner = new FormMusicOwner();
+            formMusicOwner.TopLevel = false;
+            formMusicOwner.Dock = DockStyle.Fill;
+            formMusicOwner.FormBorderStyle = FormBorderStyle.None;
+            mainPanel.Controls.Add(formMusicOwner);
+            formMusicOwner.BringToFront();
+            formMusicOwner.Show();
+        }
+
+        private void Music_Info_Click(object sender, EventArgs e)
+        {
+            FormMusicInfo formMusicInfo = new FormMusicInfo();
+            formMusicInfo.TopLevel = false;
+            formMusicInfo.Dock = DockStyle.Fill;
+            formMusicInfo.FormBorderStyle = FormBorderStyle.None;
+            mainPanel.Controls.Add(formMusicInfo);
+            formMusicInfo.BringToFront();
+            formMusicInfo.Show();
+        }
     }
 }
