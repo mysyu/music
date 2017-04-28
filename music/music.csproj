@@ -74,12 +74,6 @@
     <Compile Include="FormChangePassword.Designer.cs">
       <DependentUpon>FormChangePassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMusicInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMusicInfo.Designer.cs">
-      <DependentUpon>FormMusicInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormMusicList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,12 +98,6 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMusicOwner.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMusicOwner.Designer.cs">
-      <DependentUpon>FormMusicOwner.cs</DependentUpon>
-    </Compile>
     <Compile Include="Lyrics.cs" />
     <Compile Include="Music.cs" />
     <Compile Include="MusicPlayer.cs">
@@ -130,9 +118,6 @@
     <EmbeddedResource Include="FormChangePassword.resx">
       <DependentUpon>FormChangePassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMusicInfo.resx">
-      <DependentUpon>FormMusicInfo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormRegister.resx">
       <DependentUpon>FormRegister.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,9 +126,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormMusicOwner.resx">
-      <DependentUpon>FormMusicOwner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
