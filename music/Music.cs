@@ -11,10 +11,10 @@ namespace music
     {
         public String ID;
         public String name;
-        public String singer;
-        public static string email;
-        public String tag;
-        public String info;
+        public static String singer;
+        public static String email;
+        public static String tag;
+        public static String info;
         public Lyrics lyrics;
         public String time;
 

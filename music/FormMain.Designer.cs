@@ -46,7 +46,7 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.music_owner = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.Music_Info = new System.Windows.Forms.Button();
             this.account_Option = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.account_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.account_music = new System.Windows.Forms.ToolStripMenuItem();
@@ -194,7 +194,7 @@
             // mainPanel
             // 
             this.mainPanel.Controls.Add(this.music_owner);
-            this.mainPanel.Controls.Add(this.button6);
+            this.mainPanel.Controls.Add(this.Music_Info);
             this.mainPanel.Controls.Add(this.button5);
             this.mainPanel.Controls.Add(this.comboBox1);
             this.mainPanel.Controls.Add(this.button3);
@@ -219,14 +219,15 @@
             this.music_owner.UseVisualStyleBackColor = true;
             this.music_owner.Click += new System.EventHandler(this.music_owner_Click);
             // 
-            // button6
+            // Music_Info
             // 
-            this.button6.Location = new System.Drawing.Point(161, 52);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
+            this.Music_Info.Location = new System.Drawing.Point(161, 52);
+            this.Music_Info.Name = "Music_Info";
+            this.Music_Info.Size = new System.Drawing.Size(75, 23);
+            this.Music_Info.TabIndex = 10;
+            this.Music_Info.Text = "音樂資訊";
+            this.Music_Info.UseVisualStyleBackColor = true;
+            this.Music_Info.Click += new System.EventHandler(this.Music_Info_Click);
             // 
             // account_Option
             // 
@@ -340,7 +341,7 @@
         public System.Windows.Forms.NotifyIcon notifyIcon;
         public System.Windows.Forms.Timer network_Detect;
         private System.Windows.Forms.Button music_owner;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button Music_Info;
     }
 }
 
