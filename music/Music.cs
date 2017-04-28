@@ -12,6 +12,7 @@ namespace music
         public String ID;
         public String name;
         public String singer;
+        public String email;
         public String tag;
         public String info;
         public Lyrics lyrics;
@@ -22,6 +23,7 @@ namespace music
             ID = "";
             name = "";
             singer = "";
+            email = "";
             tag = "";
             info = "";
             time = "";
@@ -30,15 +32,16 @@ namespace music
 
         public Music(String id)
         {
-            DataTable result = DB.Select(String.Format("select name , singer , tag , lyrics , info from uploadmusic where ID = '{0}'", id));
+            DataTable result = DB.Select(String.Format("select name , singer , email , tag , lyrics , info from uploadmusic where ID = '{0}'", id));
             if ( result.Rows.Count == 1 )
             {
                 ID = id;
                 name = result.Rows[ 0 ][ 0 ].ToString();
                 singer = result.Rows[ 0 ][ 1 ].ToString();
-                tag = result.Rows[ 0 ][ 2 ].ToString();
-                lyrics = new Lyrics( result.Rows[ 0 ][ 3 ].ToString() );
-                info = result.Rows[ 0 ][ 3 ].ToString();
+                singer = result.Rows[0][2].ToString();
+                tag = result.Rows[ 0 ][ 3 ].ToString();
+                lyrics = new Lyrics( result.Rows[ 0 ][ 4 ].ToString() );
+                info = result.Rows[ 0 ][ 5 ].ToString();
                 time = "";
             }
             else
@@ -46,6 +49,7 @@ namespace music
                 ID = "";
                 name = "";
                 singer = "";
+                email = "";
                 tag = "";
                 info = "";
                 time = "";
@@ -59,6 +63,7 @@ namespace music
             ID = "";
             name = n;
             singer = s;
+            email = "";
             tag = t;
             info = i;
             time = "";
