@@ -180,5 +180,16 @@ namespace music
                 this.Close();
             }
         }
+
+        private void music_owner_Click(object sender, EventArgs e)
+        {
+            FormMusicOwner formMusicOwner = new FormMusicOwner();
+            formMusicOwner.TopLevel = false;
+            formMusicOwner.Dock = DockStyle.Fill;
+            formMusicOwner.FormBorderStyle = FormBorderStyle.None;
+            mainPanel.Controls.Add(formMusicOwner);
+            formMusicOwner.BringToFront();
+            formMusicOwner.Show();
+        }
     }
 }

@@ -45,6 +45,8 @@
             this.playListPanel = new System.Windows.Forms.Panel();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.music_owner = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.account_Option = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.account_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.account_music = new System.Windows.Forms.ToolStripMenuItem();
@@ -191,6 +193,8 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.music_owner);
+            this.mainPanel.Controls.Add(this.button6);
             this.mainPanel.Controls.Add(this.button5);
             this.mainPanel.Controls.Add(this.comboBox1);
             this.mainPanel.Controls.Add(this.button3);
@@ -204,6 +208,25 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(800, 500);
             this.mainPanel.TabIndex = 12;
+            // 
+            // music_owner
+            // 
+            this.music_owner.Location = new System.Drawing.Point(242, 52);
+            this.music_owner.Name = "music_owner";
+            this.music_owner.Size = new System.Drawing.Size(75, 23);
+            this.music_owner.TabIndex = 11;
+            this.music_owner.Text = "音樂創作者";
+            this.music_owner.UseVisualStyleBackColor = true;
+            this.music_owner.Click += new System.EventHandler(this.music_owner_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(161, 52);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 10;
+            this.button6.Text = "button6";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // account_Option
             // 
@@ -316,6 +339,8 @@
         public System.Windows.Forms.ToolStripMenuItem logout;
         public System.Windows.Forms.NotifyIcon notifyIcon;
         public System.Windows.Forms.Timer network_Detect;
+        private System.Windows.Forms.Button music_owner;
+        private System.Windows.Forms.Button button6;
     }
 }
 
