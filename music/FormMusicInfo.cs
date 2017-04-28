@@ -15,9 +15,10 @@ namespace music
         public FormMusicInfo()
         {
             InitializeComponent();
-            Singer.Text = Music.singer;
-            Type.Text = Music.tag;
-            Info.Text = Music.info;
+            Music music = new Music();
+            Singer.Text = music.singer;
+            Type.Text = music.tag;
+            Info.Text = music.info;
         }
 
         private void correct_Click(object sender, EventArgs e)

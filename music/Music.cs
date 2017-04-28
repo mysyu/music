@@ -11,10 +11,10 @@ namespace music
     {
         public String ID;
         public String name;
-        public static String singer;
-        public static String email;
-        public static String tag;
-        public static String info;
+        public String singer;
+        public String email;
+        public String tag;
+        public String info;
         public Lyrics lyrics;
         public String time;
 
@@ -54,7 +54,7 @@ namespace music
                 info = "";
                 time = "";
                 lyrics = new Lyrics( "" );
-                throw new Exception( "music not found in DB" );
+                 throw new Exception( "music not found in DB" );
             }
         }
 
