@@ -65,7 +65,7 @@ namespace music
             }
         }
 
-        private void CheckedChanged( object sender , EventArgs e )
+        private void CheckedChanged( object sender , EventArgs e ) 
         {
             String command = "Select ID from uploadmusic where 1 = 0";
             foreach ( CheckBox c in tag.Controls.OfType<CheckBox>().Where( r => r.Checked ) )

@@ -80,6 +80,7 @@
             this.singer_label.Size = new System.Drawing.Size(68, 12);
             this.singer_label.TabIndex = 4;
             this.singer_label.Text = "創作者/團體";
+            this.singer_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // singer
             // 
@@ -306,7 +307,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(0, 50);
-            this.ClientSize = new System.Drawing.Size(518, 461);
+            this.ClientSize = new System.Drawing.Size(535, 461);
             this.Controls.Add(this.message);
             this.Controls.Add(this.tag);
             this.Controls.Add(this.lyrics_label);

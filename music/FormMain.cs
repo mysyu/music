@@ -19,7 +19,10 @@ namespace music
         }
         public void timer1_Tick( object sender , EventArgs e )
         {
-            label1.Text = musicPlayer.Ctlcontrols.currentPositionString;
+            if( musicPlayer.Ctlcontrols.currentPositionString == "" )
+                currentTime.Text = "目前時間     : 00:00";
+            else
+                currentTime.Text = String.Format( "目前時間     : {0}" , musicPlayer.Ctlcontrols.currentPositionString );
         }
 
         public void button4_Click( object sender , EventArgs e )
@@ -41,18 +44,18 @@ namespace music
         }
         public void refreshMusiclist()
         {
-            treeView1.Nodes.Clear();
-            treeView1.Nodes.Add( "本機" );
+            musicList.Nodes.Clear();
+            musicList.Nodes.Add( "本機" );
             foreach ( String l in MusicList.local.Keys )
             {
-                treeView1.Nodes[ 0 ].Nodes.Add( l );
+                musicList.Nodes[ 0 ].Nodes.Add( l );
             }
             if ( Account.islogin )
             {
-                treeView1.Nodes.Add( account.Text );
+                musicList.Nodes.Add( account.Text );
                 foreach ( String l in MusicList.account.Keys )
                 {
-                    treeView1.Nodes[ 0 ].Nodes.Add( l );
+                    musicList.Nodes[ 0 ].Nodes.Add( l );
                 }
             }
         }
@@ -152,6 +155,29 @@ namespace music
             formMusicList.BringToFront();
             formMusicList.Set( MusicList.current );
             formMusicList.Show();
+        }
+        private void list_Click( object sender , EventArgs e )
+        {
+            FormMusicList formMusicList = new FormMusicList();
+            formMusicList.TopLevel = false;
+            formMusicList.Dock = DockStyle.Fill;
+            formMusicList.FormBorderStyle = FormBorderStyle.None;
+            mainPanel.Controls.Add( formMusicList );
+            formMusicList.BringToFront();
+            formMusicList.Set( MusicList.current );
+            formMusicList.Show();
+        }
+
+        private void lyrics_Click( object sender , EventArgs e )
+        {
+            FormMusicLyrics formMusicLyrics = new FormMusicLyrics();
+            formMusicLyrics.TopLevel = false;
+            formMusicLyrics.Dock = DockStyle.Fill;
+            formMusicLyrics.FormBorderStyle = FormBorderStyle.None;
+            mainPanel.Controls.Add( formMusicLyrics );
+            formMusicLyrics.BringToFront();
+            formMusicLyrics.Set( MusicList.current[ 0 ] );
+            formMusicLyrics.Show();
         }
     }
 }

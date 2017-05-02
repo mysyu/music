@@ -142,6 +142,9 @@
     <EmbeddedResource Include="FormMusicList.resx">
       <DependentUpon>FormMusicList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormMusicLyrics.resx">
+      <DependentUpon>FormMusicLyrics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMusicSinger.resx">
       <DependentUpon>FormMusicSinger.cs</DependentUpon>
     </EmbeddedResource>
