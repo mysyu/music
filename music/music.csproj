@@ -86,6 +86,12 @@
     <Compile Include="FormMusicList.Designer.cs">
       <DependentUpon>FormMusicList.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMusicLyrics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMusicLyrics.Designer.cs">
+      <DependentUpon>FormMusicLyrics.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMusicOwner.cs">
       <SubType>Form</SubType>
     </Compile>
