@@ -8,13 +8,40 @@ using System.Text.RegularExpressions;
 
 namespace music
 {
-    public static class Account
+    public class Account
     {
         public static bool islogin = false;
-        public static string email = "";
-        public static string name = "";
-        public static string sex = "";
-        public static string info = "";
+        public static Account user = new Account();
+        public string email = "";
+        public string name = "";
+        public string sex = "";
+        public string info = "";
+
+        public Account()
+        {
+            name = "";
+            sex = "";
+            info = "";
+        }
+
+        public Account( Music music )
+        {
+            DataTable result = DB.Select( String.Format( "Select name,sex,info from account where account.email='{0}'" , music.email ) );
+            if ( result.Rows.Count == 1 )
+            {
+                name = result.Rows[ 0 ][ 0 ].ToString();
+                sex = result.Rows[ 0 ][ 1 ].ToString();
+                info = result.Rows[ 0 ][ 2 ].ToString();
+            }
+            else
+            {
+                name = "";
+                sex = "";
+                info = "";
+                throw new Exception( "email not found in DB" );
+            }
+
+        }
 
         public static string Login(string e, string p)
         {
@@ -31,10 +58,10 @@ namespace music
             if ( result.Rows.Count == 1 )
             {
                 islogin = true;
-                email = e;
-                name=result.Rows[0][2].ToString();
-                sex = result.Rows[0][3].ToString();
-                info = result.Rows[0][4].ToString(); 
+                user.email = e;
+                user.name =result.Rows[0][2].ToString();
+                user.sex = result.Rows[0][3].ToString();
+                user.info = result.Rows[0][4].ToString(); 
                 return "Success";
             }
             else
@@ -45,10 +72,10 @@ namespace music
         public static void Logout()
         {
             islogin = false;
-            email = "";
-            name = "";
-            sex = "";
-            info = "";
+            user.email = "";
+            user.name = "";
+            user.sex = "";
+            user.info = "";
         }
         public static string Register(string e, string p )
         {
@@ -56,7 +83,7 @@ namespace music
                 return "無法辨識的email";
             if ( !validatePassword( p ) )
                 return "密碼格式錯誤(須為A-Z,a-z,0-9)";
-            int result = DB.SQL(String.Format("INSERT INTO account(email , password , name ,sex ,info) VALUES ('{0}','{1}','{2}','{3}','{4}')", e, p, name, sex, info));
+            int result = DB.SQL(String.Format("INSERT INTO account(email , password , name ,sex ,info) VALUES ('{0}','{1}','{2}','{3}','{4}')", e, p, user.name , user.sex , user.info ));
             if (result == 1)
                 return "Success";
             else
@@ -76,12 +103,12 @@ namespace music
         }
         public static string ChangeInfo(string n, string s, string i)
         {
-            int result = DB.SQL(String.Format("UPDATE account SET name = '{1}',sex='{2}',info='{3}'  WHERE email = '{0}'", email, n,s,i));
+            int result = DB.SQL(String.Format("UPDATE account SET name = '{1}',sex='{2}',info='{3}'  WHERE email = '{0}'", user.email , n,s,i));
             if (result == 1)
             {
-                name = n;
-                sex = s;
-                info = i;
+                user.name = n;
+                user.sex = s;
+                user.info = i;
                 return "Success";
             }
             else

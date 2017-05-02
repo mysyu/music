@@ -17,25 +17,6 @@ namespace music
         {
             InitializeComponent();
         }
-
-        public void button1_Click( object sender , EventArgs e )
-        {
-            new Music( "" ).Upload("");
-        }
-
-        public void button2_Click( object sender , EventArgs e )
-        {
-            comboBox1.Items.Clear();
-            comboBox1.Items.Add( "IU.mp3" );
-        }
-
-        public void comboBox1_SelectedIndexChanged( object sender , EventArgs e )
-        {
-            musicPlayer.URL = "http://mysyu.ddns.net/UploadMusic/" + comboBox1.SelectedItem;
-            PlayList.current.Add( new Music( "0000000000" ) );
-            musicPlayer.Ctlcontrols.stop();
-        }
-
         public void timer1_Tick( object sender , EventArgs e )
         {
             label1.Text = musicPlayer.Ctlcontrols.currentPositionString;
@@ -52,44 +33,24 @@ namespace music
             formMusicUpload.Show();
         }
 
-        public void button3_Click( object sender , EventArgs e )
-        {
-            int select = listBox1.SelectedIndex;
-            String now = "[" + musicPlayer.Ctlcontrols.currentPositionString + "] " + listBox1.SelectedItem;
-            listBox1.Items.RemoveAt( select );
-            listBox1.Items.Insert( select , now );
-            listBox1.SelectedIndex = ( select + 1 ) % listBox1.Items.Count;
-        }
-
         public void formMain_FormClosing( object sender , FormClosingEventArgs e )
         {
             if( DB.Connect )
                 DB.Close();
-            PlayList.save();
+            MusicList.save();
         }
-        public void button5_Click(object sender, EventArgs e)
-        {
-            String tmp="";
-            for(int i=0;i<listBox1.Items.Count;i++)
-            {
-                tmp =tmp+listBox1.Items[i].ToString()+"\n";
-            }
-            new Lyrics(tmp);
-            MessageBox.Show("Success");
-        }
-
-        public void refreshPlaylist()
+        public void refreshMusiclist()
         {
             treeView1.Nodes.Clear();
             treeView1.Nodes.Add( "本機" );
-            foreach ( String l in PlayList.local.Keys )
+            foreach ( String l in MusicList.local.Keys )
             {
                 treeView1.Nodes[ 0 ].Nodes.Add( l );
             }
             if ( Account.islogin )
             {
                 treeView1.Nodes.Add( account.Text );
-                foreach ( String l in PlayList.account.Keys )
+                foreach ( String l in MusicList.account.Keys )
                 {
                     treeView1.Nodes[ 0 ].Nodes.Add( l );
                 }
@@ -149,15 +110,15 @@ namespace music
         {
             Account.Logout();
             account.Text = "登入";
-            refreshPlaylist();
+            refreshMusiclist();
         }
 
         private void FormMain_Shown( object sender , EventArgs e )
         {
             timer1.Start();
             network_Detect.Start();
-            PlayList.load();
-            refreshPlaylist();
+            MusicList.load();
+            refreshMusiclist();
             Log.Debug( "start" );
             main = this;
         }
@@ -181,26 +142,16 @@ namespace music
             }
         }
 
-        private void music_owner_Click(object sender, EventArgs e)
+        private void button6_Click( object sender , EventArgs e )
         {
-            FormMusicOwner formMusicOwner = new FormMusicOwner();
-            formMusicOwner.TopLevel = false;
-            formMusicOwner.Dock = DockStyle.Fill;
-            formMusicOwner.FormBorderStyle = FormBorderStyle.None;
-            mainPanel.Controls.Add(formMusicOwner);
-            formMusicOwner.BringToFront();
-            formMusicOwner.Show();
-        }
-
-        private void Music_Info_Click(object sender, EventArgs e)
-        {
-            FormMusicInfo formMusicInfo = new FormMusicInfo();
-            formMusicInfo.TopLevel = false;
-            formMusicInfo.Dock = DockStyle.Fill;
-            formMusicInfo.FormBorderStyle = FormBorderStyle.None;
-            mainPanel.Controls.Add(formMusicInfo);
-            formMusicInfo.BringToFront();
-            formMusicInfo.Show();
+            FormMusicList formMusicList = new FormMusicList();
+            formMusicList.TopLevel = false;
+            formMusicList.Dock = DockStyle.Fill;
+            formMusicList.FormBorderStyle = FormBorderStyle.None;
+            mainPanel.Controls.Add( formMusicList );
+            formMusicList.BringToFront();
+            formMusicList.Set( MusicList.current );
+            formMusicList.Show();
         }
     }
 }

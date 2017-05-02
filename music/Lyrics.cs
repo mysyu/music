@@ -18,7 +18,7 @@ namespace music
 
         public Lyrics(String l)
         {
-            completeLyrics = l;
+         /*   completeLyrics = l;
             string pattern = Regex.Escape("[") + ":]";
             MatchCollection matches = Regex.Matches(l, pattern);
             if(matches.Count>0)
@@ -46,7 +46,7 @@ namespace music
                 {
                     lyrics.Add(line);
                 }
-            }
+            }*/
         }
 
         public String getTime(int n)

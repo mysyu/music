@@ -15,9 +15,9 @@ namespace music
         public FormAccountInfo()
         {
             InitializeComponent();
-            name.Text = Account.name;
-            sex.Text = Account.sex;
-            info.Text = Account.info;
+            name.Text = Account.user.name;
+            sex.Text = Account.user.sex;
+            info.Text = Account.user.info;
         }
 
         private void save_Click(object sender, EventArgs e)
@@ -26,10 +26,10 @@ namespace music
             if (message.Text.Equals("Success"))
             {
                 this.Close();
-                if (Account.name == "")
-                    FormMain.main.account.Text = Account.email;
+                if (Account.user.name == "")
+                    FormMain.main.account.Text = Account.user.email;
                 else
-                    FormMain.main.account.Text = Account.name;
+                    FormMain.main.account.Text = Account.user.name;
             }
         }
 

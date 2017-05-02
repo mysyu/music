@@ -11,6 +11,7 @@ namespace music
     {
         public String ID;
         public String name;
+        public String extension;
         public String singer;
         public String email;
         public String tag;
@@ -22,6 +23,7 @@ namespace music
         {
             ID = "";
             name = "";
+            extension = "";
             singer = "";
             email = "";
             tag = "";
@@ -32,36 +34,39 @@ namespace music
 
         public Music(String id)
         {
-            DataTable result = DB.Select(String.Format("select name , singer , email , tag , lyrics , info from uploadmusic where ID = '{0}'", id));
+            DataTable result = DB.Select(String.Format( "select name , extension , singer , email , tag , lyrics , info from uploadmusic where ID = '{0}'" , id));
             if ( result.Rows.Count == 1 )
             {
                 ID = id;
                 name = result.Rows[ 0 ][ 0 ].ToString();
-                singer = result.Rows[ 0 ][ 1 ].ToString();
-                email = result.Rows[0][2].ToString();
-                tag = result.Rows[ 0 ][ 3 ].ToString();
-                lyrics = new Lyrics( result.Rows[ 0 ][ 4 ].ToString() );
-                info = result.Rows[ 0 ][ 5 ].ToString();
+                extension = result.Rows[ 0 ][ 1 ].ToString();
+                singer = result.Rows[ 0 ][ 2 ].ToString();
+                email = result.Rows[0][ 3 ].ToString();
+                tag = result.Rows[ 0 ][ 4 ].ToString();
+                lyrics = new Lyrics( result.Rows[ 0 ][ 5 ].ToString() );
+                info = result.Rows[ 0 ][ 6 ].ToString();
                 time = "";
             }
             else
             {
                 ID = "";
                 name = "";
+                extension = "";
                 singer = "";
                 email = "";
                 tag = "";
                 info = "";
                 time = "";
                 lyrics = new Lyrics( "" );
-                 throw new Exception( "music not found in DB" );
+                throw new Exception( "music not found in DB" );
             }
         }
 
-        public Music( String n , String s , String t , String i , String l )
+        public Music( String n , String e , String s , String t , String i , String l )
         {
             ID = "";
             name = n;
+            extension = e;
             singer = s;
             email = "";
             tag = t;
@@ -81,14 +86,14 @@ namespace music
             if( !filename.EndsWith( ".mp3" ) && !filename.EndsWith( ".wav" ) )
                 return "你必須選擇正確的音樂檔案";
             generateID();
-            if ( DB.SQL( String.Format( "insert into uploadmusic( ID , name , singer , upload , tag , lyrics , info ) values( '{0}' , '{1}' , '{2}' , '{3}' , '{4}' , '{5}' , '{6}' )" , ID , name , singer , Account.email , tag , lyrics.completeLyrics , info ) ) != 1 )
+            if ( DB.SQL( String.Format( "insert into uploadmusic( ID , name , extension , singer , email , tag , lyrics , info ) values( '{0}' , '{1}' , '{2}' , '{3}' , '{4}' , '{5}' , '{6}' , '{7}' )" , ID , name , extension , singer , Account.user.email , tag , lyrics.completeLyrics , info ) ) != 1 )
                 return "Fail";
             try
             {
                 using ( Stream musicStream = new FileStream(filename, FileMode.Open))
                 {
                     {
-                        FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://1.34.30.96:21/" + Path.GetFileName(filename));
+                        FtpWebRequest request = (FtpWebRequest)WebRequest.Create( String.Format( "ftp://1.34.30.96:21/{0}{1}" , ID , extension ) );
                         request.Method = WebRequestMethods.Ftp.UploadFile;
                         request.Credentials = new NetworkCredential("UploadMusic", "UploadMusic");
 
@@ -99,7 +104,7 @@ namespace music
 
                         using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
                         {
-                            if ( response.StatusDescription == "226 Transfer complete." )
+                            if ( response.StatusDescription.StartsWith( "226 Transfer complete." ) )
                                 return "Success";
                             DB.SQL( String.Format( "delete from uploadmusic where ID = '{0}'" , ID ) );
                         }
@@ -125,6 +130,11 @@ namespace music
                 if ( DB.Select( String.Format( "select * from uploadmusic where ID = '{0}'" , ID ) ).Rows.Count == 0 )
                     break;
             }
+        }
+
+        public override String ToString()
+        {
+            return name;
         }
     }
 

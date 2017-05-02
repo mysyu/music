@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace music
 {
-    public static class PlayList
+    public static class MusicList
     {
         public static List<Music> current = new List<Music>();
         public static Dictionary<String , List<Music>> local = new Dictionary<string, List<Music>>();
@@ -20,17 +20,17 @@ namespace music
             XmlDocument doc = new XmlDocument();
             XmlElement root = doc.CreateElement( "current" );
             XmlElement leaf;
-            foreach ( Music m in PlayList.current )
+            foreach ( Music m in MusicList.current )
             {
                 leaf = doc.CreateElement( "music" );
                 leaf.SetAttribute( "ID" , m.ID );
                 root.AppendChild( leaf );
             }
             doc.AppendChild( root );
-            foreach ( String l in PlayList.local.Keys )
+            foreach ( String l in MusicList.local.Keys )
             {
                 root = doc.CreateElement( l );
-                foreach ( Music m in PlayList.local[l] )
+                foreach ( Music m in MusicList.local[l] )
                 {
                     leaf = doc.CreateElement( "music" );
                     leaf.SetAttribute( "ID" , m.ID );
@@ -44,7 +44,7 @@ namespace music
         {
             if ( Account.islogin )
             {
-                DataTable result = DB.Select( String.Format( "select name , music from playlist where email = '{0}'" , Account.email ) );
+                DataTable result = DB.Select( String.Format( "select name , music from musiclist where email = '{0}'" , Account.user.email ) );
                 foreach ( DataRow row in result.Rows )
                 {
                     if( !account.ContainsKey( row[ 0 ].ToString() ) )
@@ -74,6 +74,17 @@ namespace music
                     }
                 }
             }
+        }
+
+        public static List<Music> search( String command )
+        {
+            DataTable result = DB.Select( command );
+            List<Music> l = new List<Music>();
+            foreach ( DataRow row in result.Rows )
+            {
+                 l.Add( new Music( row[ 0 ].ToString() ) );
+            }
+            return l;
         }
 
     }
