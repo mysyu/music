@@ -113,7 +113,7 @@ namespace music
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                throw ex;
             }
             return "Fail";
         }

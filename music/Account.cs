@@ -12,10 +12,10 @@ namespace music
     {
         public static bool islogin = false;
         public static Account user = new Account();
-        public string email = "";
-        public string name = "";
-        public string sex = "";
-        public string info = "";
+        public String email = "";
+        public String name = "";
+        public String sex = "";
+        public String info = "";
 
         public Account()
         {
@@ -43,7 +43,7 @@ namespace music
 
         }
 
-        public static string Login(string e, string p)
+        public static String Login(String e, String p)
         {
             if ( !validateEmail( e ) )
                 return "無法辨識的email";
@@ -77,7 +77,7 @@ namespace music
             user.sex = "";
             user.info = "";
         }
-        public static string Register(string e, string p )
+        public static String Register(String e, String p )
         {
             if ( !validateEmail( e ) )
                 return "無法辨識的email";
@@ -89,7 +89,7 @@ namespace music
             else
                 return "email已被註冊";
         }
-        public static string ChangePassword( string e , string p )
+        public static String ChangePassword( String e , String p )
         {
             if ( !validateEmail( e ) )
                 return "無法辨識的email";
@@ -101,7 +101,7 @@ namespace music
             else
                 return "email錯誤";
         }
-        public static string ChangeInfo(string n, string s, string i)
+        public static String ChangeInfo(String n, String s, String i)
         {
             int result = DB.SQL(String.Format("UPDATE account SET name = '{1}',sex='{2}',info='{3}'  WHERE email = '{0}'", user.email , n,s,i));
             if (result == 1)
@@ -116,7 +116,7 @@ namespace music
         }
 
 
-        public static bool validateEmail( string e )
+        public static bool validateEmail( String e )
         {
             try
             {
@@ -131,7 +131,7 @@ namespace music
             }
         }
 
-        public static bool validatePassword( string p )
+        public static bool validatePassword( String p )
         {
             try
             {

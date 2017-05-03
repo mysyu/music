@@ -38,12 +38,13 @@
             this.account = new System.Windows.Forms.Button();
             this.musicListPanel = new System.Windows.Forms.Panel();
             this.currentList = new System.Windows.Forms.Panel();
+            this.lyrics = new System.Windows.Forms.Button();
+            this.list = new System.Windows.Forms.Button();
             this.name = new System.Windows.Forms.Label();
             this.singer = new System.Windows.Forms.Label();
             this.currentTime = new System.Windows.Forms.Label();
             this.musicList = new System.Windows.Forms.TreeView();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
             this.account_Option = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.account_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.account_music = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,8 +53,7 @@
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.network_Detect = new System.Windows.Forms.Timer(this.components);
             this.musicPlayer = new music.MusicPlayer();
-            this.list = new System.Windows.Forms.Button();
-            this.lyrics = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.musicListPanel.SuspendLayout();
             this.currentList.SuspendLayout();
@@ -139,6 +139,26 @@
             this.currentList.Size = new System.Drawing.Size(200, 100);
             this.currentList.TabIndex = 2;
             // 
+            // lyrics
+            // 
+            this.lyrics.Location = new System.Drawing.Point(117, 70);
+            this.lyrics.Name = "lyrics";
+            this.lyrics.Size = new System.Drawing.Size(75, 23);
+            this.lyrics.TabIndex = 14;
+            this.lyrics.Text = "顯示歌詞";
+            this.lyrics.UseVisualStyleBackColor = true;
+            this.lyrics.Click += new System.EventHandler(this.lyrics_Click);
+            // 
+            // list
+            // 
+            this.list.Location = new System.Drawing.Point(117, 45);
+            this.list.Name = "list";
+            this.list.Size = new System.Drawing.Size(75, 23);
+            this.list.TabIndex = 13;
+            this.list.Text = "播放列表";
+            this.list.UseVisualStyleBackColor = true;
+            this.list.Click += new System.EventHandler(this.list_Click);
+            // 
             // name
             // 
             this.name.AutoSize = true;
@@ -185,16 +205,6 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(800, 500);
             this.mainPanel.TabIndex = 12;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(39, 52);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 12;
-            this.button6.Text = "current";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // account_Option
             // 
@@ -255,25 +265,15 @@
             this.musicPlayer.Size = new System.Drawing.Size(1000, 45);
             this.musicPlayer.TabIndex = 1;
             // 
-            // list
+            // button6
             // 
-            this.list.Location = new System.Drawing.Point(117, 45);
-            this.list.Name = "list";
-            this.list.Size = new System.Drawing.Size(75, 23);
-            this.list.TabIndex = 13;
-            this.list.Text = "播放列表";
-            this.list.UseVisualStyleBackColor = true;
-            this.list.Click += new System.EventHandler(this.list_Click);
-            // 
-            // lyrics
-            // 
-            this.lyrics.Location = new System.Drawing.Point(117, 70);
-            this.lyrics.Name = "lyrics";
-            this.lyrics.Size = new System.Drawing.Size(75, 23);
-            this.lyrics.TabIndex = 14;
-            this.lyrics.Text = "顯示歌詞";
-            this.lyrics.UseVisualStyleBackColor = true;
-            this.lyrics.Click += new System.EventHandler(this.lyrics_Click);
+            this.button6.Location = new System.Drawing.Point(39, 52);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 12;
+            this.button6.Text = "current";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // FormMain
             // 
@@ -318,7 +318,6 @@
         public System.Windows.Forms.ToolStripMenuItem logout;
         public System.Windows.Forms.NotifyIcon notifyIcon;
         public System.Windows.Forms.Timer network_Detect;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel currentList;
         public System.Windows.Forms.Label currentTime;
@@ -326,6 +325,7 @@
         public System.Windows.Forms.Label singer;
         public System.Windows.Forms.Button lyrics;
         public System.Windows.Forms.Button list;
+        private System.Windows.Forms.Button button6;
     }
 }
 

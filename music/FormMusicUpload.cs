@@ -68,17 +68,24 @@ namespace music
 
         private void upload_button_Click(object sender, EventArgs e)
         {
-            string t = "";
+            String t = "";
             foreach( CheckBox i in tag.Controls.OfType<CheckBox>() )
             {
                 if (i.Checked)
                     t += ( i.Text + ";" );
             }
-            Music m = new Music( name.Text , Path.GetExtension( music.Text ) , singer.Text , t , info.Text , lyrics.Text );
-            message.Text = m.Upload(music.Text);
-            if ( message.Text.Equals( "Success" ) )
+            try
             {
-                this.Close();
+                Music m = new Music( name.Text , Path.GetExtension( music.Text ) , singer.Text , t , info.Text , lyrics.Text );
+                message.Text = m.Upload( music.Text );
+                if ( message.Text.Equals( "Success" ) )
+                {
+                    this.Close();
+                }
+            }
+            catch ( Exception ex )
+            {
+                MessageBox.Show( ex.Message );
             }
         }
     }

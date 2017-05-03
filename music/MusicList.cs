@@ -12,65 +12,55 @@ namespace music
     public static class MusicList
     {
         public static List<Music> current = new List<Music>();
-        public static Dictionary<String , List<Music>> local = new Dictionary<string, List<Music>>();
-        public static Dictionary<String , List<Music>> account = new Dictionary<string , List<Music>>();
+        public static List<Music> local = new List<Music>();
+        public static List<Music> account = new List<Music>();
 
         public static void save()
         {
             XmlDocument doc = new XmlDocument();
-            XmlElement root = doc.CreateElement( "current" );
-            XmlElement leaf;
+            XmlElement root;
+            XmlElement type;
+            XmlElement musicname;
+            root = doc.CreateElement( "musiclist" );
+            type = doc.CreateElement( "current" );
             foreach ( Music m in MusicList.current )
             {
-                leaf = doc.CreateElement( "music" );
-                leaf.SetAttribute( "ID" , m.ID );
-                root.AppendChild( leaf );
+                musicname = doc.CreateElement( "music" );
+                musicname.SetAttribute( "ID" , m.ID );
+                type.AppendChild( musicname );
             }
-            doc.AppendChild( root );
-            foreach ( String l in MusicList.local.Keys )
+            root.AppendChild( type );
+            type = doc.CreateElement( "local" );
+            foreach ( Music m in MusicList.local )
             {
-                root = doc.CreateElement( l );
-                foreach ( Music m in MusicList.local[l] )
-                {
-                    leaf = doc.CreateElement( "music" );
-                    leaf.SetAttribute( "ID" , m.ID );
-                    root.AppendChild( leaf );
-                }
-                doc.AppendChild( root );
+                musicname = doc.CreateElement( "music" );
+                musicname.SetAttribute( "ID" , m.ID );
+                type.AppendChild( musicname );
             }
+            root.AppendChild( type );
+            doc.AppendChild( root );
             doc.Save( "music.xml" );
         }
         public static void load()
         {
             if ( Account.islogin )
             {
-                DataTable result = DB.Select( String.Format( "select name , music from musiclist where email = '{0}'" , Account.user.email ) );
+                DataTable result = DB.Select( String.Format( "select music from musiclist where email = '{0}'" , Account.user.email ) );
                 foreach ( DataRow row in result.Rows )
                 {
-                    if( !account.ContainsKey( row[ 0 ].ToString() ) )
-                        account.Add( row[0].ToString() , new List<Music>() );
-                    account[ row[ 0 ].ToString() ].Add( new Music( row[1].ToString() ) );
+                    account.Add( new Music( row[ 0 ].ToString() ) );
                 }
             }
             else if ( File.Exists( "music.xml" ) )
             {
                 XmlDocument doc = new XmlDocument();
                 doc.Load( "music.xml" );
-                foreach ( XmlNode root in doc.ChildNodes )
+                foreach ( XmlNode type in doc.ChildNodes[ 0 ].ChildNodes )
                 {
-                    if ( root.Name == "current" )
+                    List<Music> now = ( type.Name == "current" ? current : local );
+                    foreach ( XmlNode musicname in type.ChildNodes )
                     {
-                        foreach ( XmlNode leaf in root.ChildNodes )
-                        {
-                            current.Add( new Music( leaf.Attributes["ID"].InnerText ) );
-                        }
-                    }
-                    else
-                    {
-
-                        local.Add( root.Name , new List<Music>() );
-                        foreach ( XmlNode leaf in root.ChildNodes )
-                            local[ root.Name ].Add( new Music( leaf.Attributes[ "IS" ].InnerText ) );
+                        now.Add( new Music( musicname.Attributes[ "ID" ].InnerText ) );
                     }
                 }
             }
@@ -82,9 +72,50 @@ namespace music
             List<Music> l = new List<Music>();
             foreach ( DataRow row in result.Rows )
             {
-                 l.Add( new Music( row[ 0 ].ToString() ) );
+                l.Add( new Music( row[ 0 ].ToString() ) );
             }
             return l;
+        }
+
+        public static bool add( String t , Music m )
+        {
+            List<Music> now;
+            switch ( t )
+            {
+                case "local":
+                    now = local;
+                    break;
+                case "account":
+                    now = account;
+                    break;
+                default:
+                    return false;
+            }
+            if ( now.Contains( m ) )
+                return false;
+            now.Add( m );
+            save();
+            return true;
+        }
+
+        public static void add( Music m , bool p )
+        {
+            if ( !current.Contains( m ) )
+            {
+                if ( p )
+                    current.Insert( 0 , m );
+                else
+                    current.Add( m );
+            }
+            else
+            {
+                if ( p )
+                {
+                    current.Remove( m );
+                    current.Insert( 0 , m );
+                }
+            }
+            save();
         }
 
     }

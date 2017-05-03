@@ -59,7 +59,7 @@ namespace music
                     break;
                 case 5:
                     FormMain.main.musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , ( ( Music ) dataGridView1.Rows[ e.RowIndex ].Cells[ 0 ].Value ).ID , ( (Music) dataGridView1.Rows[ e.RowIndex ].Cells[ 0 ].Value ).extension );
-                    MusicList.current.Add( (Music) dataGridView1.Rows[ e.RowIndex ].Cells[ 0 ].Value );
+                    MusicList.add( (Music) dataGridView1.Rows[ e.RowIndex ].Cells[ 0 ].Value , true );
                     break;
 
             }

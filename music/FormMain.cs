@@ -4,7 +4,10 @@ using System.Drawing;
 using System.Data;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using System.Linq;
 using log4net;
+
+
 
 namespace music
 {
@@ -46,16 +49,16 @@ namespace music
         {
             musicList.Nodes.Clear();
             musicList.Nodes.Add( "本機" );
-            foreach ( String l in MusicList.local.Keys )
+            foreach ( Music m in MusicList.local  )
             {
-                musicList.Nodes[ 0 ].Nodes.Add( l );
+                musicList.Nodes[ 0 ].Nodes.Add( m.name );
             }
             if ( Account.islogin )
             {
                 musicList.Nodes.Add( account.Text );
-                foreach ( String l in MusicList.account.Keys )
+                foreach ( Music m in MusicList.account )
                 {
-                    musicList.Nodes[ 0 ].Nodes.Add( l );
+                    musicList.Nodes[ 0 ].Nodes.Add( m.name );
                 }
             }
         }
@@ -144,18 +147,6 @@ namespace music
                 this.Close();
             }
         }
-
-        private void button6_Click( object sender , EventArgs e )
-        {
-            FormMusicList formMusicList = new FormMusicList();
-            formMusicList.TopLevel = false;
-            formMusicList.Dock = DockStyle.Fill;
-            formMusicList.FormBorderStyle = FormBorderStyle.None;
-            mainPanel.Controls.Add( formMusicList );
-            formMusicList.BringToFront();
-            formMusicList.Set( MusicList.current );
-            formMusicList.Show();
-        }
         private void list_Click( object sender , EventArgs e )
         {
             FormMusicList formMusicList = new FormMusicList();
@@ -176,8 +167,19 @@ namespace music
             formMusicLyrics.FormBorderStyle = FormBorderStyle.None;
             mainPanel.Controls.Add( formMusicLyrics );
             formMusicLyrics.BringToFront();
-            formMusicLyrics.Set( MusicList.current[ 0 ] );
+            formMusicLyrics.Set( MusicList.current[0] );
             formMusicLyrics.Show();
+        }
+
+        private void button6_Click( object sender , EventArgs e )
+        {
+            FormMusicList formMusicList = new FormMusicList();
+            formMusicList.TopLevel = false;
+            formMusicList.Dock = DockStyle.Fill;
+            formMusicList.FormBorderStyle = FormBorderStyle.None;
+            mainPanel.Controls.Add( formMusicList );
+            formMusicList.BringToFront();
+            formMusicList.Show();
         }
     }
 }
