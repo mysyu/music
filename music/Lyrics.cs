@@ -6,27 +6,35 @@ using System.Threading.Tasks;
 using log4net;
 using System.Globalization;
 using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace music
 {
     public class Lyrics
     {
-        public string completeLyrics;
-        public Dictionary<String , String> lyrics;
+        public String completeLyrics;
+        public String[] lyrics;
 
-        public Lyrics(String l)
+        public Lyrics( String l )
         {
             completeLyrics = l;
+            lyrics = l.Replace( "\r" , "" ).Split( '\n' );
         }
 
-        public String getTime(int n)
+        public String getTime( int n , String t )
         {
-            return null;
+            if ( Regex.IsMatch( lyrics[ n ] , @"[\d\d:\d\d]" ) && lyrics[ n ].Substring( 1 , 5 ).CompareTo( t ) <= 0 )
+                return lyrics[ n ].Substring( 1 , 5 );
+            else
+                return "";
         }
 
-        public int getLine(TimeSpan t)
+        public int getLine( String t )
         {
-            return 0;
+            int now = 0;
+            while ( Regex.IsMatch( lyrics[ now + 1 ] , @"[\d\d:\d\d]" ) && lyrics[ now + 1 ].Substring( 1 , 5 ).CompareTo( t ) <= 0 )
+                now++;
+            return now;
         }
     }
 }

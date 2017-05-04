@@ -23,12 +23,12 @@ namespace music
             if ( message.Text.Equals( "Success" ) )
             {
                 this.Close();
-                if (Account.name == "")
-                    FormMain.main.account.Text = Account.email;
+                if (Account.user.name == "")
+                    FormMain.main.account.Text = Account.user.email;
                 else
-                    FormMain.main.account.Text = Account.name;
+                    FormMain.main.account.Text = Account.user.name;
             }
-            FormMain.main.refreshPlaylist();
+            FormMain.main.refreshMusiclist();
         }
 
         private void forget_LinkClicked( object sender , LinkLabelLinkClickedEventArgs e )

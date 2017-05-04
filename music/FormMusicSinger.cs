@@ -10,23 +10,23 @@ using System.Windows.Forms;
 
 namespace music
 {
-    public partial class FormMusicInfo : Form
+    public partial class FormMusicSinger : Form
     {
-        public FormMusicInfo()
+        public FormMusicSinger()
         {
             InitializeComponent();
         }
-
-        public void Set( Music music )
+        public void Set( Account singer )
         {
-            singer.Text = music.singer;
-            tag.Text = music.tag;
-            info.Text = music.info;
+            name.Text = singer.name;
+            sex.Text = singer.sex;
+            info.Text = singer.info;
         }
 
         private void correct_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 }

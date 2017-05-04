@@ -1,6 +1,6 @@
 ﻿namespace music
 {
-    partial class FormMusicOwner
+    partial class FormMusicSinger
     {
         /// <summary>
         /// Required designer variable.
@@ -11,13 +11,13 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
+        protected override void Dispose( bool disposing )
         {
-            if (disposing && (components != null))
+            if ( disposing && ( components != null ) )
             {
                 components.Dispose();
             }
-            base.Dispose(disposing);
+            base.Dispose( disposing );
         }
 
         #region Windows Form Designer generated code
@@ -28,39 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Owner_name = new System.Windows.Forms.TextBox();
-            this.Owner_sex = new System.Windows.Forms.TextBox();
-            this.Owner_info = new System.Windows.Forms.TextBox();
+            this.name = new System.Windows.Forms.TextBox();
+            this.sex = new System.Windows.Forms.TextBox();
+            this.info = new System.Windows.Forms.TextBox();
             this.correct = new System.Windows.Forms.Button();
             this.labal1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // Owner_name
+            // name
             // 
-            this.Owner_name.Location = new System.Drawing.Point(136, 40);
-            this.Owner_name.Name = "Owner_name";
-            this.Owner_name.ReadOnly = true;
-            this.Owner_name.Size = new System.Drawing.Size(100, 22);
-            this.Owner_name.TabIndex = 1;
+            this.name.Location = new System.Drawing.Point(136, 40);
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Size = new System.Drawing.Size(100, 22);
+            this.name.TabIndex = 1;
             // 
-            // Owner_sex
+            // sex
             // 
-            this.Owner_sex.Location = new System.Drawing.Point(136, 89);
-            this.Owner_sex.Name = "Owner_sex";
-            this.Owner_sex.ReadOnly = true;
-            this.Owner_sex.Size = new System.Drawing.Size(100, 22);
-            this.Owner_sex.TabIndex = 2;
+            this.sex.Location = new System.Drawing.Point(136, 89);
+            this.sex.Name = "sex";
+            this.sex.ReadOnly = true;
+            this.sex.Size = new System.Drawing.Size(100, 22);
+            this.sex.TabIndex = 2;
             // 
-            // Owner_info
+            // info
             // 
-            this.Owner_info.Location = new System.Drawing.Point(136, 142);
-            this.Owner_info.Multiline = true;
-            this.Owner_info.Name = "Owner_info";
-            this.Owner_info.ReadOnly = true;
-            this.Owner_info.Size = new System.Drawing.Size(150, 150);
-            this.Owner_info.TabIndex = 3;
+            this.info.Location = new System.Drawing.Point(136, 142);
+            this.info.Multiline = true;
+            this.info.Name = "info";
+            this.info.ReadOnly = true;
+            this.info.Size = new System.Drawing.Size(150, 150);
+            this.info.TabIndex = 3;
             // 
             // correct
             // 
@@ -99,7 +99,7 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "個人資料";
             // 
-            // FormMusicOwner
+            // FormMusicSinger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -108,10 +108,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labal1);
             this.Controls.Add(this.correct);
-            this.Controls.Add(this.Owner_info);
-            this.Controls.Add(this.Owner_sex);
-            this.Controls.Add(this.Owner_name);
-            this.Name = "FormMusicOwner";
+            this.Controls.Add(this.info);
+            this.Controls.Add(this.sex);
+            this.Controls.Add(this.name);
+            this.Name = "FormMusicSinger";
             this.Text = "Forms";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -120,9 +120,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox Owner_name;
-        private System.Windows.Forms.TextBox Owner_sex;
-        private System.Windows.Forms.TextBox Owner_info;
+        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.TextBox sex;
+        private System.Windows.Forms.TextBox info;
         private System.Windows.Forms.Button correct;
         private System.Windows.Forms.Label labal1;
         private System.Windows.Forms.Label label2;

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.correct = new System.Windows.Forms.Button();
-            this.Singer = new System.Windows.Forms.TextBox();
-            this.Type = new System.Windows.Forms.TextBox();
-            this.Info = new System.Windows.Forms.TextBox();
+            this.singer = new System.Windows.Forms.TextBox();
+            this.tag = new System.Windows.Forms.TextBox();
+            this.info = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,30 +47,30 @@
             this.correct.UseVisualStyleBackColor = true;
             this.correct.Click += new System.EventHandler(this.correct_Click);
             // 
-            // Singer
+            // singer
             // 
-            this.Singer.Location = new System.Drawing.Point(192, 48);
-            this.Singer.Name = "Singer";
-            this.Singer.ReadOnly = true;
-            this.Singer.Size = new System.Drawing.Size(100, 22);
-            this.Singer.TabIndex = 1;
+            this.singer.Location = new System.Drawing.Point(192, 48);
+            this.singer.Name = "singer";
+            this.singer.ReadOnly = true;
+            this.singer.Size = new System.Drawing.Size(100, 22);
+            this.singer.TabIndex = 1;
             // 
-            // Type
+            // tag
             // 
-            this.Type.Location = new System.Drawing.Point(192, 100);
-            this.Type.Name = "Type";
-            this.Type.ReadOnly = true;
-            this.Type.Size = new System.Drawing.Size(100, 22);
-            this.Type.TabIndex = 2;
+            this.tag.Location = new System.Drawing.Point(192, 100);
+            this.tag.Name = "tag";
+            this.tag.ReadOnly = true;
+            this.tag.Size = new System.Drawing.Size(100, 22);
+            this.tag.TabIndex = 2;
             // 
-            // Info
+            // info
             // 
-            this.Info.Location = new System.Drawing.Point(192, 156);
-            this.Info.Multiline = true;
-            this.Info.Name = "Info";
-            this.Info.ReadOnly = true;
-            this.Info.Size = new System.Drawing.Size(150, 150);
-            this.Info.TabIndex = 3;
+            this.info.Location = new System.Drawing.Point(192, 156);
+            this.info.Multiline = true;
+            this.info.Name = "info";
+            this.info.ReadOnly = true;
+            this.info.Size = new System.Drawing.Size(150, 150);
+            this.info.TabIndex = 3;
             // 
             // label1
             // 
@@ -107,9 +107,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Info);
-            this.Controls.Add(this.Type);
-            this.Controls.Add(this.Singer);
+            this.Controls.Add(this.info);
+            this.Controls.Add(this.tag);
+            this.Controls.Add(this.singer);
             this.Controls.Add(this.correct);
             this.Name = "FormMusicInfo";
             this.Text = "FormMusicInfo";
@@ -121,9 +121,9 @@
         #endregion
 
         private System.Windows.Forms.Button correct;
-        private System.Windows.Forms.TextBox Singer;
-        private System.Windows.Forms.TextBox Type;
-        private System.Windows.Forms.TextBox Info;
+        private System.Windows.Forms.TextBox singer;
+        private System.Windows.Forms.TextBox tag;
+        private System.Windows.Forms.TextBox info;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
