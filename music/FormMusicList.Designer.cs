@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.components = new System.ComponentModel.Container();
+            this.musicList = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.singer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.musicInfo = new System.Windows.Forms.DataGridViewButtonColumn();
             this.singerInfo = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.addMusicList = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.addCurrent = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.addLocal = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.addAccount = new System.Windows.Forms.DataGridViewButtonColumn();
             this.play = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tag = new System.Windows.Forms.GroupBox();
             this.tag_label1 = new System.Windows.Forms.Label();
@@ -46,36 +49,40 @@
             this.tag4 = new System.Windows.Forms.CheckBox();
             this.tag6 = new System.Windows.Forms.CheckBox();
             this.tag5 = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.checkLogin = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.musicList)).BeginInit();
             this.tag.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // musicList
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.musicList.AllowUserToAddRows = false;
+            this.musicList.AllowUserToDeleteRows = false;
+            this.musicList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.musicList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
             this.singer,
             this.musicInfo,
             this.singerInfo,
-            this.addMusicList,
+            this.addCurrent,
+            this.addLocal,
+            this.addAccount,
             this.play});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 150);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(484, 311);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.musicList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.musicList.Location = new System.Drawing.Point(0, 150);
+            this.musicList.Name = "musicList";
+            this.musicList.ReadOnly = true;
+            this.musicList.RowTemplate.Height = 24;
+            this.musicList.Size = new System.Drawing.Size(484, 311);
+            this.musicList.TabIndex = 0;
+            this.musicList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.musicList_CellContentClick);
             // 
             // name
             // 
             this.name.HeaderText = "name";
             this.name.Name = "name";
             this.name.ReadOnly = true;
+            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // singer
             // 
@@ -95,11 +102,23 @@
             this.singerInfo.Name = "singerInfo";
             this.singerInfo.ReadOnly = true;
             // 
-            // addMusicList
+            // addCurrent
             // 
-            this.addMusicList.HeaderText = "addMusicList";
-            this.addMusicList.Name = "addMusicList";
-            this.addMusicList.ReadOnly = true;
+            this.addCurrent.HeaderText = "addCurrent";
+            this.addCurrent.Name = "addCurrent";
+            this.addCurrent.ReadOnly = true;
+            // 
+            // addLocal
+            // 
+            this.addLocal.HeaderText = "addLocal";
+            this.addLocal.Name = "addLocal";
+            this.addLocal.ReadOnly = true;
+            // 
+            // addAccount
+            // 
+            this.addAccount.HeaderText = "addAccount";
+            this.addAccount.Name = "addAccount";
+            this.addAccount.ReadOnly = true;
             // 
             // play
             // 
@@ -232,16 +251,21 @@
             this.tag5.UseVisualStyleBackColor = true;
             this.tag5.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
+            // checkLogin
+            // 
+            this.checkLogin.Enabled = true;
+            this.checkLogin.Tick += new System.EventHandler(this.checkLogin_Tick);
+            // 
             // FormMusicList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 461);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.musicList);
             this.Controls.Add(this.tag);
             this.Name = "FormMusicList";
             this.Text = "FormMusicList";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.musicList)).EndInit();
             this.tag.ResumeLayout(false);
             this.tag.PerformLayout();
             this.ResumeLayout(false);
@@ -249,13 +273,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn singer;
-        private System.Windows.Forms.DataGridViewButtonColumn musicInfo;
-        private System.Windows.Forms.DataGridViewButtonColumn singerInfo;
-        private System.Windows.Forms.DataGridViewButtonColumn addMusicList;
-        private System.Windows.Forms.DataGridViewButtonColumn play;
+        private System.Windows.Forms.DataGridView musicList;
         private System.Windows.Forms.GroupBox tag;
         private System.Windows.Forms.Label tag_label1;
         private System.Windows.Forms.CheckBox tag1;
@@ -267,5 +285,14 @@
         private System.Windows.Forms.CheckBox tag4;
         private System.Windows.Forms.CheckBox tag6;
         private System.Windows.Forms.CheckBox tag5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn singer;
+        private System.Windows.Forms.DataGridViewButtonColumn musicInfo;
+        private System.Windows.Forms.DataGridViewButtonColumn singerInfo;
+        private System.Windows.Forms.DataGridViewButtonColumn addCurrent;
+        private System.Windows.Forms.DataGridViewButtonColumn addLocal;
+        private System.Windows.Forms.DataGridViewButtonColumn addAccount;
+        private System.Windows.Forms.DataGridViewButtonColumn play;
+        private System.Windows.Forms.Timer checkLogin;
     }
 }

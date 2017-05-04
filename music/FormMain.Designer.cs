@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.totalTime = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.music_Timer = new System.Windows.Forms.Timer(this.components);
             this.home = new System.Windows.Forms.Button();
             this.menuPanel = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -45,6 +45,7 @@
             this.currentTime = new System.Windows.Forms.Label();
             this.musicList = new System.Windows.Forms.TreeView();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.account_Option = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.account_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.account_music = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +54,6 @@
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.network_Detect = new System.Windows.Forms.Timer(this.components);
             this.musicPlayer = new music.MusicPlayer();
-            this.button6 = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.musicListPanel.SuspendLayout();
             this.currentList.SuspendLayout();
@@ -71,9 +71,9 @@
             this.totalTime.TabIndex = 6;
             this.totalTime.Text = "歌曲時間     : 00:00";
             // 
-            // timer1
+            // music_Timer
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.music_Timer.Tick += new System.EventHandler(this.music_Timer_Tick );
             // 
             // home
             // 
@@ -206,6 +206,16 @@
             this.mainPanel.Size = new System.Drawing.Size(800, 500);
             this.mainPanel.TabIndex = 12;
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(39, 52);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 12;
+            this.button6.Text = "current";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // account_Option
             // 
             this.account_Option.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -265,16 +275,6 @@
             this.musicPlayer.Size = new System.Drawing.Size(1000, 45);
             this.musicPlayer.TabIndex = 1;
             // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(39, 52);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 12;
-            this.button6.Text = "current";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -287,7 +287,7 @@
             this.Controls.Add(this.musicPlayer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormMain";
-            this.Text = "Form1";
+            this.Text = "Music";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formMain_FormClosing);
             this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.menuPanel.ResumeLayout(false);
@@ -304,7 +304,7 @@
         #endregion
         public MusicPlayer musicPlayer;
         public System.Windows.Forms.Label totalTime;
-        public System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Timer music_Timer;
         public System.Windows.Forms.Button home;
         public System.Windows.Forms.Panel menuPanel;
         public System.Windows.Forms.Panel musicListPanel;

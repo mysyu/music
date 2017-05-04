@@ -32,7 +32,7 @@ namespace music
         public int getLine( String t )
         {
             int now = 0;
-            while ( Regex.IsMatch( lyrics[ now + 1 ] , @"[\d\d:\d\d]" ) && lyrics[ now + 1 ].Substring( 1 , 5 ).CompareTo( t ) <= 0 )
+            while ( now + 1 < lyrics.Length && Regex.IsMatch( lyrics[ now + 1 ] , @"[\d\d:\d\d]" ) && lyrics[ now + 1 ].Substring( 1 , 5 ).CompareTo( t ) <= 0 )
                 now++;
             return now;
         }

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Data;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using WMPLib;
 using System.Linq;
 using log4net;
 
@@ -20,7 +21,7 @@ namespace music
         {
             InitializeComponent();
         }
-        public void timer1_Tick( object sender , EventArgs e )
+        public void music_Timer_Tick( object sender , EventArgs e )
         {
             if( musicPlayer.Ctlcontrols.currentPositionString == "" )
                 currentTime.Text = "目前時間     : 00:00";
@@ -43,6 +44,8 @@ namespace music
         {
             if( DB.Connect )
                 DB.Close();
+            MusicList.time = currentTime.Text.Substring( 11 );
+            MusicList.status = ( musicPlayer.playState == WMPPlayState.wmppsPlaying );
             MusicList.save();
         }
         public void refreshMusiclist()
@@ -58,9 +61,10 @@ namespace music
                 musicList.Nodes.Add( account.Text );
                 foreach ( Music m in MusicList.account )
                 {
-                    musicList.Nodes[ 0 ].Nodes.Add( m.name );
+                    musicList.Nodes[ 1 ].Nodes.Add( m.name );
                 }
             }
+            musicList.ExpandAll();
         }
 
         private void account_Click( object sender , EventArgs e )
@@ -101,6 +105,14 @@ namespace music
 
         private void account_music_Click( object sender , EventArgs e )
         {
+            FormMusicList formMusicList = new FormMusicList();
+            formMusicList.TopLevel = false;
+            formMusicList.Dock = DockStyle.Fill;
+            formMusicList.FormBorderStyle = FormBorderStyle.None;
+            mainPanel.Controls.Add( formMusicList );
+            formMusicList.BringToFront();
+            formMusicList.Set( MusicList.search( String.Format( "select ID from uploadmusic where email = '{0}'" , Account.user.email ) ) );
+            formMusicList.Show();
         }
         private void modify_Click( object sender , EventArgs e )
         {
@@ -116,17 +128,20 @@ namespace music
         {
             Account.Logout();
             account.Text = "登入";
+            MusicList.account.Clear();
             refreshMusiclist();
         }
 
         private void FormMain_Shown( object sender , EventArgs e )
         {
-            timer1.Start();
-            network_Detect.Start();
-            MusicList.load();
-            refreshMusiclist();
-            Log.Debug( "start" );
             main = this;
+            music_Timer.Start();
+            network_Detect.Start();
+            refreshMusiclist();
+            MusicList.load();
+            if ( MusicList.pos != -1 )
+                musicPlayer.Play( MusicList.status );
+            Log.Debug( "start" );
         }
 
         private void network_Detect_Tick( object sender , EventArgs e )
@@ -161,14 +176,17 @@ namespace music
 
         private void lyrics_Click( object sender , EventArgs e )
         {
-            FormMusicLyrics formMusicLyrics = new FormMusicLyrics();
-            formMusicLyrics.TopLevel = false;
-            formMusicLyrics.Dock = DockStyle.Fill;
-            formMusicLyrics.FormBorderStyle = FormBorderStyle.None;
-            mainPanel.Controls.Add( formMusicLyrics );
-            formMusicLyrics.BringToFront();
-            formMusicLyrics.Set( MusicList.current[0] );
-            formMusicLyrics.Show();
+            if ( MusicList.current.Count > 0 )
+            {
+                FormMusicLyrics formMusicLyrics = new FormMusicLyrics();
+                formMusicLyrics.TopLevel = false;
+                formMusicLyrics.Dock = DockStyle.Fill;
+                formMusicLyrics.FormBorderStyle = FormBorderStyle.None;
+                mainPanel.Controls.Add( formMusicLyrics );
+                formMusicLyrics.BringToFront();
+                formMusicLyrics.Set( MusicList.current[ 0 ] );
+                formMusicLyrics.Show();
+            }
         }
 
         private void button6_Click( object sender , EventArgs e )
