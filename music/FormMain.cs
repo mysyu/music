@@ -33,7 +33,18 @@ namespace music
                 musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , MusicList.current[ MusicList.pos ].ID , MusicList.current[ MusicList.pos ].extension );
                 musicPlayer.Ctlcontrols.currentPosition = Int32.Parse( MusicList.time.Substring( 0 , 2 ) ) * 60 + Int32.Parse( MusicList.time.Substring( 3 , 2 ) );
             }
+            home_Click( null , null );
             Log.Debug( "start" );
+        }
+        private void home_Click( object sender , EventArgs e )
+        {
+            FormHome formHome = new FormHome();
+            formHome.TopLevel = false;
+            formHome.Dock = DockStyle.Fill;
+            formHome.FormBorderStyle = FormBorderStyle.None;
+            mainPanel.Controls.Add( formHome );
+            formHome.BringToFront();
+            formHome.Show();
         }
         public void formMain_FormClosing( object sender , FormClosingEventArgs e )
         {
@@ -253,15 +264,5 @@ namespace music
             this.Show();
         }
 
-        private void tag_Click( object sender , EventArgs e )
-        {
-            FormMusicList formMusicList = new FormMusicList();
-            formMusicList.TopLevel = false;
-            formMusicList.Dock = DockStyle.Fill;
-            formMusicList.FormBorderStyle = FormBorderStyle.None;
-            mainPanel.Controls.Add( formMusicList );
-            formMusicList.BringToFront();
-            formMusicList.Show();
-        }
     }
 }
