@@ -274,7 +274,7 @@
 
         #endregion
         private System.Windows.Forms.DataGridView musicList;
-        private System.Windows.Forms.GroupBox tag;
+        public System.Windows.Forms.GroupBox tag;
         private System.Windows.Forms.Label tag_label1;
         private System.Windows.Forms.CheckBox tag1;
         private System.Windows.Forms.CheckBox tag2;

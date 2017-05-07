@@ -32,9 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.totalTime = new System.Windows.Forms.Label();
             this.music_Timer = new System.Windows.Forms.Timer(this.components);
-            this.home = new System.Windows.Forms.Button();
             this.menuPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.search = new System.Windows.Forms.TextBox();
+            this.home = new System.Windows.Forms.Button();
             this.account = new System.Windows.Forms.Button();
             this.musicListPanel = new System.Windows.Forms.Panel();
             this.currentList = new System.Windows.Forms.Panel();
@@ -49,11 +50,12 @@
             this.account_Option = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.account_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.account_music = new System.Windows.Forms.ToolStripMenuItem();
+            this.upload = new System.Windows.Forms.ToolStripMenuItem();
             this.modify = new System.Windows.Forms.ToolStripMenuItem();
             this.logout = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.network_Detect = new System.Windows.Forms.Timer(this.components);
-            this.musicPlayer = new music.MusicPlayer();
+            this.musicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.menuPanel.SuspendLayout();
             this.musicListPanel.SuspendLayout();
             this.currentList.SuspendLayout();
@@ -73,21 +75,13 @@
             // 
             // music_Timer
             // 
-            this.music_Timer.Tick += new System.EventHandler(this.music_Timer_Tick );
-            // 
-            // home
-            // 
-            this.home.Location = new System.Drawing.Point(39, 81);
-            this.home.Name = "home";
-            this.home.Size = new System.Drawing.Size(75, 23);
-            this.home.TabIndex = 7;
-            this.home.Text = "Input";
-            this.home.UseVisualStyleBackColor = true;
-            this.home.Click += new System.EventHandler(this.button4_Click);
+            this.music_Timer.Tick += new System.EventHandler(this.music_Timer_Tick);
             // 
             // menuPanel
             // 
-            this.menuPanel.Controls.Add(this.button1);
+            this.menuPanel.Controls.Add(this.searchButton);
+            this.menuPanel.Controls.Add(this.search);
+            this.menuPanel.Controls.Add(this.home);
             this.menuPanel.Controls.Add(this.account);
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
@@ -95,13 +89,31 @@
             this.menuPanel.Size = new System.Drawing.Size(1000, 45);
             this.menuPanel.TabIndex = 10;
             // 
-            // button1
+            // searchButton
             // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 45);
-            this.button1.TabIndex = 1;
-            this.button1.UseVisualStyleBackColor = true;
+            this.searchButton.Location = new System.Drawing.Point(616, 13);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(75, 23);
+            this.searchButton.TabIndex = 3;
+            this.searchButton.Text = "search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // search
+            // 
+            this.search.Location = new System.Drawing.Point(207, 13);
+            this.search.Name = "search";
+            this.search.Size = new System.Drawing.Size(403, 22);
+            this.search.TabIndex = 2;
+            this.search.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_KeyDown);
+            // 
+            // home
+            // 
+            this.home.Location = new System.Drawing.Point(0, 0);
+            this.home.Name = "home";
+            this.home.Size = new System.Drawing.Size(200, 45);
+            this.home.TabIndex = 1;
+            this.home.UseVisualStyleBackColor = true;
             // 
             // account
             // 
@@ -199,7 +211,6 @@
             // mainPanel
             // 
             this.mainPanel.Controls.Add(this.button6);
-            this.mainPanel.Controls.Add(this.home);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(200, 45);
             this.mainPanel.Name = "mainPanel";
@@ -221,10 +232,11 @@
             this.account_Option.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.account_Info,
             this.account_music,
+            this.upload,
             this.modify,
             this.logout});
             this.account_Option.Name = "account_Option";
-            this.account_Option.Size = new System.Drawing.Size(123, 92);
+            this.account_Option.Size = new System.Drawing.Size(123, 114);
             // 
             // account_Info
             // 
@@ -239,6 +251,13 @@
             this.account_music.Size = new System.Drawing.Size(122, 22);
             this.account_music.Text = "創作管理";
             this.account_music.Click += new System.EventHandler(this.account_music_Click);
+            // 
+            // upload
+            // 
+            this.upload.Name = "upload";
+            this.upload.Size = new System.Drawing.Size(122, 22);
+            this.upload.Text = "上傳音樂";
+            this.upload.Click += new System.EventHandler(this.upload_Click);
             // 
             // modify
             // 
@@ -274,6 +293,7 @@
             this.musicPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("musicPlayer.OcxState")));
             this.musicPlayer.Size = new System.Drawing.Size(1000, 45);
             this.musicPlayer.TabIndex = 1;
+            this.musicPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.musicPlayer_PlayStateChange);
             // 
             // FormMain
             // 
@@ -291,6 +311,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formMain_FormClosing);
             this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.menuPanel.ResumeLayout(false);
+            this.menuPanel.PerformLayout();
             this.musicListPanel.ResumeLayout(false);
             this.currentList.ResumeLayout(false);
             this.currentList.PerformLayout();
@@ -302,10 +323,9 @@
         }
 
         #endregion
-        public MusicPlayer musicPlayer;
+        public AxWMPLib.AxWindowsMediaPlayer musicPlayer;
         public System.Windows.Forms.Label totalTime;
         public System.Windows.Forms.Timer music_Timer;
-        public System.Windows.Forms.Button home;
         public System.Windows.Forms.Panel menuPanel;
         public System.Windows.Forms.Panel musicListPanel;
         public System.Windows.Forms.Panel mainPanel;
@@ -318,7 +338,7 @@
         public System.Windows.Forms.ToolStripMenuItem logout;
         public System.Windows.Forms.NotifyIcon notifyIcon;
         public System.Windows.Forms.Timer network_Detect;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button home;
         private System.Windows.Forms.Panel currentList;
         public System.Windows.Forms.Label currentTime;
         public System.Windows.Forms.Label name;
@@ -326,6 +346,9 @@
         public System.Windows.Forms.Button lyrics;
         public System.Windows.Forms.Button list;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.TextBox search;
+        private System.Windows.Forms.ToolStripMenuItem upload;
     }
 }
 

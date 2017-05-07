@@ -21,32 +21,66 @@ namespace music
         {
             InitializeComponent();
         }
+        public void FormMain_Shown( object sender , EventArgs e )
+        {
+            main = this;
+            music_Timer.Start();
+            network_Detect.Start();
+            refreshMusiclist();
+            MusicList.load();
+            musicPlayer.settings.setMode( "loop" , false );
+            if ( MusicList.pos != -1 )
+            {
+                musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , MusicList.current[ MusicList.pos ].ID , MusicList.current[ MusicList.pos ].extension );
+                musicPlayer.Ctlcontrols.currentPosition = Int32.Parse( MusicList.time.Substring( 0 , 2 ) ) * 60 + Int32.Parse( MusicList.time.Substring( 3 , 2 ) );
+            }
+            Log.Debug( "start" );
+        }
+        public void formMain_FormClosing( object sender , FormClosingEventArgs e )
+        {
+            if ( DB.Connect )
+                DB.Close();
+            MusicList.time = currentTime.Text.Substring( 11 );
+            MusicList.save();
+        }
+        private void network_Detect_Tick( object sender , EventArgs e )
+        {
+            if ( !NetworkInterface.GetIsNetworkAvailable() )
+            {
+                network_Detect.Stop();
+                this.TopMost = true;
+                MessageBox.Show( "網路連線中斷!請開啟網路連線後再重新啟動程式!" );
+                DB.Connect = false;
+                this.Close();
+            }
+            if ( !DB.Connect )
+            {
+                network_Detect.Stop();
+                this.TopMost = true;
+                MessageBox.Show( "資料庫無法連線" );
+                this.Close();
+            }
+        }
         public void music_Timer_Tick( object sender , EventArgs e )
         {
-            if( musicPlayer.Ctlcontrols.currentPositionString == "" )
+            if ( MusicList.pos == -1 )
+            {
+                name.Text = "歌曲名稱     : ";
+                singer.Text = "創作者/團體: ";
+            }
+            else
+            {
+                name.Text = String.Format( "歌曲名稱     : {0}" , MusicList.current[ MusicList.pos ].name );
+                singer.Text = String.Format( "創作者/團體: {0}" , MusicList.current[ MusicList.pos ].singer );
+            }
+            if ( musicPlayer.Ctlcontrols.currentPositionString == "" )
                 currentTime.Text = "目前時間     : 00:00";
             else
                 currentTime.Text = String.Format( "目前時間     : {0}" , musicPlayer.Ctlcontrols.currentPositionString );
-        }
-
-        public void button4_Click( object sender , EventArgs e )
-        {
-            FormMusicUpload formMusicUpload = new FormMusicUpload();
-            formMusicUpload.TopLevel = false;
-            formMusicUpload.Dock = DockStyle.Fill;
-            formMusicUpload.FormBorderStyle = FormBorderStyle.None;
-            mainPanel.Controls.Add(formMusicUpload);
-            formMusicUpload.BringToFront();
-            formMusicUpload.Show();
-        }
-
-        public void formMain_FormClosing( object sender , FormClosingEventArgs e )
-        {
-            if( DB.Connect )
-                DB.Close();
-            MusicList.time = currentTime.Text.Substring( 11 );
-            MusicList.status = ( musicPlayer.playState == WMPPlayState.wmppsPlaying );
-            MusicList.save();
+            if ( musicPlayer.currentMedia.durationString == "" )
+                currentTime.Text = "歌曲時間     : 00:00";
+            else
+                totalTime.Text = String.Format( "歌曲時間     : {0}" , musicPlayer.currentMedia.durationString );
         }
         public void refreshMusiclist()
         {
@@ -85,13 +119,6 @@ namespace music
             }
         }
 
-        private void notifyIcon_MouseDoubleClick( object sender , MouseEventArgs e )
-        {
-            this.ShowInTaskbar = true;
-            this.TopMost = true;
-            this.Show();
-        }
-
         private void account_Info_Click( object sender , EventArgs e )
         {
             FormAccountInfo formAccountInfo = new FormAccountInfo();
@@ -112,7 +139,18 @@ namespace music
             mainPanel.Controls.Add( formMusicList );
             formMusicList.BringToFront();
             formMusicList.Set( MusicList.search( String.Format( "select ID from uploadmusic where email = '{0}'" , Account.user.email ) ) );
+            formMusicList.tag.Visible = false;
             formMusicList.Show();
+        }
+        private void upload_Click( object sender , EventArgs e )
+        {
+            FormMusicUpload formMusicUpload = new FormMusicUpload();
+            formMusicUpload.TopLevel = false;
+            formMusicUpload.Dock = DockStyle.Fill;
+            formMusicUpload.FormBorderStyle = FormBorderStyle.None;
+            mainPanel.Controls.Add( formMusicUpload );
+            formMusicUpload.BringToFront();
+            formMusicUpload.Show();
         }
         private void modify_Click( object sender , EventArgs e )
         {
@@ -131,37 +169,6 @@ namespace music
             MusicList.account.Clear();
             refreshMusiclist();
         }
-
-        private void FormMain_Shown( object sender , EventArgs e )
-        {
-            main = this;
-            music_Timer.Start();
-            network_Detect.Start();
-            refreshMusiclist();
-            MusicList.load();
-            if ( MusicList.pos != -1 )
-                musicPlayer.Play( MusicList.status );
-            Log.Debug( "start" );
-        }
-
-        private void network_Detect_Tick( object sender , EventArgs e )
-        {
-            if ( !NetworkInterface.GetIsNetworkAvailable() )
-            {
-                network_Detect.Stop();
-                this.TopMost = true;
-                MessageBox.Show( "網路連線中斷!請開啟網路連線後再重新啟動程式!" );
-                DB.Connect = false;
-                this.Close();
-            }
-            if ( !DB.Connect )
-            {
-                network_Detect.Stop();
-                this.TopMost = true;
-                MessageBox.Show( "資料庫無法連線" );
-                this.Close();
-            }
-        }
         private void list_Click( object sender , EventArgs e )
         {
             FormMusicList formMusicList = new FormMusicList();
@@ -171,6 +178,7 @@ namespace music
             mainPanel.Controls.Add( formMusicList );
             formMusicList.BringToFront();
             formMusicList.Set( MusicList.current );
+            formMusicList.tag.Visible = false;
             formMusicList.Show();
         }
 
@@ -196,8 +204,55 @@ namespace music
             formMusicList.Dock = DockStyle.Fill;
             formMusicList.FormBorderStyle = FormBorderStyle.None;
             mainPanel.Controls.Add( formMusicList );
+            formMusicList.tag.Visible = false;
             formMusicList.BringToFront();
             formMusicList.Show();
         }
+        private void musicPlayer_PlayStateChange( object sender , AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e )
+        {
+            Log.Debug( e.newState );
+            if ( e.newState == 10 )
+            {
+                try
+                {
+                    musicPlayer.Ctlcontrols.play();
+                }
+                catch
+                {
+                }
+            }
+            else if ( e.newState == 8 )
+            {
+                MusicList.pos = ( MusicList.pos + 1 ) % MusicList.current.Count;
+                musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , MusicList.current[ MusicList.pos ].ID , MusicList.current[ MusicList.pos ].extension );
+            }
+        }
+        private void searchButton_Click( object sender , EventArgs e )
+        {
+            if ( search.Text != "" )
+            {
+                FormMusicList formMusicList = new FormMusicList();
+                formMusicList.TopLevel = false;
+                formMusicList.Dock = DockStyle.Fill;
+                formMusicList.FormBorderStyle = FormBorderStyle.None;
+                mainPanel.Controls.Add( formMusicList );
+                formMusicList.BringToFront();
+                formMusicList.Set( MusicList.search( String.Format( "Select ID from uploadmusic where name like '%{0}%' or singer like '%{0}%'" , search.Text ) ) );
+                formMusicList.tag.Visible = false;
+                formMusicList.Show();
+            }
+        }
+        private void search_KeyDown( object sender , KeyEventArgs e )
+        {
+            if ( e.KeyCode == Keys.Enter )
+                searchButton_Click( null , null );
+        }
+        private void notifyIcon_MouseDoubleClick( object sender , MouseEventArgs e )
+        {
+            this.ShowInTaskbar = true;
+            this.TopMost = true;
+            this.Show();
+        }
+
     }
 }

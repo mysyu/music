@@ -15,7 +15,6 @@ namespace music
         public static List<Music> local = new List<Music>();
         public static List<Music> account = new List<Music>();
         public static int pos = -1;
-        public static bool status = false;
         public static String time = "";
 
 
@@ -29,7 +28,6 @@ namespace music
             type = doc.CreateElement( "current" );
             type.SetAttribute( "pos" , pos.ToString() );
             type.SetAttribute( "time" , time );
-            type.SetAttribute( "status" , status.ToString() );
             foreach ( Music m in MusicList.current )
             {
                 musicname = doc.CreateElement( "music" );
@@ -70,7 +68,6 @@ namespace music
                         now = current;
                         pos = Int32.Parse( type.Attributes[ "pos" ].InnerText );
                         time = type.Attributes[ "time" ].InnerText;
-                        status = Boolean.Parse( type.Attributes[ "status" ].InnerText );
                     }
                     else
                         now = local;

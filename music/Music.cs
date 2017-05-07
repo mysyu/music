@@ -17,7 +17,6 @@ namespace music
         public String tag;
         public String info;
         public Lyrics lyrics;
-        public String time;
 
         public Music()
         {
@@ -28,7 +27,6 @@ namespace music
             email = "";
             tag = "";
             info = "";
-            time = "";
             lyrics = new Lyrics("");
         }
 
@@ -45,7 +43,6 @@ namespace music
                 tag = result.Rows[ 0 ][ 4 ].ToString();
                 lyrics = new Lyrics( result.Rows[ 0 ][ 5 ].ToString() );
                 info = result.Rows[ 0 ][ 6 ].ToString();
-                time = "";
             }
             else
             {
@@ -56,7 +53,6 @@ namespace music
                 email = "";
                 tag = "";
                 info = "";
-                time = "";
                 lyrics = new Lyrics( "" );
                 throw new Exception( "music not found in DB" );
             }
@@ -71,7 +67,6 @@ namespace music
             email = "";
             tag = t;
             info = i;
-            time = "";
             lyrics = new Lyrics(l);
         }
 

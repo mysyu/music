@@ -118,9 +118,6 @@
     </Compile>
     <Compile Include="Lyrics.cs" />
     <Compile Include="Music.cs" />
-    <Compile Include="MusicPlayer.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="MusicList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
