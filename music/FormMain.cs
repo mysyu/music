@@ -26,9 +26,8 @@ namespace music
             main = this;
             music_Timer.Start();
             network_Detect.Start();
-            refreshMusiclist();
             MusicList.load();
-            musicPlayer.settings.setMode( "loop" , false );
+            refreshMusiclist();
             if ( MusicList.pos != -1 )
             {
                 musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , MusicList.current[ MusicList.pos ].ID , MusicList.current[ MusicList.pos ].extension );
@@ -192,7 +191,7 @@ namespace music
                 formMusicLyrics.FormBorderStyle = FormBorderStyle.None;
                 mainPanel.Controls.Add( formMusicLyrics );
                 formMusicLyrics.BringToFront();
-                formMusicLyrics.Set( MusicList.current[ 0 ] );
+                formMusicLyrics.Set( MusicList.current[ MusicList.pos ] );
                 formMusicLyrics.Show();
             }
         }
@@ -254,5 +253,15 @@ namespace music
             this.Show();
         }
 
+        private void tag_Click( object sender , EventArgs e )
+        {
+            FormMusicList formMusicList = new FormMusicList();
+            formMusicList.TopLevel = false;
+            formMusicList.Dock = DockStyle.Fill;
+            formMusicList.FormBorderStyle = FormBorderStyle.None;
+            mainPanel.Controls.Add( formMusicList );
+            formMusicList.BringToFront();
+            formMusicList.Show();
+        }
     }
 }

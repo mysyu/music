@@ -46,7 +46,6 @@
             this.currentTime = new System.Windows.Forms.Label();
             this.musicList = new System.Windows.Forms.TreeView();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
             this.account_Option = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.account_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.account_music = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,6 +55,7 @@
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.network_Detect = new System.Windows.Forms.Timer(this.components);
             this.musicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.tag = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.musicListPanel.SuspendLayout();
             this.currentList.SuspendLayout();
@@ -210,22 +210,12 @@
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.button6);
+            this.mainPanel.Controls.Add(this.tag);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(200, 45);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(800, 500);
             this.mainPanel.TabIndex = 12;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(39, 52);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 12;
-            this.button6.Text = "current";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // account_Option
             // 
@@ -295,6 +285,18 @@
             this.musicPlayer.TabIndex = 1;
             this.musicPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.musicPlayer_PlayStateChange);
             // 
+            // tag
+            // 
+            this.tag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tag.Location = new System.Drawing.Point(25, 21);
+            this.tag.Name = "tag";
+            this.tag.Size = new System.Drawing.Size(75, 23);
+            this.tag.TabIndex = 4;
+            this.tag.Text = "分類搜尋";
+            this.tag.UseVisualStyleBackColor = true;
+            this.tag.Click += new System.EventHandler(this.tag_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -345,10 +347,10 @@
         public System.Windows.Forms.Label singer;
         public System.Windows.Forms.Button lyrics;
         public System.Windows.Forms.Button list;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox search;
         private System.Windows.Forms.ToolStripMenuItem upload;
+        public System.Windows.Forms.Button tag;
     }
 }
 
