@@ -31,6 +31,7 @@ namespace music
             if ( MusicList.pos != -1 )
             {
                 musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , MusicList.current[ MusicList.pos ].ID , MusicList.current[ MusicList.pos ].extension );
+                MusicList.current[ MusicList.pos ].Play();
                 musicPlayer.Ctlcontrols.currentPosition = Int32.Parse( MusicList.time.Substring( 0 , 2 ) ) * 60 + Int32.Parse( MusicList.time.Substring( 3 , 2 ) );
             }
             home_Click( null , null );
@@ -207,17 +208,6 @@ namespace music
             }
         }
 
-        private void button6_Click( object sender , EventArgs e )
-        {
-            FormMusicList formMusicList = new FormMusicList();
-            formMusicList.TopLevel = false;
-            formMusicList.Dock = DockStyle.Fill;
-            formMusicList.FormBorderStyle = FormBorderStyle.None;
-            mainPanel.Controls.Add( formMusicList );
-            formMusicList.tag.Visible = false;
-            formMusicList.BringToFront();
-            formMusicList.Show();
-        }
         private void musicPlayer_PlayStateChange( object sender , AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e )
         {
             Log.Debug( e.newState );
@@ -235,6 +225,7 @@ namespace music
             {
                 MusicList.pos = ( MusicList.pos + 1 ) % MusicList.current.Count;
                 musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , MusicList.current[ MusicList.pos ].ID , MusicList.current[ MusicList.pos ].extension );
+                MusicList.current[ MusicList.pos ].Play();
             }
         }
         private void searchButton_Click( object sender , EventArgs e )

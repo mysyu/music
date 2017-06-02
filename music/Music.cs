@@ -81,28 +81,26 @@ namespace music
             if( !filename.EndsWith( ".mp3" ) && !filename.EndsWith( ".wav" ) )
                 return "你必須選擇正確的音樂檔案";
             generateID();
-            if ( DB.SQL( String.Format( "insert into uploadmusic( ID , name , extension , singer , email , tag , lyrics , info ) values( '{0}' , '{1}' , '{2}' , '{3}' , '{4}' , '{5}' , '{6}' , '{7}' )" , ID , name , extension , singer , Account.user.email , tag , lyrics.completeLyrics , info ) ) != 1 )
+            if ( DB.SQL( String.Format( "insert into uploadmusic( ID , name , extension , singer , email , tag , lyrics , info , listen ) values( '{0}' , '{1}' , '{2}' , '{3}' , '{4}' , '{5}' , '{6}' , '{7}' , 0 )" , ID , name , extension , singer , Account.user.email , tag , lyrics.completeLyrics , info ) ) != 1 )
                 return "Fail";
             try
             {
                 using ( Stream musicStream = new FileStream(filename, FileMode.Open))
                 {
+                    FtpWebRequest request = (FtpWebRequest) WebRequest.Create( String.Format( "ftp://1.34.30.96:21/{0}{1}" , ID , extension ) );
+                    request.Method = WebRequestMethods.Ftp.UploadFile;
+                    request.Credentials = new NetworkCredential( "UploadMusic" , "UploadMusic" );
+
+                    using ( Stream requestStream = request.GetRequestStream() )
                     {
-                        FtpWebRequest request = (FtpWebRequest)WebRequest.Create( String.Format( "ftp://1.34.30.96:21/{0}{1}" , ID , extension ) );
-                        request.Method = WebRequestMethods.Ftp.UploadFile;
-                        request.Credentials = new NetworkCredential("UploadMusic", "UploadMusic");
+                        musicStream.CopyTo( requestStream );
+                    }
 
-                        using (Stream requestStream = request.GetRequestStream())
-                        {
-                            musicStream.CopyTo(requestStream);
-                        }
-
-                        using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
-                        {
-                            if ( response.StatusDescription.StartsWith( "226 Transfer complete." ) )
-                                return "Success";
-                            DB.SQL( String.Format( "delete from uploadmusic where ID = '{0}'" , ID ) );
-                        }
+                    using ( FtpWebResponse response = (FtpWebResponse) request.GetResponse() )
+                    {
+                        if ( response.StatusDescription.StartsWith( "226 Transfer complete." ) )
+                            return "Success";
+                        DB.SQL( String.Format( "delete from uploadmusic where ID = '{0}'" , ID ) );
                     }
                 }
             }
@@ -111,6 +109,11 @@ namespace music
                 throw ex;
             }
             return "Fail";
+        }
+
+        public void Play()
+        {
+            DB.SQL( String.Format( "update uploadmusic set listen = listen + 1 where ID = '{0}'" , ID ) );
         }
 
         public void generateID()
