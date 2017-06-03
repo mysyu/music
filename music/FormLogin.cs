@@ -28,6 +28,7 @@ namespace music
                 else
                     FormMain.main.account.Text = Account.user.name;
             }
+            MusicList.load();
             FormMain.main.refreshMusiclist();
         }
 

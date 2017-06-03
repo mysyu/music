@@ -24,6 +24,7 @@ namespace music
             formMusicList.FormBorderStyle = FormBorderStyle.None;
             FormMain.main.mainPanel.Controls.Add( formMusicList );
             formMusicList.BringToFront();
+            formMusicList.Set( null , false );
             formMusicList.Show();
         }
     }

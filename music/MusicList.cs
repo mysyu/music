@@ -45,6 +45,14 @@ namespace music
             root.AppendChild( type );
             doc.AppendChild( root );
             doc.Save( "music.xml" );
+            if ( Account.islogin )
+            {
+                DB.SQL( String.Format( "delete from musiclist where email = '{0}'" , Account.user.email ) );
+                foreach ( Music m in MusicList.account )
+                {
+                    DB.SQL( String.Format( "insert into musiclist( email , music ) values( '{0}' , '{1}' )" , Account.user.email , m.ID ) );
+                }
+            }
         }
         public static void load()
         {
@@ -104,18 +112,19 @@ namespace music
                 if ( account.Any( x => x.ID == m.ID ) )
                     return false;
                 account.Add( m );
-                if ( DB.SQL( String.Format( "insert into musiclist( email , music ) values( '{0}' , '{1}' )" , Account.user.email , m.ID ) ) == 1 )
-                    return true;
+                return true;
             }
             return false;
         }
 
         public static void add( Music m , bool p )
         {
+            if ( pos == -1 )
+                pos = 0;
             if ( !current.Any( x => x.ID == m.ID ) )
             {
                 if ( p )
-                    current.Insert( pos , m );
+                    current.Insert( pos  , m );
                 else
                     current.Add( m );
             }

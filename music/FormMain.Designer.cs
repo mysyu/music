@@ -55,11 +55,20 @@
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.network_Detect = new System.Windows.Forms.Timer(this.components);
             this.musicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.musicList_Option = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.addCurrent = new System.Windows.Forms.ToolStripMenuItem();
+            this.addLocal = new System.Windows.Forms.ToolStripMenuItem();
+            this.musicInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.singerInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.addAccount = new System.Windows.Forms.ToolStripMenuItem();
+            this.play = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPanel.SuspendLayout();
             this.musicListPanel.SuspendLayout();
             this.currentList.SuspendLayout();
             this.account_Option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.musicPlayer)).BeginInit();
+            this.musicList_Option.SuspendLayout();
             this.SuspendLayout();
             // 
             // totalTime
@@ -206,6 +215,8 @@
             this.musicList.Name = "musicList";
             this.musicList.Size = new System.Drawing.Size(200, 500);
             this.musicList.TabIndex = 1;
+            this.musicList.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.musicList_NodeMouseClick);
+            this.musicList.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.musicList_NodeMouseDoubleClick);
             // 
             // mainPanel
             // 
@@ -283,6 +294,68 @@
             this.musicPlayer.TabIndex = 1;
             this.musicPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.musicPlayer_PlayStateChange);
             // 
+            // musicList_Option
+            // 
+            this.musicList_Option.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.musicInfo,
+            this.singerInfo,
+            this.addCurrent,
+            this.addLocal,
+            this.addAccount,
+            this.play,
+            this.delete});
+            this.musicList_Option.Name = "musicList_Option";
+            this.musicList_Option.Size = new System.Drawing.Size(153, 180);
+            // 
+            // delete
+            // 
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(152, 22);
+            this.delete.Text = "刪除";
+            this.delete.Click += new System.EventHandler(this.delete_Click);
+            // 
+            // addCurrent
+            // 
+            this.addCurrent.Name = "addCurrent";
+            this.addCurrent.Size = new System.Drawing.Size(152, 22);
+            this.addCurrent.Text = "加入撥放歌單";
+            this.addCurrent.Click += new System.EventHandler(this.addCurrent_Click);
+            // 
+            // addLocal
+            // 
+            this.addLocal.Name = "addLocal";
+            this.addLocal.Size = new System.Drawing.Size(152, 22);
+            this.addLocal.Text = "加入本機歌單";
+            this.addLocal.Click += new System.EventHandler(this.addLocal_Click);
+            // 
+            // musicInfo
+            // 
+            this.musicInfo.Name = "musicInfo";
+            this.musicInfo.Size = new System.Drawing.Size(152, 22);
+            this.musicInfo.Text = "歌曲資訊";
+            this.musicInfo.Click += new System.EventHandler(this.musicInfo_Click);
+            // 
+            // singerInfo
+            // 
+            this.singerInfo.Name = "singerInfo";
+            this.singerInfo.Size = new System.Drawing.Size(152, 22);
+            this.singerInfo.Text = "創作者資訊";
+            this.singerInfo.Click += new System.EventHandler(this.singerInfo_Click);
+            // 
+            // addAccount
+            // 
+            this.addAccount.Name = "addAccount";
+            this.addAccount.Size = new System.Drawing.Size(152, 22);
+            this.addAccount.Text = "加入帳戶歌單";
+            this.addAccount.Click += new System.EventHandler(this.addAccount_Click);
+            // 
+            // play
+            // 
+            this.play.Name = "play";
+            this.play.Size = new System.Drawing.Size(152, 22);
+            this.play.Text = "撥放";
+            this.play.Click += new System.EventHandler(this.play_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -305,6 +378,7 @@
             this.currentList.PerformLayout();
             this.account_Option.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.musicPlayer)).EndInit();
+            this.musicList_Option.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -335,6 +409,14 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox search;
         private System.Windows.Forms.ToolStripMenuItem upload;
+        private System.Windows.Forms.ContextMenuStrip musicList_Option;
+        private System.Windows.Forms.ToolStripMenuItem delete;
+        private System.Windows.Forms.ToolStripMenuItem addLocal;
+        private System.Windows.Forms.ToolStripMenuItem addCurrent;
+        private System.Windows.Forms.ToolStripMenuItem musicInfo;
+        private System.Windows.Forms.ToolStripMenuItem singerInfo;
+        private System.Windows.Forms.ToolStripMenuItem addAccount;
+        private System.Windows.Forms.ToolStripMenuItem play;
     }
 }
 

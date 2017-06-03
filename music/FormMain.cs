@@ -88,7 +88,7 @@ namespace music
                 currentTime.Text = "目前時間     : 00:00";
             else
                 currentTime.Text = String.Format( "目前時間     : {0}" , musicPlayer.Ctlcontrols.currentPositionString );
-            if ( musicPlayer.currentMedia.durationString == "" )
+            if ( musicPlayer.currentMedia == null || musicPlayer.currentMedia.durationString == "" )
                 currentTime.Text = "歌曲時間     : 00:00";
             else
                 totalTime.Text = String.Format( "歌曲時間     : {0}" , musicPlayer.currentMedia.durationString );
@@ -97,19 +97,25 @@ namespace music
         {
             musicList.Nodes.Clear();
             musicList.Nodes.Add( "本機" );
+            TreeNode node;
             foreach ( Music m in MusicList.local  )
             {
-                musicList.Nodes[ 0 ].Nodes.Add( m.name );
+                node = new TreeNode( m.name );
+                node.Tag = m;
+                musicList.Nodes[ 0 ].Nodes.Add( node );
             }
             if ( Account.islogin )
             {
                 musicList.Nodes.Add( account.Text );
                 foreach ( Music m in MusicList.account )
                 {
-                    musicList.Nodes[ 1 ].Nodes.Add( m.name );
+                    node = new TreeNode( m.name );
+                    node.Tag = m;
+                    musicList.Nodes[ 1 ].Nodes.Add( node );
                 }
             }
             musicList.ExpandAll();
+            MusicList.save();
         }
 
         private void account_Click( object sender , EventArgs e )
@@ -149,7 +155,7 @@ namespace music
             formMusicList.FormBorderStyle = FormBorderStyle.None;
             mainPanel.Controls.Add( formMusicList );
             formMusicList.BringToFront();
-            formMusicList.Set( MusicList.search( String.Format( "select ID from uploadmusic where email = '{0}'" , Account.user.email ) ) );
+            formMusicList.Set( MusicList.search( String.Format( "select ID from uploadmusic where email = '{0}'" , Account.user.email ) ) , false );
             formMusicList.tag.Visible = false;
             formMusicList.Show();
         }
@@ -188,8 +194,10 @@ namespace music
             formMusicList.FormBorderStyle = FormBorderStyle.None;
             mainPanel.Controls.Add( formMusicList );
             formMusicList.BringToFront();
-            formMusicList.Set( MusicList.current );
+            formMusicList.Set( MusicList.current , true );
             formMusicList.tag.Visible = false;
+            if( MusicList.pos != -1 )
+                formMusicList.musicList.CurrentCell = formMusicList.musicList.Rows[ MusicList.pos ].Cells[ 0 ];
             formMusicList.Show();
         }
 
@@ -238,7 +246,7 @@ namespace music
                 formMusicList.FormBorderStyle = FormBorderStyle.None;
                 mainPanel.Controls.Add( formMusicList );
                 formMusicList.BringToFront();
-                formMusicList.Set( MusicList.search( String.Format( "Select ID from uploadmusic where name like '%{0}%' or singer like '%{0}%'" , search.Text ) ) );
+                formMusicList.Set( MusicList.search( String.Format( "Select ID from uploadmusic where name like '%{0}%' or singer like '%{0}%'" , search.Text ) ) , false );
                 formMusicList.tag.Visible = false;
                 formMusicList.Show();
             }
@@ -254,6 +262,88 @@ namespace music
             this.TopMost = true;
             this.Show();
         }
+        private void musicList_NodeMouseDoubleClick( object sender , TreeNodeMouseClickEventArgs e )
+        {
+            if ( e.Node.Level == 1 )
+            {
+                MusicList.add( (Music) e.Node.Tag , true );
+                MusicList.time = "00:00";
+                FormMain.main.musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , MusicList.current[ MusicList.pos ].ID , MusicList.current[ MusicList.pos ].extension );
+                MusicList.current[ MusicList.pos ].Play();
+            }
+        }
+        private void musicList_NodeMouseClick( object sender , TreeNodeMouseClickEventArgs e )
+        {
+            musicList.SelectedNode = e.Node;
+            if ( e.Button == MouseButtons.Right && e.Node.Level == 1 )
+            {
+                if ( e.Node.Parent.Index == 0 )
+                {
+                    addLocal.Visible = e.Node.Parent.Index != 0;
+                    addAccount.Visible = Account.islogin;
+                }
+                else
+                {
+                    addLocal.Visible = true;
+                    addAccount.Visible = false;
+                }
+                musicList_Option.Show( musicList , new Point( e.X , e.Y ) );
+            }
+        }
 
+        private void musicInfo_Click( object sender , EventArgs e )
+        {
+                    FormMusicInfo formMusicInfo = new FormMusicInfo();
+            formMusicInfo.TopLevel = false;
+            formMusicInfo.Dock = DockStyle.Fill;
+            formMusicInfo.FormBorderStyle = FormBorderStyle.None;
+            FormMain.main.mainPanel.Controls.Add( formMusicInfo );
+            formMusicInfo.BringToFront();
+            formMusicInfo.Set( (Music) musicList.SelectedNode.Tag );
+            formMusicInfo.Show();
+        }
+        private void singerInfo_Click( object sender , EventArgs e )
+        {
+            FormMusicSinger formMusicSinger = new FormMusicSinger();
+            formMusicSinger.TopLevel = false;
+            formMusicSinger.Dock = DockStyle.Fill;
+            formMusicSinger.FormBorderStyle = FormBorderStyle.None;
+            FormMain.main.mainPanel.Controls.Add( formMusicSinger );
+            formMusicSinger.BringToFront();
+            formMusicSinger.Set( new Account( (Music) musicList.SelectedNode.Tag ) );
+            formMusicSinger.Show();
+        }
+        private void addCurrent_Click( object sender , EventArgs e )
+        {
+            MusicList.add( (Music) musicList.SelectedNode.Tag , false );
+        }
+        private void addLocal_Click( object sender , EventArgs e )
+        {
+            MusicList.add( "local" , (Music) musicList.SelectedNode.Tag );
+            FormMain.main.refreshMusiclist();
+        }
+        private void addAccount_Click( object sender , EventArgs e )
+        {
+            MusicList.add( "account" , (Music) musicList.SelectedNode.Tag );
+            FormMain.main.refreshMusiclist();
+        }
+        private void play_Click( object sender , EventArgs e )
+        {
+            MusicList.add( (Music) musicList.SelectedNode.Tag , true );
+            MusicList.time = "00:00";
+            FormMain.main.musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , MusicList.current[ MusicList.pos ].ID , MusicList.current[ MusicList.pos ].extension );
+            MusicList.current[ MusicList.pos ].Play();
+        }
+        private void delete_Click( object sender , EventArgs e )
+        {
+            if ( musicList.SelectedNode.Level == 1 )
+            {
+                if ( musicList.SelectedNode.Parent.Index == 0 )
+                    MusicList.local.Remove( (Music) musicList.SelectedNode.Tag );
+                else
+                    MusicList.account.Remove( (Music) musicList.SelectedNode.Tag );
+                refreshMusiclist();
+            }
+        }
     }
 }

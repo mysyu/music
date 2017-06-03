@@ -30,14 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.musicList = new System.Windows.Forms.DataGridView();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.singer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.musicInfo = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.singerInfo = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.addCurrent = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.addLocal = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.addAccount = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.play = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tag = new System.Windows.Forms.GroupBox();
             this.tag_label1 = new System.Windows.Forms.Label();
             this.tag1 = new System.Windows.Forms.CheckBox();
@@ -50,6 +42,15 @@
             this.tag6 = new System.Windows.Forms.CheckBox();
             this.tag5 = new System.Windows.Forms.CheckBox();
             this.checkLogin = new System.Windows.Forms.Timer(this.components);
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.singer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.musicInfo = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.singerInfo = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.addCurrent = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.addLocal = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.addAccount = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.play = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.delete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.musicList)).BeginInit();
             this.tag.SuspendLayout();
             this.SuspendLayout();
@@ -67,64 +68,18 @@
             this.addCurrent,
             this.addLocal,
             this.addAccount,
-            this.play});
+            this.play,
+            this.delete});
             this.musicList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.musicList.Location = new System.Drawing.Point(0, 150);
+            this.musicList.MultiSelect = false;
             this.musicList.Name = "musicList";
             this.musicList.ReadOnly = true;
             this.musicList.RowTemplate.Height = 24;
+            this.musicList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.musicList.Size = new System.Drawing.Size(484, 311);
             this.musicList.TabIndex = 0;
             this.musicList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.musicList_CellContentClick);
-            // 
-            // name
-            // 
-            this.name.HeaderText = "name";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // singer
-            // 
-            this.singer.HeaderText = "singer";
-            this.singer.Name = "singer";
-            this.singer.ReadOnly = true;
-            // 
-            // musicInfo
-            // 
-            this.musicInfo.HeaderText = "musicInfo";
-            this.musicInfo.Name = "musicInfo";
-            this.musicInfo.ReadOnly = true;
-            // 
-            // singerInfo
-            // 
-            this.singerInfo.HeaderText = "singerInfo";
-            this.singerInfo.Name = "singerInfo";
-            this.singerInfo.ReadOnly = true;
-            // 
-            // addCurrent
-            // 
-            this.addCurrent.HeaderText = "addCurrent";
-            this.addCurrent.Name = "addCurrent";
-            this.addCurrent.ReadOnly = true;
-            // 
-            // addLocal
-            // 
-            this.addLocal.HeaderText = "addLocal";
-            this.addLocal.Name = "addLocal";
-            this.addLocal.ReadOnly = true;
-            // 
-            // addAccount
-            // 
-            this.addAccount.HeaderText = "addAccount";
-            this.addAccount.Name = "addAccount";
-            this.addAccount.ReadOnly = true;
-            // 
-            // play
-            // 
-            this.play.HeaderText = "play";
-            this.play.Name = "play";
-            this.play.ReadOnly = true;
             // 
             // tag
             // 
@@ -256,6 +211,61 @@
             this.checkLogin.Enabled = true;
             this.checkLogin.Tick += new System.EventHandler(this.checkLogin_Tick);
             // 
+            // name
+            // 
+            this.name.HeaderText = "歌曲名稱";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // singer
+            // 
+            this.singer.HeaderText = "創作者名稱";
+            this.singer.Name = "singer";
+            this.singer.ReadOnly = true;
+            // 
+            // musicInfo
+            // 
+            this.musicInfo.HeaderText = "歌曲資訊";
+            this.musicInfo.Name = "musicInfo";
+            this.musicInfo.ReadOnly = true;
+            // 
+            // singerInfo
+            // 
+            this.singerInfo.HeaderText = "創作者資訊";
+            this.singerInfo.Name = "singerInfo";
+            this.singerInfo.ReadOnly = true;
+            // 
+            // addCurrent
+            // 
+            this.addCurrent.HeaderText = "加入撥放歌單";
+            this.addCurrent.Name = "addCurrent";
+            this.addCurrent.ReadOnly = true;
+            // 
+            // addLocal
+            // 
+            this.addLocal.HeaderText = "加入本機歌單";
+            this.addLocal.Name = "addLocal";
+            this.addLocal.ReadOnly = true;
+            // 
+            // addAccount
+            // 
+            this.addAccount.HeaderText = "加入帳戶歌單";
+            this.addAccount.Name = "addAccount";
+            this.addAccount.ReadOnly = true;
+            // 
+            // play
+            // 
+            this.play.HeaderText = "撥放";
+            this.play.Name = "play";
+            this.play.ReadOnly = true;
+            // 
+            // delete
+            // 
+            this.delete.HeaderText = "移除";
+            this.delete.Name = "delete";
+            this.delete.ReadOnly = true;
+            // 
             // FormMusicList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -273,7 +283,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView musicList;
+        public System.Windows.Forms.DataGridView musicList;
         public System.Windows.Forms.GroupBox tag;
         private System.Windows.Forms.Label tag_label1;
         private System.Windows.Forms.CheckBox tag1;
@@ -285,6 +295,7 @@
         private System.Windows.Forms.CheckBox tag4;
         private System.Windows.Forms.CheckBox tag6;
         private System.Windows.Forms.CheckBox tag5;
+        private System.Windows.Forms.Timer checkLogin;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn singer;
         private System.Windows.Forms.DataGridViewButtonColumn musicInfo;
@@ -293,6 +304,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn addLocal;
         private System.Windows.Forms.DataGridViewButtonColumn addAccount;
         private System.Windows.Forms.DataGridViewButtonColumn play;
-        private System.Windows.Forms.Timer checkLogin;
+        private System.Windows.Forms.DataGridViewButtonColumn delete;
     }
 }
