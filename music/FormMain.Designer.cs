@@ -67,8 +67,6 @@ namespace music
             this.delete = new System.Windows.Forms.ToolStripMenuItem();
             this.last = new System.Windows.Forms.Button();
             this.next = new System.Windows.Forms.Button();
-            this.lastPage = new System.Windows.Forms.Button();
-            this.nextPage = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.musicListPanel.SuspendLayout();
             this.currentList.SuspendLayout();
@@ -92,8 +90,6 @@ namespace music
             // 
             // menuPanel
             // 
-            this.menuPanel.Controls.Add(this.nextPage);
-            this.menuPanel.Controls.Add(this.lastPage);
             this.menuPanel.Controls.Add(this.searchButton);
             this.menuPanel.Controls.Add(this.search);
             this.menuPanel.Controls.Add(this.home);
@@ -106,7 +102,7 @@ namespace music
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(673, 12);
+            this.searchButton.Location = new System.Drawing.Point(615, 11);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(75, 23);
             this.searchButton.TabIndex = 3;
@@ -116,7 +112,7 @@ namespace music
             // 
             // search
             // 
-            this.search.Location = new System.Drawing.Point(264, 12);
+            this.search.Location = new System.Drawing.Point(206, 11);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(403, 22);
             this.search.TabIndex = 2;
@@ -386,28 +382,6 @@ namespace music
             this.next.UseVisualStyleBackColor = true;
             this.next.Click += new System.EventHandler(this.next_Click);
             // 
-            // lastPage
-            // 
-            this.lastPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lastPage.Location = new System.Drawing.Point(206, 12);
-            this.lastPage.Name = "lastPage";
-            this.lastPage.Size = new System.Drawing.Size(23, 23);
-            this.lastPage.TabIndex = 14;
-            this.lastPage.Text = "<";
-            this.lastPage.UseVisualStyleBackColor = true;
-            this.lastPage.Click += new System.EventHandler(this.lastPage_Click);
-            // 
-            // nextPage
-            // 
-            this.nextPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nextPage.Location = new System.Drawing.Point(235, 12);
-            this.nextPage.Name = "nextPage";
-            this.nextPage.Size = new System.Drawing.Size(23, 23);
-            this.nextPage.TabIndex = 15;
-            this.nextPage.Text = "<";
-            this.nextPage.UseVisualStyleBackColor = true;
-            this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -475,8 +449,6 @@ namespace music
         private System.Windows.Forms.ToolStripMenuItem play;
         private System.Windows.Forms.Button next;
         private System.Windows.Forms.Button last;
-        private System.Windows.Forms.Button nextPage;
-        private System.Windows.Forms.Button lastPage;
     }
 }
 

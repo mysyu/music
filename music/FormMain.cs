@@ -296,7 +296,7 @@ namespace music
 
         private void musicInfo_Click( object sender , EventArgs e )
         {
-                    FormMusicInfo formMusicInfo = new FormMusicInfo();
+            FormMusicInfo formMusicInfo = new FormMusicInfo();
             formMusicInfo.TopLevel = false;
             formMusicInfo.Dock = DockStyle.Fill;
             formMusicInfo.FormBorderStyle = FormBorderStyle.None;
@@ -381,16 +381,6 @@ namespace music
         {
             MusicList.pos++;
             MusicList.Play();
-        }
-
-        private void lastPage_Click( object sender , EventArgs e )
-        {
-            mainPanel.Controls[ 0 ].SendToBack()
-        }
-
-        private void nextPage_Click( object sender , EventArgs e )
-        {
-            mainPanel.Controls[ mainPanel.Controls.Count - 1 ].SendToBack()
         }
     }
 }
