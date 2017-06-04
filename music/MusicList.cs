@@ -63,6 +63,7 @@ namespace music
                 {
                     account.Add( new Music( row[ 0 ].ToString() ) );
                 }
+                return;
             }
             else if ( File.Exists( "music.xml" ) )
             {
@@ -124,7 +125,10 @@ namespace music
             if ( !current.Any( x => x.ID == m.ID ) )
             {
                 if ( p )
-                    current.Insert( pos  , m );
+                {
+                    current.Insert( pos , m );
+                    Play();
+                }
                 else
                     current.Add( m );
             }
@@ -133,8 +137,16 @@ namespace music
                 if ( p )
                 {
                     pos = current.FindIndex( x => x.ID == m.ID );
+                    Play();
                 }
             }
+        }
+
+        public static void Play()
+        {
+            MusicList.time = "00:00";
+            FormMain.main.musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , current[ MusicList.pos ].ID , current[ pos ].extension );
+            current[ pos ].Play();
         }
     }
 }

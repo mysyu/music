@@ -69,9 +69,6 @@ namespace music
                     break;
                 case 7:
                     MusicList.add( (Music) musicList.Rows[ e.RowIndex ].Cells[ 0 ].Value , true );
-                    MusicList.time = "00:00";
-                    FormMain.main.musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , MusicList.current[ MusicList.pos ].ID , MusicList.current[ MusicList.pos ].extension );
-                    MusicList.current[ MusicList.pos ].Play();
                     break;
                 case 8:
                     Music current = (Music) musicList.Rows[ MusicList.pos ].Cells[ 0 ].Value;
@@ -82,13 +79,12 @@ namespace music
                         MusicList.pos = -1;
                         FormMain.main.musicPlayer.Ctlcontrols.stop();
                         FormMain.main.musicPlayer.currentPlaylist.clear();
+
                     }
                     else if ( e.RowIndex == MusicList.pos )
                     {
                         MusicList.pos %= MusicList.current.Count();
-                        MusicList.time = "00:00";
-                        FormMain.main.musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , MusicList.current[ MusicList.pos ].ID , MusicList.current[ MusicList.pos ].extension );
-                        MusicList.current[ MusicList.pos ].Play();
+                        MusicList.Play();
                     }
                     else if ( e.RowIndex < MusicList.pos )
                         MusicList.pos--;

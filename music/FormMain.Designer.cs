@@ -1,4 +1,6 @@
-﻿namespace music
+﻿using System.Drawing;
+
+namespace music
 {
     partial class FormMain
     {
@@ -56,13 +58,17 @@
             this.network_Detect = new System.Windows.Forms.Timer(this.components);
             this.musicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.musicList_Option = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.delete = new System.Windows.Forms.ToolStripMenuItem();
-            this.addCurrent = new System.Windows.Forms.ToolStripMenuItem();
-            this.addLocal = new System.Windows.Forms.ToolStripMenuItem();
             this.musicInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.singerInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.addCurrent = new System.Windows.Forms.ToolStripMenuItem();
+            this.addLocal = new System.Windows.Forms.ToolStripMenuItem();
             this.addAccount = new System.Windows.Forms.ToolStripMenuItem();
             this.play = new System.Windows.Forms.ToolStripMenuItem();
+            this.delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.last = new System.Windows.Forms.Button();
+            this.next = new System.Windows.Forms.Button();
+            this.lastPage = new System.Windows.Forms.Button();
+            this.nextPage = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.musicListPanel.SuspendLayout();
             this.currentList.SuspendLayout();
@@ -86,6 +92,8 @@
             // 
             // menuPanel
             // 
+            this.menuPanel.Controls.Add(this.nextPage);
+            this.menuPanel.Controls.Add(this.lastPage);
             this.menuPanel.Controls.Add(this.searchButton);
             this.menuPanel.Controls.Add(this.search);
             this.menuPanel.Controls.Add(this.home);
@@ -98,7 +106,7 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(616, 13);
+            this.searchButton.Location = new System.Drawing.Point(673, 12);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(75, 23);
             this.searchButton.TabIndex = 3;
@@ -108,7 +116,7 @@
             // 
             // search
             // 
-            this.search.Location = new System.Drawing.Point(207, 13);
+            this.search.Location = new System.Drawing.Point(264, 12);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(403, 22);
             this.search.TabIndex = 2;
@@ -307,54 +315,98 @@
             this.musicList_Option.Name = "musicList_Option";
             this.musicList_Option.Size = new System.Drawing.Size(147, 158);
             // 
-            // delete
-            // 
-            this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(152, 22);
-            this.delete.Text = "刪除";
-            this.delete.Click += new System.EventHandler(this.delete_Click);
-            // 
-            // addCurrent
-            // 
-            this.addCurrent.Name = "addCurrent";
-            this.addCurrent.Size = new System.Drawing.Size(152, 22);
-            this.addCurrent.Text = "加入撥放歌單";
-            this.addCurrent.Click += new System.EventHandler(this.addCurrent_Click);
-            // 
-            // addLocal
-            // 
-            this.addLocal.Name = "addLocal";
-            this.addLocal.Size = new System.Drawing.Size(152, 22);
-            this.addLocal.Text = "加入本機歌單";
-            this.addLocal.Click += new System.EventHandler(this.addLocal_Click);
-            // 
             // musicInfo
             // 
             this.musicInfo.Name = "musicInfo";
-            this.musicInfo.Size = new System.Drawing.Size(152, 22);
+            this.musicInfo.Size = new System.Drawing.Size(146, 22);
             this.musicInfo.Text = "歌曲資訊";
             this.musicInfo.Click += new System.EventHandler(this.musicInfo_Click);
             // 
             // singerInfo
             // 
             this.singerInfo.Name = "singerInfo";
-            this.singerInfo.Size = new System.Drawing.Size(152, 22);
+            this.singerInfo.Size = new System.Drawing.Size(146, 22);
             this.singerInfo.Text = "創作者資訊";
             this.singerInfo.Click += new System.EventHandler(this.singerInfo_Click);
+            // 
+            // addCurrent
+            // 
+            this.addCurrent.Name = "addCurrent";
+            this.addCurrent.Size = new System.Drawing.Size(146, 22);
+            this.addCurrent.Text = "加入撥放歌單";
+            this.addCurrent.Click += new System.EventHandler(this.addCurrent_Click);
+            // 
+            // addLocal
+            // 
+            this.addLocal.Name = "addLocal";
+            this.addLocal.Size = new System.Drawing.Size(146, 22);
+            this.addLocal.Text = "加入本機歌單";
+            this.addLocal.Click += new System.EventHandler(this.addLocal_Click);
             // 
             // addAccount
             // 
             this.addAccount.Name = "addAccount";
-            this.addAccount.Size = new System.Drawing.Size(152, 22);
+            this.addAccount.Size = new System.Drawing.Size(146, 22);
             this.addAccount.Text = "加入帳戶歌單";
             this.addAccount.Click += new System.EventHandler(this.addAccount_Click);
             // 
             // play
             // 
             this.play.Name = "play";
-            this.play.Size = new System.Drawing.Size(152, 22);
+            this.play.Size = new System.Drawing.Size(146, 22);
             this.play.Text = "撥放";
             this.play.Click += new System.EventHandler(this.play_Click);
+            // 
+            // delete
+            // 
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(146, 22);
+            this.delete.Text = "刪除";
+            this.delete.Click += new System.EventHandler(this.delete_Click);
+            // 
+            // last
+            // 
+            this.last.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.last.Location = new System.Drawing.Point(65, 560);
+            this.last.Name = "last";
+            this.last.Size = new System.Drawing.Size(20, 20);
+            this.last.TabIndex = 13;
+            this.last.Text = "<";
+            this.last.UseVisualStyleBackColor = true;
+            this.last.Click += new System.EventHandler(this.last_Click);
+            // 
+            // next
+            // 
+            this.next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.next.Location = new System.Drawing.Point(91, 560);
+            this.next.Name = "next";
+            this.next.Size = new System.Drawing.Size(20, 20);
+            this.next.TabIndex = 14;
+            this.next.Text = ">";
+            this.next.UseVisualStyleBackColor = true;
+            this.next.Click += new System.EventHandler(this.next_Click);
+            // 
+            // lastPage
+            // 
+            this.lastPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lastPage.Location = new System.Drawing.Point(206, 12);
+            this.lastPage.Name = "lastPage";
+            this.lastPage.Size = new System.Drawing.Size(23, 23);
+            this.lastPage.TabIndex = 14;
+            this.lastPage.Text = "<";
+            this.lastPage.UseVisualStyleBackColor = true;
+            this.lastPage.Click += new System.EventHandler(this.lastPage_Click);
+            // 
+            // nextPage
+            // 
+            this.nextPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.nextPage.Location = new System.Drawing.Point(235, 12);
+            this.nextPage.Name = "nextPage";
+            this.nextPage.Size = new System.Drawing.Size(23, 23);
+            this.nextPage.TabIndex = 15;
+            this.nextPage.Text = "<";
+            this.nextPage.UseVisualStyleBackColor = true;
+            this.nextPage.Click += new System.EventHandler(this.nextPage_Click);
             // 
             // FormMain
             // 
@@ -362,6 +414,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1000, 590);
+            this.Controls.Add(this.next);
+            this.Controls.Add(this.last);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.musicListPanel);
             this.Controls.Add(this.menuPanel);
@@ -419,6 +473,10 @@
         private System.Windows.Forms.ToolStripMenuItem singerInfo;
         private System.Windows.Forms.ToolStripMenuItem addAccount;
         private System.Windows.Forms.ToolStripMenuItem play;
+        private System.Windows.Forms.Button next;
+        private System.Windows.Forms.Button last;
+        private System.Windows.Forms.Button nextPage;
+        private System.Windows.Forms.Button lastPage;
     }
 }
 

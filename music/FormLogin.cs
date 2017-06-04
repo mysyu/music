@@ -27,11 +27,11 @@ namespace music
                     FormMain.main.account.Text = Account.user.email;
                 else
                     FormMain.main.account.Text = Account.user.name;
+                FormMain.main.account_Info.Visible = true;
+                FormMain.main.modify.Visible = true;
+                MusicList.load();
+                FormMain.main.refreshMusiclist();
             }
-            FormMain.main.account_Info.Visible = true;
-            FormMain.main.modify.Visible = true;
-            MusicList.load();
-            FormMain.main.refreshMusiclist();
         }
 
         private void forget_LinkClicked( object sender , LinkLabelLinkClickedEventArgs e )

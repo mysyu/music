@@ -17,6 +17,8 @@ namespace music
         public static ILog Log = LogManager.GetLogger( "" );
         public static FormMain main = null;
         private String backdoor = null;
+        private FormHome formHome = null;
+
 
         public FormMain()
         {
@@ -31,22 +33,20 @@ namespace music
             refreshMusiclist();
             if ( MusicList.pos != -1 )
             {
-                musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , MusicList.current[ MusicList.pos ].ID , MusicList.current[ MusicList.pos ].extension );
-                MusicList.current[ MusicList.pos ].Play();
-                musicPlayer.Ctlcontrols.currentPosition = Int32.Parse( MusicList.time.Substring( 0 , 2 ) ) * 60 + Int32.Parse( MusicList.time.Substring( 3 , 2 ) );
+                MusicList.Play();
             }
-            home_Click( null , null );
-            Log.Debug( "start" );
-        }
-        private void home_Click( object sender , EventArgs e )
-        {
-            FormHome formHome = new FormHome();
+            formHome = new FormHome();
             formHome.TopLevel = false;
             formHome.Dock = DockStyle.Fill;
             formHome.FormBorderStyle = FormBorderStyle.None;
             mainPanel.Controls.Add( formHome );
             formHome.BringToFront();
             formHome.Show();
+            Log.Debug( "start" );
+        }
+        private void home_Click( object sender , EventArgs e )
+        {
+            formHome.BringToFront();
         }
         public void formMain_FormClosing( object sender , FormClosingEventArgs e )
         {
@@ -93,6 +93,13 @@ namespace music
                 currentTime.Text = "歌曲時間     : 00:00";
             else
                 totalTime.Text = String.Format( "歌曲時間     : {0}" , musicPlayer.currentMedia.durationString );
+            last.Enabled = MusicList.pos > 0;
+            next.Enabled = MusicList.pos < MusicList.current.Count - 1;
+            Text = "Music";
+            foreach ( Control c in mainPanel.Controls )
+            {
+                Text += c;
+            }
         }
         public void refreshMusiclist()
         {
@@ -176,7 +183,7 @@ namespace music
             formChangePassword.TopLevel = false;
             formChangePassword.Dock = DockStyle.Fill;
             formChangePassword.FormBorderStyle = FormBorderStyle.None;
-            FormMain.main.mainPanel.Controls.Add( formChangePassword );
+            mainPanel.Controls.Add( formChangePassword );
             formChangePassword.BringToFront();
             formChangePassword.Show();
         }
@@ -185,6 +192,7 @@ namespace music
             Account.Logout();
             account.Text = "登入";
             MusicList.account.Clear();
+            home_Click( null , null );
             refreshMusiclist();
         }
         private void list_Click( object sender , EventArgs e )
@@ -265,9 +273,6 @@ namespace music
             if ( e.Node.Level == 1 )
             {
                 MusicList.add( (Music) e.Node.Tag , true );
-                MusicList.time = "00:00";
-                FormMain.main.musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , MusicList.current[ MusicList.pos ].ID , MusicList.current[ MusicList.pos ].extension );
-                MusicList.current[ MusicList.pos ].Play();
             }
         }
         private void musicList_NodeMouseClick( object sender , TreeNodeMouseClickEventArgs e )
@@ -328,9 +333,6 @@ namespace music
         private void play_Click( object sender , EventArgs e )
         {
             MusicList.add( (Music) musicList.SelectedNode.Tag , true );
-            MusicList.time = "00:00";
-            FormMain.main.musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , MusicList.current[ MusicList.pos ].ID , MusicList.current[ MusicList.pos ].extension );
-            MusicList.current[ MusicList.pos ].Play();
         }
         private void delete_Click( object sender , EventArgs e )
         {
@@ -350,6 +352,8 @@ namespace music
             {
                 if ( e.KeyChar - 0 == (int) Keys.Escape )
                     backdoor = "";
+                else if ( e.KeyChar - 0 == (int) Keys.Back && backdoor != null && backdoor != "" )
+                    backdoor = backdoor.Remove( backdoor.Length - 1 );
                 else if ( e.KeyChar - 0 == (int) Keys.Enter && backdoor == "admin" )
                 {
                     Account.user.email = "admin";
@@ -364,6 +368,29 @@ namespace music
                 else if ( backdoor != null )
                     backdoor += e.KeyChar.ToString();
             }
+        }
+
+        private void last_Click( object sender , EventArgs e )
+        {
+            MusicList.pos--;
+            MusicList.Play();
+
+        }
+
+        private void next_Click( object sender , EventArgs e )
+        {
+            MusicList.pos++;
+            MusicList.Play();
+        }
+
+        private void lastPage_Click( object sender , EventArgs e )
+        {
+            mainPanel.Controls[ 0 ].SendToBack()
+        }
+
+        private void nextPage_Click( object sender , EventArgs e )
+        {
+            mainPanel.Controls[ mainPanel.Controls.Count - 1 ].SendToBack()
         }
     }
 }
