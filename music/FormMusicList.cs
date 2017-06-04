@@ -33,6 +33,7 @@ namespace music
 
         private void musicList_CellContentClick( object sender , DataGridViewCellEventArgs e )
         {
+            checkCurrent.Enabled = false;
             switch ( e.ColumnIndex )
             {
                 case 2:
@@ -73,6 +74,7 @@ namespace music
                     MusicList.current[ MusicList.pos ].Play();
                     break;
                 case 8:
+                    Music current = (Music) musicList.Rows[ MusicList.pos ].Cells[ 0 ].Value;
                     MusicList.current.RemoveAt( e.RowIndex );
                     musicList.Rows.RemoveAt( e.RowIndex );
                     if ( MusicList.current.Count == 0 )
@@ -83,14 +85,26 @@ namespace music
                     }
                     else if ( e.RowIndex == MusicList.pos )
                     {
-                        MusicList.pos %= MusicList.current.Count;
+                        MusicList.pos %= MusicList.current.Count();
                         MusicList.time = "00:00";
                         FormMain.main.musicPlayer.URL = String.Format( "http://mysyu.ddns.net/UploadMusic/{0}{1}" , MusicList.current[ MusicList.pos ].ID , MusicList.current[ MusicList.pos ].extension );
                         MusicList.current[ MusicList.pos ].Play();
                     }
+                    else if ( e.RowIndex < MusicList.pos )
+                        MusicList.pos--;
                     break;
-
             }
+            checkCurrent.Enabled = true  ;
+        }
+
+        private void musicList_MouseDown( object sender , MouseEventArgs e )
+        {
+            checkCurrent.Enabled = false;
+        }
+
+        private void musicList_MouseUp( object sender , MouseEventArgs e )
+        {
+            checkCurrent.Enabled = true;
         }
 
         private void CheckedChanged( object sender , EventArgs e )
@@ -104,6 +118,20 @@ namespace music
         private void checkLogin_Tick( object sender , EventArgs e )
         {
             musicList.Columns[ 6 ].Visible = Account.islogin;
+        }
+
+        private void checkCurrent_Tick( object sender , EventArgs e )
+        {
+            if ( musicList.Columns[ 8 ].Visible && MusicList.pos != -1 )
+            {
+                for ( int i = 0 ; i < MusicList.current.Count ; i++ )
+                    if ( MusicList.current.Count != musicList.RowCount || MusicList.current[ i ] != musicList.Rows[ i ].Cells[ 0 ].Value )
+                    {
+                        Set( MusicList.current , true );
+                        break;
+                    }
+                musicList.CurrentCell = musicList.Rows[ MusicList.pos ].Cells[ 0 ];
+            }
         }
     }
 }
