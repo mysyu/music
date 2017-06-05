@@ -17,7 +17,7 @@ namespace music
         public static ILog Log = LogManager.GetLogger( "" );
         public static FormMain main = null;
         private String backdoor = null;
-        private FormHome formHome = null;
+        public static FormHome formHome = null;
 
 
         public FormMain()

@@ -29,6 +29,7 @@ namespace music
                     FormMain.main.account.Text = Account.user.name;
                 FormMain.main.account_Info.Visible = true;
                 FormMain.main.modify.Visible = true;
+                FormMain.formHome.BringToFront();
                 MusicList.load();
                 FormMain.main.refreshMusiclist();
             }
