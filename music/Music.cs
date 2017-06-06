@@ -100,13 +100,13 @@ namespace music
                     {
                         if ( response.StatusDescription.StartsWith( "226 Transfer complete." ) )
                             return "Success";
-                        DB.SQL( String.Format( "delete from uploadmusic where ID = '{0}'" , ID ) );
                     }
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                DB.SQL(String.Format("delete from uploadmusic where ID = '{0}'", ID));
+                return String.Format( "Fail: {0}" , ex.Message );
             }
             return "Fail";
         }
