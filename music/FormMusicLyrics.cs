@@ -17,7 +17,7 @@ namespace music
         public FormMusicLyrics()
         {
             InitializeComponent();
-            timer1.Start();
+            checkLyrics.Start();
         }
 
         public void Set( Music m )
@@ -29,15 +29,19 @@ namespace music
             lyrics.Items.AddRange( music.lyrics.lyrics );
         }
 
-        private void timer1_Tick( object sender , EventArgs e )
-        {
-            lyrics.SelectedIndex = music.lyrics.getLine( FormMain.main.musicPlayer.Ctlcontrols.currentPositionString );
-        }
         private void lyrics_MouseDown( object sender , MouseEventArgs e )
         {
             String t = music.lyrics.getTime( lyrics.IndexFromPoint( e.Location ) , FormMain.main.musicPlayer.currentMedia.durationString );
             if ( t != "" )
                 FormMain.main.musicPlayer.Ctlcontrols.currentPosition = Int32.Parse( t.Substring( 0 , 2 ) ) * 60 + Int32.Parse( t.Substring( 3 , 2 ) );
+        }
+
+        private void checkLyrics_Tick( object sender , EventArgs e )
+        {
+            if ( MusicList.current[ MusicList.pos ] != music )
+                Set( MusicList.current[ MusicList.pos ] );
+            lyrics.SelectedIndex = music.lyrics.getLine( FormMain.main.musicPlayer.Ctlcontrols.currentPositionString );
+
         }
     }
 }

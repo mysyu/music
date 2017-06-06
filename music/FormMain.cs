@@ -217,7 +217,6 @@ namespace music
                 formMusicLyrics.FormBorderStyle = FormBorderStyle.None;
                 mainPanel.Controls.Add( formMusicLyrics );
                 formMusicLyrics.BringToFront();
-                formMusicLyrics.Set( MusicList.current[ MusicList.pos ] );
                 formMusicLyrics.Show();
             }
         }

@@ -23,7 +23,7 @@ namespace music
 
         public String getTime( int n , String t )
         {
-            if ( Regex.IsMatch( lyrics[ n ] , @"[\d\d:\d\d]" ) && lyrics[ n ].Substring( 1 , 5 ).CompareTo( t ) <= 0 )
+            if ( Regex.IsMatch( lyrics[ n ] , @"\[\d\d:\d\d\]" ) && lyrics[ n ].Substring( 1 , 5 ).CompareTo( t ) <= 0 )
                 return lyrics[ n ].Substring( 1 , 5 );
             else
                 return "";
@@ -32,7 +32,7 @@ namespace music
         public int getLine( String t )
         {
             int now = 0;
-            while ( now + 1 < lyrics.Length && Regex.IsMatch( lyrics[ now + 1 ] , @"[\d\d:\d\d]" ) && lyrics[ now + 1 ].Substring( 1 , 5 ).CompareTo( t ) <= 0 )
+            while ( now + 1 < lyrics.Length && Regex.IsMatch( lyrics[ now + 1 ] , @"\[\d\d:\d\d\]" ) && lyrics[ now + 1 ].Substring( 1 , 5 ).CompareTo( t ) <= 0 )
                 now++;
             return now;
         }

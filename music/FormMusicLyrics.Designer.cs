@@ -32,7 +32,7 @@
             this.name = new System.Windows.Forms.Label();
             this.singer = new System.Windows.Forms.Label();
             this.lyrics = new System.Windows.Forms.ListBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.checkLyrics = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // name
@@ -68,9 +68,10 @@
             this.lyrics.TabIndex = 2;
             this.lyrics.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lyrics_MouseDown);
             // 
-            // timer1
+            // checkLyrics
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.checkLyrics.Enabled = true;
+            this.checkLyrics.Tick += new System.EventHandler(this.checkLyrics_Tick);
             // 
             // FormMusicLyrics
             // 
@@ -91,6 +92,6 @@
         private System.Windows.Forms.Label name;
         private System.Windows.Forms.Label singer;
         private System.Windows.Forms.ListBox lyrics;
-        public System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Timer checkLyrics;
     }
 }
