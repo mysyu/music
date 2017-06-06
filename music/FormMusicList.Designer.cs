@@ -111,7 +111,7 @@
             // 
             // addCurrent
             // 
-            this.addCurrent.HeaderText = "加入撥放歌單";
+            this.addCurrent.HeaderText = "加入播放歌單";
             this.addCurrent.Name = "addCurrent";
             this.addCurrent.ReadOnly = true;
             // 
@@ -129,7 +129,7 @@
             // 
             // play
             // 
-            this.play.HeaderText = "撥放";
+            this.play.HeaderText = "播放";
             this.play.Name = "play";
             this.play.ReadOnly = true;
             // 

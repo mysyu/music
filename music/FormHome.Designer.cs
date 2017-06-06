@@ -95,7 +95,7 @@
             // 
             this.addCurrent.Name = "addCurrent";
             this.addCurrent.Size = new System.Drawing.Size(152, 22);
-            this.addCurrent.Text = "加入撥放歌單";
+            this.addCurrent.Text = "加入播放歌單";
             this.addCurrent.Click += new System.EventHandler(this.addCurrent_Click);
             // 
             // addLocal
@@ -116,7 +116,7 @@
             // 
             this.play.Name = "play";
             this.play.Size = new System.Drawing.Size(152, 22);
-            this.play.Text = "撥放";
+            this.play.Text = "播放";
             this.play.Click += new System.EventHandler(this.play_Click);
             // 
             // FormHome
