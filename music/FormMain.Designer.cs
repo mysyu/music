@@ -393,7 +393,7 @@ namespace music
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
             this.Name = "FormMain";
-            this.Text = "Music";
+            this.Text = "Music Sharing";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formMain_FormClosing);
             this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormMain_KeyPress);
