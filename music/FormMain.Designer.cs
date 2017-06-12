@@ -119,6 +119,8 @@ namespace music
             // 
             // home
             // 
+            this.home.BackgroundImage = global::music.Properties.Resources.icon;
+            this.home.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.home.Location = new System.Drawing.Point(0, 0);
             this.home.Name = "home";
             this.home.Size = new System.Drawing.Size(200, 45);
@@ -223,6 +225,8 @@ namespace music
             // 
             // mainPanel
             // 
+            this.mainPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.mainPanel.Cursor = System.Windows.Forms.Cursors.Default;
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(200, 45);
             this.mainPanel.Name = "mainPanel";

@@ -95,11 +95,6 @@ namespace music
                 totalTime.Text = String.Format( "歌曲時間     : {0}" , musicPlayer.currentMedia.durationString );
             last.Enabled = MusicList.pos > 0;
             next.Enabled = MusicList.pos < MusicList.current.Count - 1;
-            Text = "Music";
-            foreach ( Control c in mainPanel.Controls )
-            {
-                Text += c;
-            }
         }
         public void refreshMusiclist()
         {
