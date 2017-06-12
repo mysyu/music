@@ -54,7 +54,6 @@ namespace music
             this.upload = new System.Windows.Forms.ToolStripMenuItem();
             this.modify = new System.Windows.Forms.ToolStripMenuItem();
             this.logout = new System.Windows.Forms.ToolStripMenuItem();
-            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.network_Detect = new System.Windows.Forms.Timer(this.components);
             this.musicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.musicList_Option = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -276,13 +275,6 @@ namespace music
             this.logout.Text = "登出";
             this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
-            // notifyIcon
-            // 
-            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = "music";
-            this.notifyIcon.Visible = true;
-            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
-            // 
             // network_Detect
             // 
             this.network_Detect.Tick += new System.EventHandler(this.network_Detect_Tick);
@@ -427,7 +419,6 @@ namespace music
         public System.Windows.Forms.ToolStripMenuItem account_music;
         public System.Windows.Forms.ToolStripMenuItem modify;
         public System.Windows.Forms.ToolStripMenuItem logout;
-        public System.Windows.Forms.NotifyIcon notifyIcon;
         public System.Windows.Forms.Timer network_Detect;
         private System.Windows.Forms.Button home;
         private System.Windows.Forms.Panel currentList;

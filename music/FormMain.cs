@@ -261,12 +261,6 @@ namespace music
             if ( e.KeyCode == Keys.Enter )
                 searchButton_Click( null , null );
         }
-        private void notifyIcon_MouseDoubleClick( object sender , MouseEventArgs e )
-        {
-            this.ShowInTaskbar = true;
-            this.TopMost = true;
-            this.Show();
-        }
         private void musicList_NodeMouseDoubleClick( object sender , TreeNodeMouseClickEventArgs e )
         {
             if ( e.Node.Level == 1 )
@@ -375,7 +369,6 @@ namespace music
             MusicList.Play();
 
         }
-
         private void next_Click( object sender , EventArgs e )
         {
             MusicList.pos++;

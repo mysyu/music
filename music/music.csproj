@@ -193,7 +193,6 @@
   <ItemGroup>
     <Content Include="DLL\log4net.dll" />
     <Content Include="DLL\MySql.Data.dll" />
-    <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxWMPLib">
